@@ -49,6 +49,11 @@ jobs:
           fail=0
           for id in $DIRS; do
             echo "::group::validate $id"
+            # 目录被整个删掉（如下架 fixture）→ 没什么可验，跳过
+            if [ ! -d "$id" ]; then
+              echo "(removed) $id directory deleted — skipping"
+              echo "::endgroup::"; continue
+            fi
             meta="$id/meta.json"
             if [ ! -f "$meta" ]; then
               echo "✗ $meta missing"; fail=1; echo "::endgroup::"; continue
