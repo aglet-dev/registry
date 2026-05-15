@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T04:01:39Z",
+  "generated_at": "2026-05-15T05:24:56Z",
   "apps": [
     {
       "id": "timer",
@@ -35,6 +35,18 @@
       ],
       "latest": "1.0.1",
       "updated_at": "2026-05-15T04:01:39Z"
+    },
+    {
+      "id": "calc",
+      "name": {
+        "default": "Calculator",
+        "zh": "计算器"
+      },
+      "description": {
+        "default": "iOS-style calculator"
+      },
+      "latest": "1.0.0",
+      "updated_at": "2026-05-15T05:24:56Z"
     }
   ]
 }
