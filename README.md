@@ -8,10 +8,18 @@ straight from this repo.
 
 ```
 <app-id>/
-  meta.json               npm-style index + store metadata (see below)
-  <version>.corelet       gzipped tarball; `corelet install <id>[@<version>]`
-index.json                catalog of all apps (Store one-shot listing)
+  meta.json                  npm-style index + store metadata (see below)
+  <version>.corelet          gzipped tarball; `corelet install <id>[@<version>]`
+  <version>/
+    icon.<ext>               bundled icon, if manifest used a relative path
+    screenshots/<N>.<ext>    bundled screenshots
+index.json                   catalog of all apps (Store one-shot listing)
 ```
+
+`corelet publish` dual-writes bundled assets: they're inside the `.corelet`
+tarball (sha256 covers them) **and** mirrored as plain files under
+`<id>/<version>/` so Cloudflare Pages serves them directly without unpacking.
+External http(s):// URLs in manifests are passed through unchanged.
 
 Every miniapp gets a directory keyed by its `manifest.id`. Each tagged version
 is a separate `.corelet` file next to a single `meta.json` index. The top-level
