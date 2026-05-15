@@ -1,0 +1,27 @@
+{
+  "id": "timer",
+  "name": "Timer",
+  "description": "Simple countdown timer demo for the corelet registry",
+  "author": {
+    "name": "agent-rt",
+    "url": "https://github.com/agent-rt"
+  },
+  "homepage": "https://registry.agentsan.app",
+  "repository": "https://github.com/agent-rt/corelet-registry",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/timer-fill.svg?color=%23ef6f5f&width=256",
+  "category": "utilities",
+  "keywords": [
+    "timer",
+    "countdown"
+  ],
+  "latest": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "file": "1.0.0.corelet",
+      "sha256": "08761573ede909b760bae31659ff2c8b2c0350c8d54c6f2d2da68c71c6545f75",
+      "published_at": "2026-05-15T03:49:57Z"
+    }
+  ]
+}
