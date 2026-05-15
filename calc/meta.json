@@ -1,0 +1,19 @@
+{
+  "id": "calc",
+  "name": {
+    "default": "Calculator",
+    "zh": "计算器"
+  },
+  "description": {
+    "default": "iOS-style calculator"
+  },
+  "latest": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "file": "1.0.0.corelet",
+      "sha256": "56ec5ea707e7795c7fb6e8cfefee9650233da002161615747412aaf1cd0edcb0",
+      "published_at": "2026-05-15T05:24:56Z"
+    }
+  ]
+}
