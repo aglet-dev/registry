@@ -5,6 +5,8 @@ on:
     paths:
       - "*/meta.json"
       - "*/*.corelet"
+      - "*/*/**"   # bundled <id>/<version>/icon.<ext> 等镜像资源
+      - "index.json"
 
 permissions:
   contents: read
@@ -97,6 +99,29 @@ jobs:
               fi
               if [ "$app_ver" != "$ver" ]; then
                 echo "✗ $path: app.json version ($app_ver) != $ver"; fail=1
+              fi
+
+              # Bundled-asset mirror sha256 cross-check：tar 内 icon.<ext> /
+              # screenshots/<N>.<ext> 与 registry 内 <id>/<ver>/<path> 字节一致。
+              # 防 PR 替换镜像但保 tar 不变（meta.json 指向已经被改写的 URL）。
+              mirror_dir="$id/$ver"
+              if [ -d "$mirror_dir" ]; then
+                tmp_extract="$(mktemp -d)"
+                tar -xzf "$path" -C "$tmp_extract"
+                # 遍历 mirror_dir 内每个文件，确认 tar 内对应位置存在并字节一致
+                while IFS= read -r mirror_file; do
+                  rel="${mirror_file#$mirror_dir/}"
+                  tar_member="$tmp_extract/$rel"
+                  if [ ! -f "$tar_member" ]; then
+                    echo "✗ mirror $mirror_file has no tar counterpart at $rel"; fail=1; continue
+                  fi
+                  m_sha=$(shasum -a 256 "$mirror_file" | awk '{print $1}')
+                  t_sha=$(shasum -a 256 "$tar_member" | awk '{print $1}')
+                  if [ "$m_sha" != "$t_sha" ]; then
+                    echo "✗ mirror $mirror_file (sha $m_sha) != tar $rel (sha $t_sha)"; fail=1
+                  fi
+                done < <(find "$mirror_dir" -type f)
+                rm -rf "$tmp_extract"
               fi
             done
 
