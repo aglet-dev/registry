@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-15T03:49:57Z",
+  "generated_at": "2026-05-15T04:01:39Z",
   "apps": [
     {
       "id": "timer",
       "name": "Timer",
-      "description": "Simple countdown timer demo for the corelet registry",
+      "description": "Simple countdown timer demo for the corelet registry. Tracks runs in a local SQLite collection so you can review history later.",
       "author": {
         "name": "agent-rt",
         "url": "https://github.com/agent-rt"
@@ -16,10 +16,25 @@
       "category": "utilities",
       "keywords": [
         "timer",
-        "countdown"
+        "countdown",
+        "stopwatch"
       ],
-      "latest": "1.0.0",
-      "updated_at": "2026-05-15T03:49:57Z"
+      "screenshots": [
+        {
+          "url": "https://placehold.co/720x400/ef6f5f/fff?text=Timer+running",
+          "caption": "Active countdown"
+        },
+        {
+          "url": "https://placehold.co/720x400/3a6ea5/fff?text=Run+history",
+          "caption": "Past runs"
+        },
+        {
+          "url": "https://placehold.co/720x400/777/fff?text=Settings",
+          "caption": "Settings"
+        }
+      ],
+      "latest": "1.0.1",
+      "updated_at": "2026-05-15T04:01:39Z"
     }
   ]
 }
