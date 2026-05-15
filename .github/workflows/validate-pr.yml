@@ -1,0 +1,115 @@
+name: Validate PR
+
+on:
+  pull_request:
+    paths:
+      - "*/meta.json"
+      - "*/*.corelet"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed app dirs
+        id: changes
+        run: |
+          set -e
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          # collect top-level dirs touched by the PR (one entry per app)
+          dirs=$(git diff --name-only "$base" "$head" \
+            | awk -F/ 'NF>=2 && $1!=".github" { print $1 }' \
+            | sort -u)
+          if [ -z "$dirs" ]; then
+            echo "No app dirs touched; nothing to validate."
+            echo "dirs=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Changed app dirs:"
+          printf '  %s\n' $dirs
+          echo "dirs<<EOF" >> "$GITHUB_OUTPUT"
+          printf '%s\n' $dirs >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Validate each touched app
+        if: steps.changes.outputs.dirs != ''
+        env:
+          DIRS: ${{ steps.changes.outputs.dirs }}
+        run: |
+          set -euo pipefail
+          fail=0
+          for id in $DIRS; do
+            echo "::group::validate $id"
+            meta="$id/meta.json"
+            if [ ! -f "$meta" ]; then
+              echo "✗ $meta missing"; fail=1; echo "::endgroup::"; continue
+            fi
+
+            # meta.json must be valid JSON with required shape
+            if ! jq -e '.id and .latest and (.versions | type == "array")' "$meta" >/dev/null; then
+              echo "✗ $meta missing required fields {id, latest, versions[]}"
+              fail=1; echo "::endgroup::"; continue
+            fi
+            meta_id=$(jq -r .id "$meta")
+            if [ "$meta_id" != "$id" ]; then
+              echo "✗ $meta_id (meta.json) != $id (directory)"; fail=1
+            fi
+
+            # latest must exist in versions[]
+            latest=$(jq -r .latest "$meta")
+            if ! jq -e --arg v "$latest" '.versions | map(.version) | index($v)' "$meta" >/dev/null; then
+              echo "✗ latest=$latest not in versions[]"; fail=1
+            fi
+
+            # Each version: file exists, sha256 matches
+            n=$(jq -r '.versions | length' "$meta")
+            for i in $(seq 0 $((n - 1))); do
+              ver=$(jq -r ".versions[$i].version" "$meta")
+              file=$(jq -r ".versions[$i].file" "$meta")
+              sha=$(jq -r ".versions[$i].sha256" "$meta")
+              path="$id/$file"
+              if [ ! -f "$path" ]; then
+                echo "✗ versions[$i] file $path missing"; fail=1; continue
+              fi
+              actual=$(shasum -a 256 "$path" | awk '{print $1}')
+              if [ "$actual" != "$sha" ]; then
+                echo "✗ versions[$i] sha256 mismatch for $ver: meta=$sha actual=$actual"
+                fail=1
+              fi
+              # Check file is a valid gzip + has app.json with matching id/version
+              if ! tar -tzf "$path" >/dev/null 2>&1; then
+                echo "✗ $path is not a valid tar.gz"; fail=1; continue
+              fi
+              if ! tar -xOzf "$path" app.json >/tmp/app.json 2>/dev/null; then
+                echo "✗ $path missing app.json"; fail=1; continue
+              fi
+              app_id=$(jq -r .id /tmp/app.json 2>/dev/null || echo "")
+              app_ver=$(jq -r .version /tmp/app.json 2>/dev/null || echo "")
+              if [ "$app_id" != "$id" ]; then
+                echo "✗ $path: app.json id ($app_id) != $id"; fail=1
+              fi
+              if [ "$app_ver" != "$ver" ]; then
+                echo "✗ $path: app.json version ($app_ver) != $ver"; fail=1
+              fi
+            done
+
+            # Check for duplicate versions
+            if [ "$(jq -r '.versions | map(.version) | length' "$meta")" \
+                != "$(jq -r '.versions | map(.version) | unique | length' "$meta")" ]; then
+              echo "✗ duplicate versions"; fail=1
+            fi
+
+            echo "::endgroup::"
+          done
+          if [ $fail -ne 0 ]; then
+            echo "Validation FAILED"
+            exit 1
+          fi
+          echo "All checks passed."
