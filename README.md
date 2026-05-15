@@ -8,17 +8,65 @@ straight from this repo.
 
 ```
 <app-id>/
-  meta.json               { id, latest, versions: [{version, sha256, file, published_at, pr}] }
-  <version>.corelet       gzipped tarball; install with `corelet install <id>[@<version>]`
+  meta.json               npm-style index + store metadata (see below)
+  <version>.corelet       gzipped tarball; `corelet install <id>[@<version>]`
+index.json                catalog of all apps (Store one-shot listing)
 ```
 
 Every miniapp gets a directory keyed by its `manifest.id`. Each tagged version
-is a separate `.corelet` file next to a single `meta.json` index.
+is a separate `.corelet` file next to a single `meta.json` index. The top-level
+`index.json` aggregates all `<id>/meta.json` entries for fast catalog browsing.
 
-Clients (`corelet install`, the `Corelet.app` store, web browsers) read:
+Clients read:
 
-- `https://registry.agentsan.app/<id>/meta.json` — version list + `latest`
+- `https://registry.agentsan.app/<id>/meta.json` — single app's versions + metadata
 - `https://registry.agentsan.app/<id>/<version>.corelet` — the actual package
+- `https://registry.agentsan.app/index.json` — full catalog (Store UI)
+
+### `meta.json` shape
+
+```json
+{
+  "id": "hello",
+  "name": "Hello",
+  "description": "A friendly hello",
+  "author": { "name": "linguofeng", "url": "https://github.com/linguofeng" },
+  "homepage": "https://example.com",
+  "repository": "https://github.com/.../hello",
+  "license": "MIT",
+  "icon": "https://example.com/hello-icon.png",
+  "category": "productivity",
+  "keywords": ["greeting"],
+  "screenshots": [
+    { "url": "https://example.com/hello-main.png", "caption": "Main view" }
+  ],
+  "latest": "1.0.1",
+  "versions": [
+    { "version": "1.0.0", "file": "1.0.0.corelet", "sha256": "...", "published_at": "..." },
+    { "version": "1.0.1", "file": "1.0.1.corelet", "sha256": "...", "published_at": "..." }
+  ]
+}
+```
+
+The top-level **store metadata** fields (`name` through `screenshots`) reflect
+the **latest** publish — they overwrite on every new version. `versions[]` is
+append-only per artifact. `corelet publish` extracts store fields from the
+publisher's `manifest.{...}` and writes them into `meta.json` automatically.
+
+### `index.json` shape
+
+```json
+{
+  "generated_at": "2026-05-15T03:31:34Z",
+  "apps": [
+    { "id": "hello", "name": "Hello", "description": "...", "author": ...,
+      "homepage": ..., "icon": ..., "category": "productivity",
+      "keywords": [...], "latest": "1.0.1", "updated_at": "..." }
+  ]
+}
+```
+
+Rewritten by `corelet publish` on every publish (upsert by `id`).
 
 ## Publishing
 
