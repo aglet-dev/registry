@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T13:59:30Z",
+  "generated_at": "2026-05-15T14:08:58Z",
   "apps": [
     {
       "id": "calc",
@@ -28,36 +28,6 @@
         }
       ],
       "latest": "1.1.0",
-      "updated_at": "2026-05-15T13:56:04Z"
-    },
-    {
-      "id": "qr",
-      "name": {
-        "default": "QR",
-        "zh": "二维码",
-        "ja": "QRコード"
-      },
-      "description": {
-        "default": "Encode text into QR codes, paste images to decode.",
-        "zh": "文本生成二维码 + 粘贴图片解码",
-        "ja": "テキストを QR にエンコード、画像貼り付けでデコード"
-      },
-      "author": "agent-rt",
-      "icon": "https://api.iconify.design/ph/qr-code-fill.svg?color=%233a6ea5&width=256",
-      "category": "utilities",
-      "keywords": [
-        "qr",
-        "code",
-        "encode",
-        "decode"
-      ],
-      "screenshots": [
-        {
-          "url": "https://registry.agentsan.app/qr/1.0.0/screenshots/0.png",
-          "caption": "Encode any text"
-        }
-      ],
-      "latest": "1.0.0",
       "updated_at": "2026-05-15T13:56:04Z"
     },
     {
@@ -119,6 +89,36 @@
       ],
       "latest": "1.0.0",
       "updated_at": "2026-05-15T13:59:30Z"
+    },
+    {
+      "id": "qr",
+      "name": {
+        "default": "QR",
+        "zh": "二维码",
+        "ja": "QRコード"
+      },
+      "description": {
+        "default": "Encode text into QR codes, paste images to decode.",
+        "zh": "文本生成二维码 + 粘贴图片解码",
+        "ja": "テキストを QR にエンコード、画像貼り付けでデコード"
+      },
+      "author": "agent-rt",
+      "icon": "https://api.iconify.design/ph/qr-code-fill.svg?color=%233a6ea5&width=256",
+      "category": "utilities",
+      "keywords": [
+        "qr",
+        "code",
+        "encode",
+        "decode"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.agentsan.app/qr/1.0.1/screenshots/0.png",
+          "caption": "Encode any text"
+        }
+      ],
+      "latest": "1.0.1",
+      "updated_at": "2026-05-15T14:08:58Z"
     }
   ]
 }
