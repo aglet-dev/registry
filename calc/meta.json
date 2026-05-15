@@ -2,18 +2,35 @@
   "id": "calc",
   "name": {
     "default": "Calculator",
-    "zh": "计算器"
+    "zh": "计算器",
+    "ja": "電卓"
   },
   "description": {
-    "default": "iOS-style calculator"
+    "default": "iOS-style calculator with keyboard input",
+    "zh": "iOS 风格计算器，支持键盘输入",
+    "ja": "iOS 風電卓、キーボード入力対応"
   },
-  "latest": "1.0.0",
+  "author": "agent-rt",
+  "icon": "https://api.iconify.design/ph/calculator-fill.svg?color=%23ef6f5f&width=256",
+  "category": "utilities",
+  "keywords": [
+    "calculator",
+    "math",
+    "ios"
+  ],
+  "screenshots": [
+    {
+      "url": "https://registry.agentsan.app/calc/1.1.0/screenshots/0.png",
+      "caption": "iOS-style display"
+    }
+  ],
+  "latest": "1.1.0",
   "versions": [
     {
-      "version": "1.0.0",
-      "file": "1.0.0.corelet",
-      "sha256": "56ec5ea707e7795c7fb6e8cfefee9650233da002161615747412aaf1cd0edcb0",
-      "published_at": "2026-05-15T05:24:56Z"
+      "version": "1.1.0",
+      "file": "1.1.0.corelet",
+      "sha256": "ab50e3fca46982426f4efa2721bc5555153cc43b28fd1b557c62ca89558d59c1",
+      "published_at": "2026-05-15T13:56:04Z"
     }
   ]
 }
