@@ -21,17 +21,23 @@
   ],
   "screenshots": [
     {
-      "url": "https://registry.agentsan.app/qr/1.0.0/screenshots/0.png",
+      "url": "https://registry.agentsan.app/qr/1.0.1/screenshots/0.png",
       "caption": "Encode any text"
     }
   ],
-  "latest": "1.0.0",
+  "latest": "1.0.1",
   "versions": [
     {
       "version": "1.0.0",
       "file": "1.0.0.corelet",
       "sha256": "3eef8a0d867a910e7376972ac1afaceecb227d6253cba62a7656865e7b2f2f26",
       "published_at": "2026-05-15T13:56:04Z"
+    },
+    {
+      "version": "1.0.1",
+      "file": "1.0.1.corelet",
+      "sha256": "107370ab2004207a1957cb8f59bdb38c0a92c4c1730209e294b5deb73bb43060",
+      "published_at": "2026-05-15T14:08:58Z"
     }
   ]
 }
