@@ -1,0 +1,12 @@
+{
+  "id": "hello",
+  "latest": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "file": "1.0.0.corelet",
+      "sha256": "8b5f5a77e6ce2b91425d4c8f047d81f0410b503923bb8173fcba0beba1f0cf46",
+      "published_at": "2026-05-15T03:31:34Z"
+    }
+  ]
+}
