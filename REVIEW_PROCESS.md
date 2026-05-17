@@ -148,4 +148,4 @@ by visiting `https://github.com/agent-rt/corelet-registry/pulls?q=is:pr+<id>`.)
 - Security: open a GitHub Security Advisory (private)
 - Policy violation in a published agentlet: open a regular Issue with label 
   `complaint`; maintainers review within 7 days
-- Trademark / DMCA: email maintainers@<domain> + open Issue
+- Trademark / DMCA: email maintainers@agentsan.app + open Issue

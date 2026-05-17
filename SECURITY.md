@@ -133,7 +133,7 @@ Out of scope (not Corelet's job to mitigate):
 ## Reporting security issues
 
 1. Open a GitHub Security Advisory at this repo (private)
-2. Or email `security@<domain>`
+2. Or email `security@agentsan.app`
 3. We acknowledge within 48h, fix within 7 days for sandbox escapes, longer 
    for less critical issues
 
