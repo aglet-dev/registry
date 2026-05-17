@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corelet — Privacy Policy</title>
+<meta name="description" content="Corelet privacy policy. Local-first, no tracking, no accounts.">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --fg: #18181b;
+    --muted: #71717a;
+    --line: #e4e4e7;
+    --card: #ffffff;
+    --accent: #ef6f5f;
+    --code-bg: #f4f4f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0b0c;
+      --fg: #f4f4f5;
+      --muted: #a1a1aa;
+      --line: #27272a;
+      --card: #18181b;
+      --code-bg: #1f1f23;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans", sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 32px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 20px; margin: 36px 0 12px; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; margin: 24px 0 8px; }
+  .lead { color: var(--muted); margin-bottom: 24px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .lang-switch { margin-bottom: 32px; }
+  .lang-switch a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    margin-right: 12px;
+  }
+  ul, ol { padding-left: 24px; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); }
+  code {
+    background: var(--code-bg);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.88em;
+  }
+  hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+  .section-zh { padding-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ───────── English ───────── -->
+
+<h1>Corelet — Privacy Policy</h1>
+<p class="meta">Effective date: 2026-05-18 · Last updated: 2026-05-18</p>
+<p class="lang-switch"><a href="#zh">中文</a></p>
+
+<p class="lead">
+  Corelet is a local-first workflow application. We do not collect, transmit,
+  share, or sell your personal data. This policy explains exactly what happens
+  on your device and on our servers.
+</p>
+
+<h2>1. Who we are</h2>
+<p>
+  "Corelet" refers to the host application available on Apple App Store, Mac
+  App Store, Google Play, and at <a href="https://corelet.dev">corelet.dev</a>.
+  The publisher is the team listed at <a href="https://github.com/agent-rt/corelet">github.com/agent-rt/corelet</a>.
+  Contact: <code>support@agentsan.app</code>.
+</p>
+
+<h2>2. Data Corelet collects</h2>
+
+<h3>2.1 On your device</h3>
+<ul>
+  <li><strong>Agentlet data</strong> (notes, reminders, calculations, etc.) is
+    stored locally in an SQLite database under your operating system's
+    application data directory.</li>
+  <li><strong>Preferences</strong> (window size, theme, locale) are stored in
+    OS-native preference stores (UserDefaults on Apple, SharedPreferences on
+    Android, IndexedDB on web).</li>
+  <li>That data never leaves your device unless an agentlet explicitly declares
+    a network permission (see §3).</li>
+</ul>
+
+<h3>2.2 On our servers</h3>
+<ul>
+  <li><strong>Registry fetch logs</strong> — when Corelet downloads an
+    agentlet from <code>registry.agentsan.app</code>, our CDN (Cloudflare)
+    logs the request URL and your approximate IP-derived region. We do not
+    associate these logs with any user identity, do not retain them beyond
+    Cloudflare's default 30-day rotation, and do not analyze them.</li>
+  <li><strong>No telemetry.</strong> We do not run an analytics service. We
+    do not phone home with usage data.</li>
+  <li><strong>No accounts.</strong> Corelet has no sign-in, no account
+    creation, no profile sync.</li>
+</ul>
+
+<h2>3. Data agentlets may collect</h2>
+
+<p>
+  Each agentlet is a small tool that runs inside Corelet. Agentlets are
+  developed by AI agents or by people, then reviewed publicly via GitHub PR
+  before being added to the catalog. Each agentlet:
+</p>
+<ul>
+  <li>Runs in a sandboxed JavaScript interpreter with no implicit network
+    access. To make any network call, an agentlet must declare specific URL
+    patterns in its manifest, visible to you at install time.</li>
+  <li>Has its own isolated data namespace; no agentlet can read or write
+    another agentlet's data.</li>
+  <li>Cannot collect telemetry beyond what's declared in its manifest.</li>
+</ul>
+<p>
+  If a specific agentlet performs network operations or collects data, its own
+  privacy practices are declared in its manifest and reviewed during the
+  GitHub PR process. See
+  <a href="https://github.com/agent-rt/corelet-registry/blob/main/SECURITY.md">SECURITY.md</a>
+  for the full trust model.
+</p>
+
+<h2>4. Children's privacy</h2>
+<p>
+  Corelet is not directed at children under 13 (or 16 in some jurisdictions),
+  and we do not knowingly collect data from them. Since Corelet collects no
+  personal data at all, this is by design rather than by policy.
+</p>
+
+<h2>5. Your rights</h2>
+
+<h3>EU / UK (GDPR), California (CPRA), and similar regimes</h3>
+<ul>
+  <li><strong>Right of access / portability:</strong> all your data is in
+    Corelet's local data directory on your device. You can copy or export it
+    at any time without our involvement.</li>
+  <li><strong>Right to erasure:</strong> uninstalling Corelet (or any
+    individual agentlet) removes the associated data from your device. We
+    have no server-side copy to delete.</li>
+  <li><strong>Right to object / opt out of sale:</strong> we don't sell
+    personal data. There is no opt-out flow because there is no data
+    collection to opt out of.</li>
+</ul>
+
+<h2>6. Third parties</h2>
+<ul>
+  <li><strong>Cloudflare</strong> hosts <code>registry.agentsan.app</code>
+    (the agentlet catalog) and applies its standard edge logging. See
+    <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.</li>
+  <li><strong>Apple / Google</strong> may collect their own analytics about
+    Corelet via the App Store / Play Store delivery layer. We do not receive
+    individually identifying data from them.</li>
+  <li><strong>GitHub</strong> hosts the source code of Corelet and the
+    agentlet registry. Reviewing or contributing to PRs makes your GitHub
+    handle public; this is your own GitHub account, not a Corelet account.</li>
+</ul>
+
+<h2>7. Security</h2>
+<ul>
+  <li>Network communication to <code>registry.agentsan.app</code> is HTTPS only.</li>
+  <li>Local data is stored using the OS-native storage layer (SQLite + OS
+    filesystem). If your device has full-disk encryption (default on modern
+    iOS, macOS, and Android), Corelet data is encrypted at rest along with
+    everything else.</li>
+  <li>Agentlets run in a sandboxed interpreter with strict permission gating.
+    See <a href="https://github.com/agent-rt/corelet-registry/blob/main/SECURITY.md">SECURITY.md</a>.</li>
+</ul>
+
+<h2>8. Changes to this policy</h2>
+<p>
+  We may update this policy. Material changes (e.g. introducing any form of
+  data collection) will be announced in the Corelet
+  <a href="https://github.com/agent-rt/corelet/releases">release notes</a>
+  and in this document's "Last updated" date. Continuing to use Corelet after
+  changes constitutes acceptance.
+</p>
+
+<h2>9. Contact</h2>
+<p>
+  For privacy questions, requests, or complaints:
+  <a href="mailto:support@agentsan.app"><code>support@agentsan.app</code></a>.
+  We aim to respond within 7 business days.
+</p>
+
+<hr id="zh">
+
+<!-- ───────── 中文 ───────── -->
+
+<div class="section-zh" lang="zh-CN">
+
+<h1>Corelet — 隐私政策</h1>
+<p class="meta">生效日期：2026-05-18 · 最近更新：2026-05-18</p>
+
+<p class="lead">
+  Corelet 是本地优先的工作流应用。我们不收集、不上传、不分享、不出售你的
+  个人数据。本政策说明你的设备上和我们服务器上具体发生了什么。
+</p>
+
+<h2>1. 我们是谁</h2>
+<p>
+  "Corelet" 指通过 Apple App Store、Mac App Store、Google Play、
+  <a href="https://corelet.dev">corelet.dev</a> 提供的宿主应用。
+  发布者团队信息见 <a href="https://github.com/agent-rt/corelet">github.com/agent-rt/corelet</a>。
+  联系方式：<code>support@agentsan.app</code>。
+</p>
+
+<h2>2. Corelet 收集的数据</h2>
+
+<h3>2.1 在你的设备上</h3>
+<ul>
+  <li><strong>Agentlet 数据</strong>（备忘、提醒、计算结果等）以 SQLite
+    形式存在你操作系统的应用数据目录下。</li>
+  <li><strong>偏好设置</strong>（窗口大小、主题、语言）存在 OS 原生 prefs
+    （Apple 的 UserDefaults / Android 的 SharedPreferences / web 的 IndexedDB）。</li>
+  <li>除非 agentlet 显式声明网络权限（见 §3），这些数据不离开你的设备。</li>
+</ul>
+
+<h3>2.2 在我们的服务器上</h3>
+<ul>
+  <li><strong>Registry 抓取日志</strong> —— Corelet 从
+    <code>registry.agentsan.app</code> 下载 agentlet 时，我们的 CDN
+    （Cloudflare）会记录请求 URL 和你大致 IP 所在地区。我们不把这些日志关联到
+    任何用户身份，不保留超过 Cloudflare 默认的 30 天轮换期，也不进行分析。</li>
+  <li><strong>无埋点。</strong> 我们没有任何分析服务。Corelet 不会主动上报
+    使用数据。</li>
+  <li><strong>无账号。</strong> Corelet 没有登录、注册、个人资料同步。</li>
+</ul>
+
+<h2>3. Agentlet 可能收集的数据</h2>
+
+<p>
+  agentlet 是跑在 Corelet 里的小工具，由 AI agent 或人编写后，经过 GitHub
+  PR 公开审核进入 catalog。每个 agentlet：
+</p>
+<ul>
+  <li>跑在沙盒 JS 解释器里，默认无法联网。要发起任何网络请求，必须在
+    manifest 里显式声明 URL 模式，安装前你就能看到。</li>
+  <li>有自己隔离的数据空间，agentlet 间不能互相读写。</li>
+  <li>不能收集 manifest 没声明的埋点。</li>
+</ul>
+<p>
+  如果某个 agentlet 有网络行为或收集数据，其隐私实践会在 manifest 中声明
+  并在 GitHub PR 审核时检查。完整信任模型见
+  <a href="https://github.com/agent-rt/corelet-registry/blob/main/SECURITY.md">SECURITY.md</a>。
+</p>
+
+<h2>4. 儿童隐私</h2>
+<p>
+  Corelet 不针对 13 岁以下儿童（部分司法管辖区为 16 岁），且我们不会主动
+  收集儿童数据。因为 Corelet 根本不收集任何个人数据，这是设计上的保障，
+  不只是政策上的承诺。
+</p>
+
+<h2>5. 你的权利</h2>
+
+<h3>欧盟 / 英国（GDPR）、加州（CPRA）等</h3>
+<ul>
+  <li><strong>访问权 / 可携带权：</strong>你所有的数据都在 Corelet 本地数据
+    目录下。你可以随时自行拷贝或导出，无需我们介入。</li>
+  <li><strong>删除权：</strong>卸载 Corelet（或任一 agentlet）会清除相关
+    本地数据。我们服务器上没有副本可删。</li>
+  <li><strong>反对 / 拒绝出售：</strong>我们不出售个人数据。没有 opt-out
+    流程，因为根本没有数据收集需要 opt-out。</li>
+</ul>
+
+<h2>6. 第三方</h2>
+<ul>
+  <li><strong>Cloudflare</strong> 托管 <code>registry.agentsan.app</code>
+    （agentlet catalog），按其标准 edge 日志记录请求。详见
+    <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare 隐私政策</a>。</li>
+  <li><strong>Apple / Google</strong> 可能通过 App Store / Play Store 自身
+    的分发渠道收集关于 Corelet 的统计数据。我们不接收来自他们的个人识别信息。</li>
+  <li><strong>GitHub</strong> 托管 Corelet 和 agentlet registry 的源码。
+    在 PR 上 review 或贡献会公开你的 GitHub 用户名 —— 这是你自己的 GitHub
+    账号，不是 Corelet 账号。</li>
+</ul>
+
+<h2>7. 安全</h2>
+<ul>
+  <li>与 <code>registry.agentsan.app</code> 的网络通信只走 HTTPS。</li>
+  <li>本地数据走 OS 原生存储层（SQLite + OS 文件系统）。如果你的设备开启
+    全盘加密（现代 iOS、macOS、Android 默认开启），Corelet 数据与其他数据
+    一同静态加密。</li>
+  <li>agentlet 在带权限管控的沙盒解释器里运行。详见
+    <a href="https://github.com/agent-rt/corelet-registry/blob/main/SECURITY.md">SECURITY.md</a>。</li>
+</ul>
+
+<h2>8. 政策变更</h2>
+<p>
+  本政策可能更新。重大变化（例如引入任何形式的数据收集）会同步发布在 Corelet
+  <a href="https://github.com/agent-rt/corelet/releases">release notes</a>
+  以及本文档的"最近更新"日期上。变更后继续使用 Corelet 视为接受新政策。
+</p>
+
+<h2>9. 联系</h2>
+<p>
+  隐私相关问询、请求、投诉：
+  <a href="mailto:support@agentsan.app"><code>support@agentsan.app</code></a>。
+  我们承诺 7 个工作日内回应。
+</p>
+
+</div>
+
+</div>
+</body>
+</html>
