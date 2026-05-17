@@ -1,7 +1,7 @@
 # Changelog
 
 Major events for the registry — yanks, policy changes, maintainer additions.
-Routine miniapp publication is in `git log` and PR history.
+Routine agentlet publication is in `git log` and PR history.
 
 ## 2026-05
 

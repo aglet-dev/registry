@@ -27,9 +27,9 @@ existing maintainer must approve.
 
 ## Conflict of interest
 
-A maintainer **cannot** merge a PR for a miniapp where:
+A maintainer **cannot** merge a PR for an agentlet where:
 - They are the `manifest.author` or co-author
-- They have a direct financial interest in the miniapp's adoption
+- They have a direct financial interest in the agentlet's adoption
 - They've been paid by the author for development
 
 Branch protection enforces "review from a non-author required". Use your 

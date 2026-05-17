@@ -1,6 +1,6 @@
 # Review Process
 
-Every merged PR into `main` makes a miniapp publicly available via 
+Every merged PR into `main` makes an agentlet publicly available via 
 `registry.agentsan.app` and the in-Corelet catalog. We treat each merge as 
 publication.
 
@@ -8,7 +8,7 @@ publication.
 
 Listed in [MAINTAINERS.md](MAINTAINERS.md). Each maintainer has merge rights.
 
-**Conflict of interest:** a maintainer cannot merge their own miniapp's PR.
+**Conflict of interest:** a maintainer cannot merge their own agentlet's PR.
 Another maintainer must approve. This is enforced by GitHub branch protection
 ("require review from a non-author").
 
@@ -42,13 +42,13 @@ A red CI ❌ alone is grounds for not merging.
 
 For every entry in `manifest.permissions`, the reviewer asks:
 
-- Is this strictly necessary for what the miniapp claims to do?
+- Is this strictly necessary for what the agentlet claims to do?
 - Does the user-visible description (`manifest.description`) honestly mention
   data the permission grants access to?
 - For `net:fetch`: is every URL pattern in `manifest.net_allowlist` documented,
   public, and stable?
 
-**Default stance: least privilege.** If a miniapp declares `notifications:post`
+**Default stance: least privilege.** If an agentlet declares `notifications:post`
 but never calls `app.notify` in its `scripts.js` / IR, request the author to
 drop the permission.
 
@@ -119,7 +119,7 @@ If a published version is later found to be harmful / broken:
 4. PR merges fast-track (24h) with `yank` label
 5. Reason logged in [CHANGELOG.md](CHANGELOG.md)
 
-Already-installed miniapps are NOT auto-uninstalled. Users see "yanked" badge
+Already-installed agentlets are NOT auto-uninstalled. Users see "yanked" badge
 in their installed list and a reason; they decide whether to uninstall.
 
 ## SLA
@@ -140,12 +140,12 @@ This repo's `git log` IS the audit trail.
 - Force-push is disabled on `main`
 - PR conversations are public
 
-(For App Store / Play reviewers: you can verify any miniapp's review history
+(For App Store / Play reviewers: you can verify any agentlet's review history
 by visiting `https://github.com/agent-rt/corelet-registry/pulls?q=is:pr+<id>`.)
 
 ## Reporting concerns
 
 - Security: open a GitHub Security Advisory (private)
-- Policy violation in a published miniapp: open a regular Issue with label 
+- Policy violation in a published agentlet: open a regular Issue with label 
   `complaint`; maintainers review within 7 days
 - Trademark / DMCA: email maintainers@<domain> + open Issue

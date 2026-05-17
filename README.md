@@ -1,13 +1,28 @@
 # corelet-registry
 
-Public registry for `corelet` miniapps. Hosted on Cloudflare Pages at
-[registry.agentsan.app](https://registry.agentsan.app); served as static files
-straight from this repo.
+Public registry for **agentlets** — small declarative tools that run inside
+[Corelet](https://github.com/agent-rt/corelet). Each agentlet is AI-authored
+or AI-assisted, and reviewed by a human maintainer via public GitHub pull
+request before publication.
+
+Hosted on Cloudflare Pages at [registry.agentsan.app](https://registry.agentsan.app);
+served as static files straight from this repo.
+
+## Terminology
+
+- **Corelet** — the host application users install (macOS / iOS / Android / web)
+- **Agentlet** — an individual tool that runs inside Corelet; AI-built, sandboxed,
+  curated via this registry
+- **Catalog** — the in-Corelet browseable list of agentlets, sourced from
+  `index.json` in this repo
+
+(Inside Corelet source code the unit is still called `miniapp` for historical
+reasons. Public-facing material — App Store, website, docs — uses `agentlet`.)
 
 ## Governance
 
 - [REVIEW_PROCESS.md](REVIEW_PROCESS.md) — how PRs are reviewed before merge
-- [SECURITY.md](SECURITY.md) — sandbox / trust model for every published miniapp
+- [SECURITY.md](SECURITY.md) — sandbox / trust model for every published agentlet
 - [MAINTAINERS.md](MAINTAINERS.md) — who has merge rights, conflict-of-interest policy
 - [CONTRIBUTING.md](CONTRIBUTING.md) — author flow (`corelet publish`)
 - [CHANGELOG.md](CHANGELOG.md) — registry-level events (yanks, policy changes)
@@ -29,7 +44,7 @@ tarball (sha256 covers them) **and** mirrored as plain files under
 `<id>/<version>/` so Cloudflare Pages serves them directly without unpacking.
 External http(s):// URLs in manifests are passed through unchanged.
 
-Every miniapp gets a directory keyed by its `manifest.id`. Each tagged version
+Every agentlet gets a directory keyed by its `manifest.id`. Each tagged version
 is a separate `.corelet` file next to a single `meta.json` index. The top-level
 `index.json` aggregates all `<id>/meta.json` entries for fast catalog browsing.
 
@@ -162,7 +177,7 @@ What we explicitly *don't* take:
 
 - **No semver range resolver** (^/~/x.y). Clients pick `latest` or a precise
   `@<version>`. Easier to audit, no resolver bugs, fewer surprises.
-- **No tarball-of-tarballs / shrinkwrap / lockfile**. A miniapp has no deps;
+- **No tarball-of-tarballs / shrinkwrap / lockfile**. An agentlet has no deps;
   it's one self-contained `.corelet`.
 - **No API endpoint for publishing**. Publishing is `git commit + gh pr
   create`. There's nothing for a CVE-grade vuln to exploit.

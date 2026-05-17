@@ -5,7 +5,7 @@
 - `corelet` CLI installed (`zig build` in the corelet repo, or `brew install
   corelet` when that ships).
 - `git` and (for the automated flow) `gh` CLI authenticated against GitHub.
-- A miniapp source (`<id>.json` + `<id>.ui.tsx` + optional `.background.js` /
+- An agentlet source (`<id>.json` + `<id>.ui.tsx` + optional `.background.js` /
   `.scripts.js`) that passes `corelet validate <id>.json --json`.
 
 ## The automated flow
