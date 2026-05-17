@@ -4,6 +4,14 @@ Public registry for `corelet` miniapps. Hosted on Cloudflare Pages at
 [registry.agentsan.app](https://registry.agentsan.app); served as static files
 straight from this repo.
 
+## Governance
+
+- [REVIEW_PROCESS.md](REVIEW_PROCESS.md) — how PRs are reviewed before merge
+- [SECURITY.md](SECURITY.md) — sandbox / trust model for every published miniapp
+- [MAINTAINERS.md](MAINTAINERS.md) — who has merge rights, conflict-of-interest policy
+- [CONTRIBUTING.md](CONTRIBUTING.md) — author flow (`corelet publish`)
+- [CHANGELOG.md](CHANGELOG.md) — registry-level events (yanks, policy changes)
+
 ## What lives here
 
 ```
