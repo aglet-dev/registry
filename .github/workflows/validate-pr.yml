@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "*/meta.json"
-      - "*/*.corelet"
+      - "*/*.aglet"
       - "*/*/**"   # bundled <id>/<version>/icon.<ext> 等镜像资源
       - "index.json"
 

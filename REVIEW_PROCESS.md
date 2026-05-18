@@ -1,7 +1,7 @@
 # Review Process
 
 Every merged PR into `main` makes an agentlet publicly available via 
-`registry.agentsan.app` and the in-Corelet catalog. We treat each merge as 
+`registry.aglet.dev` and the in-Aglet catalog. We treat each merge as 
 publication.
 
 ## Maintainers
@@ -28,13 +28,13 @@ Every PR passes through these. Maintainer comments inline on each.
 
 `.github/workflows/validate-pr.yml` runs:
 
-- `corelet validate` — schema, runtime support, permission consistency
+- `aglet validate` — schema, runtime support, permission consistency
 - Tarball integrity (sha256 ↔ `meta.json` match)
 - `manifest.id` ↔ directory name
 - `manifest.version` ↔ filename + semver discipline
 - No duplicate versions
 - `latest` ∈ `versions[]`
-- Bundle size limits: `.corelet` ≤ 256 KB
+- Bundle size limits: `.aglet` ≤ 256 KB
 
 A red CI ❌ alone is grounds for not merging.
 
@@ -72,11 +72,11 @@ the PR (so we can re-derive and compare).
 
 ### Step 5 — Visual smoke (5 min)
 
-- Apply `corelet install <id>@<version>` locally
-- Open with `corelet dev` (apple-runtime)
+- Apply `aglet install <id>@<version>` locally
+- Open with `aglet dev` (apple-runtime)
 - Verify the UI matches the screenshots in `meta.json`
 - Run the bundled scenarios (if any) via 
-  `corelet test agentlets/<id>/scenarios/*.scenario.json`
+  `aglet test agentlets/<id>/scenarios/*.scenario.json`
 
 ### Step 6 — Approve / Request Changes / Reject
 
@@ -103,7 +103,7 @@ Auto-rejected (closed with one of these labels):
 
 ## Version updates
 
-- An update is a new `.corelet` file with bumped semver in the same `<id>/`
+- An update is a new `.aglet` file with bumped semver in the same `<id>/`
   directory + an entry in `meta.json.versions[]`
 - CI verifies version isn't duplicated
 - Review goes through Steps 3-6 again; Step 1-2 mostly identical for an update
@@ -115,7 +115,7 @@ If a published version is later found to be harmful / broken:
 
 1. A maintainer (any) opens a PR setting `yanked: true` in the version entry
 2. Updates `latest` to most recent non-yanked
-3. Optionally deletes the `.corelet` file (clients see 404; can't fetch)
+3. Optionally deletes the `.aglet` file (clients see 404; can't fetch)
 4. PR merges fast-track (24h) with `yank` label
 5. Reason logged in [CHANGELOG.md](CHANGELOG.md)
 
@@ -141,7 +141,7 @@ This repo's `git log` IS the audit trail.
 - PR conversations are public
 
 (For App Store / Play reviewers: you can verify any agentlet's review history
-by visiting `https://github.com/agent-rt/corelet-registry/pulls?q=is:pr+<id>`.)
+by visiting `https://github.com/agent-rt/aglet-registry/pulls?q=is:pr+<id>`.)
 
 ## Reporting concerns
 

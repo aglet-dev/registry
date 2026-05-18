@@ -20,7 +20,7 @@
   ],
   "screenshots": [
     {
-      "url": "https://registry.agentsan.app/calc/1.1.0/screenshots/0.png",
+      "url": "https://registry.aglet.dev/calc/1.1.0/screenshots/0.png",
       "caption": "iOS-style display"
     }
   ],
@@ -28,7 +28,7 @@
   "versions": [
     {
       "version": "1.1.0",
-      "file": "1.1.0.corelet",
+      "file": "1.1.0.aglet",
       "sha256": "ab50e3fca46982426f4efa2721bc5555153cc43b28fd1b557c62ca89558d59c1",
       "published_at": "2026-05-15T13:56:04Z"
     }

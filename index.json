@@ -23,7 +23,7 @@
       ],
       "screenshots": [
         {
-          "url": "https://registry.agentsan.app/calc/1.1.0/screenshots/0.png",
+          "url": "https://registry.aglet.dev/calc/1.1.0/screenshots/0.png",
           "caption": "iOS-style display"
         }
       ],
@@ -53,7 +53,7 @@
       ],
       "screenshots": [
         {
-          "url": "https://registry.agentsan.app/reminders/1.0.0/screenshots/0.png",
+          "url": "https://registry.aglet.dev/reminders/1.0.0/screenshots/0.png",
           "caption": "Active reminders list"
         }
       ],
@@ -83,7 +83,7 @@
       ],
       "screenshots": [
         {
-          "url": "https://registry.agentsan.app/gh/1.0.0/screenshots/0.png",
+          "url": "https://registry.aglet.dev/gh/1.0.0/screenshots/0.png",
           "caption": "Review queue + your open PRs"
         }
       ],
@@ -113,7 +113,7 @@
       ],
       "screenshots": [
         {
-          "url": "https://registry.agentsan.app/qr/1.0.1/screenshots/0.png",
+          "url": "https://registry.aglet.dev/qr/1.0.1/screenshots/0.png",
           "caption": "Encode any text"
         }
       ],

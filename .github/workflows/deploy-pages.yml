@@ -25,4 +25,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=corelet-registry --branch=main --commit-hash=${{ github.sha }} --commit-dirty=false
+          command: pages deploy . --project-name=aglet-registry --branch=main --commit-hash=${{ github.sha }} --commit-dirty=false

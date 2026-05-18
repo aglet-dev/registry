@@ -21,7 +21,7 @@
   ],
   "screenshots": [
     {
-      "url": "https://registry.agentsan.app/gh/1.0.0/screenshots/0.png",
+      "url": "https://registry.aglet.dev/gh/1.0.0/screenshots/0.png",
       "caption": "Review queue + your open PRs"
     }
   ],
@@ -29,7 +29,7 @@
   "versions": [
     {
       "version": "1.0.0",
-      "file": "1.0.0.corelet",
+      "file": "1.0.0.aglet",
       "sha256": "bdcf564acbca6b36701d3d0a829e90b55a375f65c88783d6ff7498ef67105740",
       "published_at": "2026-05-15T13:59:30Z"
     }

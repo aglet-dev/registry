@@ -1,6 +1,6 @@
 <!--
-Thanks for publishing to corelet-registry. Most of this PR is auto-generated
-by `corelet publish` — but please fill the human sections below before review.
+Thanks for publishing to aglet-registry. Most of this PR is auto-generated
+by `aglet publish` — but please fill the human sections below before review.
 -->
 
 ## Agentlet
@@ -67,5 +67,5 @@ For each permission in `manifest.permissions`, point to where it's used:
 - [ ] Step 1 — Identity & licensing
 - [ ] Step 3 — Permissions audit
 - [ ] Step 4 — Source review (`ui.json` + `scripts.js`)
-- [ ] Step 5 — Visual smoke (`corelet install` + run)
+- [ ] Step 5 — Visual smoke (`aglet install` + run)
 - [ ] No conflict of interest

@@ -21,7 +21,7 @@
   ],
   "screenshots": [
     {
-      "url": "https://registry.agentsan.app/reminders/1.0.0/screenshots/0.png",
+      "url": "https://registry.aglet.dev/reminders/1.0.0/screenshots/0.png",
       "caption": "Active reminders list"
     }
   ],
@@ -29,7 +29,7 @@
   "versions": [
     {
       "version": "1.0.0",
-      "file": "1.0.0.corelet",
+      "file": "1.0.0.aglet",
       "sha256": "898979ed66b7c451c153070a25e3da1c5b2c154aa6f99e90881cc0772e937012",
       "published_at": "2026-05-15T13:56:04Z"
     }

@@ -1,22 +1,22 @@
-# corelet-registry
+# aglet-registry
 
 Public registry for **agentlets** — small declarative tools that run inside
-[Corelet](https://github.com/agent-rt/corelet). Each agentlet is AI-authored
+[Aglet](https://github.com/agent-rt/aglet). Each agentlet is AI-authored
 or AI-assisted, and reviewed by a human maintainer via public GitHub pull
 request before publication.
 
-Hosted on Cloudflare Pages at [registry.agentsan.app](https://registry.agentsan.app);
+Hosted on Cloudflare Pages at [registry.aglet.dev](https://registry.aglet.dev);
 served as static files straight from this repo.
 
 ## Terminology
 
-- **Corelet** — the host application users install (macOS / iOS / Android / web)
-- **Agentlet** — an individual tool that runs inside Corelet; AI-built, sandboxed,
+- **Aglet** — the host application users install (macOS / iOS / Android / web)
+- **Agentlet** — an individual tool that runs inside Aglet; AI-built, sandboxed,
   curated via this registry
-- **Catalog** — the in-Corelet browseable list of agentlets, sourced from
+- **Catalog** — the in-Aglet browseable list of agentlets, sourced from
   `index.json` in this repo
 
-(Inside Corelet source code the unit is still called `miniapp` for historical
+(Inside Aglet source code the unit is still called `miniapp` for historical
 reasons. Public-facing material — App Store, website, docs — uses `agentlet`.)
 
 ## Governance
@@ -24,7 +24,7 @@ reasons. Public-facing material — App Store, website, docs — uses `agentlet`
 - [REVIEW_PROCESS.md](REVIEW_PROCESS.md) — how PRs are reviewed before merge
 - [SECURITY.md](SECURITY.md) — sandbox / trust model for every published agentlet
 - [MAINTAINERS.md](MAINTAINERS.md) — who has merge rights, conflict-of-interest policy
-- [CONTRIBUTING.md](CONTRIBUTING.md) — author flow (`corelet publish`)
+- [CONTRIBUTING.md](CONTRIBUTING.md) — author flow (`aglet publish`)
 - [CHANGELOG.md](CHANGELOG.md) — registry-level events (yanks, policy changes)
 
 ## What lives here
@@ -32,27 +32,27 @@ reasons. Public-facing material — App Store, website, docs — uses `agentlet`
 ```
 <app-id>/
   meta.json                  npm-style index + store metadata (see below)
-  <version>.corelet          gzipped tarball; `corelet install <id>[@<version>]`
+  <version>.aglet          gzipped tarball; `aglet install <id>[@<version>]`
   <version>/
     icon.<ext>               bundled icon, if manifest used a relative path
     screenshots/<N>.<ext>    bundled screenshots
 index.json                   catalog of all apps (Store one-shot listing)
 ```
 
-`corelet publish` dual-writes bundled assets: they're inside the `.corelet`
+`aglet publish` dual-writes bundled assets: they're inside the `.aglet`
 tarball (sha256 covers them) **and** mirrored as plain files under
 `<id>/<version>/` so Cloudflare Pages serves them directly without unpacking.
 External http(s):// URLs in manifests are passed through unchanged.
 
 Every agentlet gets a directory keyed by its `manifest.id`. Each tagged version
-is a separate `.corelet` file next to a single `meta.json` index. The top-level
+is a separate `.aglet` file next to a single `meta.json` index. The top-level
 `index.json` aggregates all `<id>/meta.json` entries for fast catalog browsing.
 
 Clients read:
 
-- `https://registry.agentsan.app/<id>/meta.json` — single app's versions + metadata
-- `https://registry.agentsan.app/<id>/<version>.corelet` — the actual package
-- `https://registry.agentsan.app/index.json` — full catalog (Store UI)
+- `https://registry.aglet.dev/<id>/meta.json` — single app's versions + metadata
+- `https://registry.aglet.dev/<id>/<version>.aglet` — the actual package
+- `https://registry.aglet.dev/index.json` — full catalog (Store UI)
 
 ### `meta.json` shape
 
@@ -73,15 +73,15 @@ Clients read:
   ],
   "latest": "1.0.1",
   "versions": [
-    { "version": "1.0.0", "file": "1.0.0.corelet", "sha256": "...", "published_at": "..." },
-    { "version": "1.0.1", "file": "1.0.1.corelet", "sha256": "...", "published_at": "..." }
+    { "version": "1.0.0", "file": "1.0.0.aglet", "sha256": "...", "published_at": "..." },
+    { "version": "1.0.1", "file": "1.0.1.aglet", "sha256": "...", "published_at": "..." }
   ]
 }
 ```
 
 The top-level **store metadata** fields (`name` through `screenshots`) reflect
 the **latest** publish — they overwrite on every new version. `versions[]` is
-append-only per artifact. `corelet publish` extracts store fields from the
+append-only per artifact. `aglet publish` extracts store fields from the
 publisher's `manifest.{...}` and writes them into `meta.json` automatically.
 
 ### `index.json` shape
@@ -97,7 +97,7 @@ publisher's `manifest.{...}` and writes them into `meta.json` automatically.
 }
 ```
 
-Rewritten by `corelet publish` on every publish (upsert by `id`).
+Rewritten by `aglet publish` on every publish (upsert by `id`).
 
 ## Publishing
 
@@ -106,19 +106,19 @@ Two ways. See [CONTRIBUTING.md](CONTRIBUTING.md) for the long version.
 ### Automated (recommended)
 
 ```sh
-corelet publish my-app.json        # forks this repo, opens PR via gh CLI
+aglet publish my-app.json        # forks this repo, opens PR via gh CLI
 ```
 
-Needs `gh` CLI authenticated. The command builds `.corelet`, computes sha256,
-writes `<id>/<version>.corelet` + updates `<id>/meta.json`, commits, pushes a
+Needs `gh` CLI authenticated. The command builds `.aglet`, computes sha256,
+writes `<id>/<version>.aglet` + updates `<id>/meta.json`, commits, pushes a
 branch on your fork, and opens a PR. CI validates; a maintainer merges; the
 package is live within ~30 seconds of merge (Cloudflare Pages auto-deploys).
 
 ### Manual
 
 ```sh
-corelet pack my-app.json -o my-app-1.0.0.corelet
-corelet publish my-app.json --dry-run    # prints the meta.json diff + sha256
+aglet pack my-app.json -o my-app-1.0.0.aglet
+aglet publish my-app.json --dry-run    # prints the meta.json diff + sha256
 # Apply the diff to a fork of this repo, commit, open PR manually.
 ```
 
@@ -127,19 +127,19 @@ corelet publish my-app.json --dry-run    # prints the meta.json diff + sha256
 - `manifest.version` is a free-form string but must be unique per `<id>`.
 - `meta.json.latest` should be the most recent semver-comparable version, or
   the most recently published one if not semver.
-- Once published, a `<version>.corelet` is **immutable**. Yank/security
+- Once published, a `<version>.aglet` is **immutable**. Yank/security
   removals require a maintainer to delete the file and add a `yanked: true`
   marker in `meta.json.versions[]`.
 
 ## CI validation
 
-Every PR touching `<id>/<version>.corelet` or `<id>/meta.json` is gated by
+Every PR touching `<id>/<version>.aglet` or `<id>/meta.json` is gated by
 `.github/workflows/validate-pr.yml`:
 
-1. The `.corelet` extracts cleanly (tar.gz with `app.json` + `ui.json`).
+1. The `.aglet` extracts cleanly (tar.gz with `app.json` + `ui.json`).
 2. sha256 of the file matches the value in `meta.json.versions[].sha256`.
 3. `manifest.id == <id>` (the directory) and `manifest.version == <version>`
-   (the filename without `.corelet`).
+   (the filename without `.aglet`).
 4. The version is new — not already in `versions[]`.
 5. `meta.json.latest` exists in `versions[]`.
 
@@ -148,10 +148,10 @@ If any check fails the PR can't merge.
 ## Hosting
 
 Cloudflare Pages with this repo as source. No build step (static).
-`registry.agentsan.app` is mapped via Pages custom domain.
+`registry.aglet.dev` is mapped via Pages custom domain.
 
 `Content-Type` headers come from Cloudflare's defaults (`.json` → JSON,
-`.corelet` → `application/octet-stream`). No `_headers` overrides needed.
+`.aglet` → `application/octet-stream`). No `_headers` overrides needed.
 
 ## Trust model
 
@@ -178,6 +178,6 @@ What we explicitly *don't* take:
 - **No semver range resolver** (^/~/x.y). Clients pick `latest` or a precise
   `@<version>`. Easier to audit, no resolver bugs, fewer surprises.
 - **No tarball-of-tarballs / shrinkwrap / lockfile**. An agentlet has no deps;
-  it's one self-contained `.corelet`.
+  it's one self-contained `.aglet`.
 - **No API endpoint for publishing**. Publishing is `git commit + gh pr
   create`. There's nothing for a CVE-grade vuln to exploit.

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>corelet registry</title>
-<meta name="description" content="Agent-first miniapp registry. corelet install <id>.">
+<title>aglet registry</title>
+<meta name="description" content="Agent-first miniapp registry. aglet install <id>.">
 <style>
   :root {
     --bg: #fafaf9;
@@ -187,9 +187,9 @@
 <body>
 <main>
   <header>
-    <h1>corelet registry</h1>
+    <h1>aglet registry</h1>
     <p>Agent-first miniapps. Browse, install with one command.</p>
-    <div class="install-hint">$ corelet install &lt;id&gt;</div>
+    <div class="install-hint">$ aglet install &lt;id&gt;</div>
   </header>
 
   <div id="apps" class="grid">
@@ -197,9 +197,9 @@
   </div>
 
   <footer>
-    <a href="https://github.com/agent-rt/corelet">corelet</a>
-    <a href="https://github.com/agent-rt/corelet-registry">registry</a>
-    <a href="https://github.com/agent-rt/corelet-registry/blob/main/CONTRIBUTING.md">publish a miniapp</a>
+    <a href="https://github.com/agent-rt/aglet">aglet</a>
+    <a href="https://github.com/agent-rt/aglet-registry">registry</a>
+    <a href="https://github.com/agent-rt/aglet-registry/blob/main/CONTRIBUTING.md">publish a miniapp</a>
     <a href="/index.json">raw catalog (JSON)</a>
   </footer>
 </main>
@@ -241,7 +241,7 @@ function renderCard(app) {
   const cat = app.category || "";
   const icon = app.icon || "";
   const shot = (app.screenshots && app.screenshots[0]) || null;
-  const install = `corelet install ${app.id}`;
+  const install = `aglet install ${app.id}`;
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `

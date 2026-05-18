@@ -1,4 +1,4 @@
-# Privacy policy moved from /privacy/ to corelet.agentsan.app/privacy/
+# Privacy policy moved from /privacy/ to aglet.dev/privacy/
 # (privacy belongs with the host app, not the catalog)
-/privacy        https://corelet.agentsan.app/privacy/   301
-/privacy/*      https://corelet.agentsan.app/privacy/   301
+/privacy        https://aglet.dev/privacy/   301
+/privacy/*      https://aglet.dev/privacy/   301
