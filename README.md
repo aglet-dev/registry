@@ -1,7 +1,7 @@
 # aglet-registry
 
-Public registry for **agentlets** — small declarative tools that run inside
-[Aglet](https://github.com/agent-rt/aglet). Each agentlet is AI-authored
+Public registry for **aglets** — small declarative tools that run inside
+[Aglet](https://github.com/agent-rt/aglet). Each aglet is AI-authored
 or AI-assisted, and reviewed by a human maintainer via public GitHub pull
 request before publication.
 
@@ -11,18 +11,18 @@ served as static files straight from this repo.
 ## Terminology
 
 - **Aglet** — the host application users install (macOS / iOS / Android / web)
-- **Agentlet** — an individual tool that runs inside Aglet; AI-built, sandboxed,
+- **Aglet** — an individual tool that runs inside Aglet; AI-built, sandboxed,
   curated via this registry
-- **Catalog** — the in-Aglet browseable list of agentlets, sourced from
+- **Catalog** — the in-Aglet browseable list of aglets, sourced from
   `index.json` in this repo
 
 (Inside Aglet source code the unit is still called `miniapp` for historical
-reasons. Public-facing material — App Store, website, docs — uses `agentlet`.)
+reasons. Public-facing material — App Store, website, docs — uses `aglet`.)
 
 ## Governance
 
 - [REVIEW_PROCESS.md](REVIEW_PROCESS.md) — how PRs are reviewed before merge
-- [SECURITY.md](SECURITY.md) — sandbox / trust model for every published agentlet
+- [SECURITY.md](SECURITY.md) — sandbox / trust model for every published aglet
 - [MAINTAINERS.md](MAINTAINERS.md) — who has merge rights, conflict-of-interest policy
 - [CONTRIBUTING.md](CONTRIBUTING.md) — author flow (`aglet publish`)
 - [CHANGELOG.md](CHANGELOG.md) — registry-level events (yanks, policy changes)
@@ -44,7 +44,7 @@ tarball (sha256 covers them) **and** mirrored as plain files under
 `<id>/<version>/` so Cloudflare Pages serves them directly without unpacking.
 External http(s):// URLs in manifests are passed through unchanged.
 
-Every agentlet gets a directory keyed by its `manifest.id`. Each tagged version
+Every aglet gets a directory keyed by its `manifest.id`. Each tagged version
 is a separate `.aglet` file next to a single `meta.json` index. The top-level
 `index.json` aggregates all `<id>/meta.json` entries for fast catalog browsing.
 
@@ -177,7 +177,7 @@ What we explicitly *don't* take:
 
 - **No semver range resolver** (^/~/x.y). Clients pick `latest` or a precise
   `@<version>`. Easier to audit, no resolver bugs, fewer surprises.
-- **No tarball-of-tarballs / shrinkwrap / lockfile**. An agentlet has no deps;
+- **No tarball-of-tarballs / shrinkwrap / lockfile**. An aglet has no deps;
   it's one self-contained `.aglet`.
 - **No API endpoint for publishing**. Publishing is `git commit + gh pr
   create`. There's nothing for a CVE-grade vuln to exploit.

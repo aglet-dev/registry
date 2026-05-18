@@ -1,7 +1,7 @@
 # Aglet Trust Model
 
-Every agentlet distributed via this registry runs inside three independent 
-sandboxes. This document is the canonical reference for what agentlets can 
+Every aglet distributed via this registry runs inside three independent 
+sandboxes. This document is the canonical reference for what aglets can 
 and cannot do.
 
 ## Sandbox 1 — Declarative IR
@@ -17,7 +17,7 @@ renderer walks this tree to draw widgets.
   reading session state.
 
 If a directive op isn't in the spec, the package fails validation. There is
-no way for an agentlet to introduce new directive semantics.
+no way for an aglet to introduce new directive semantics.
 
 ## Sandbox 2 — QuickJS scripts.js
 
@@ -54,7 +54,7 @@ against `manifest.permissions` at dispatch time. Default = no permission.
 
 | Permission | What it grants |
 |---|---|
-| `data:read` | List / get records in **this agentlet's own** collections |
+| `data:read` | List / get records in **this aglet's own** collections |
 | `data:write` | Create / update / delete records in **own** collections |
 | `notifications:post` | Show user notifications via `app.notify` |
 | `net:fetch` | HTTP GET to URLs declared in `manifest.net_allowlist[]` |
@@ -66,14 +66,14 @@ individually after install.
 
 **Data isolation:**
 
-- Each agentlet's records are namespaced by `app_id` in SQLite — no cross-app
+- Each aglet's records are namespaced by `app_id` in SQLite — no cross-app
   reads or writes
 - No shared filesystem outside `~/.aglet/data/<id>/`
-- No access to other agentlets' state / form / settings scopes
+- No access to other aglets' state / form / settings scopes
 
 ## Network policy
 
-By default, an agentlet cannot make any outbound network call.
+By default, an aglet cannot make any outbound network call.
 
 If `manifest.permissions` includes `net:fetch`, the author must also declare:
 
@@ -98,13 +98,13 @@ code usage in Step 4 of [REVIEW_PROCESS.md](REVIEW_PROCESS.md).
 
 The Aglet desktop / mobile host app:
 
-- Stores agentlet data locally in `~/.aglet/data/`
-- Connects to `registry.aglet.dev` only for: catalog fetch, agentlet 
+- Stores aglet data locally in `~/.aglet/data/`
+- Connects to `registry.aglet.dev` only for: catalog fetch, aglet 
   download (when user clicks install), update check
-- Does **NOT** proxy agentlet `net:fetch` calls — each agentlet's network 
+- Does **NOT** proxy aglet `net:fetch` calls — each aglet's network 
   access goes directly to the declared endpoints from the user's machine
 - Does **NOT** collect telemetry except opt-in crash reports
-- Does **NOT** transmit any agentlet data anywhere
+- Does **NOT** transmit any aglet data anywhere
 
 `registry.aglet.dev` is Cloudflare Pages serving plain static files from 
 this Git repo. It is HTTPS-only and has no server-side state about who 
@@ -114,12 +114,12 @@ installed what.
 
 In scope:
 
-- A malicious agentlet author trying to exfiltrate user data → mitigated by 
+- A malicious aglet author trying to exfiltrate user data → mitigated by 
   permission gate + net allowlist + review
-- A buggy agentlet crashing → isolated to its own QuickJS Runtime
-- An agentlet consuming excessive disk → SQLite quota per app (default 10 MB,
+- A buggy aglet crashing → isolated to its own QuickJS Runtime
+- An aglet consuming excessive disk → SQLite quota per app (default 10 MB,
   configurable per app)
-- Supply chain attack via dependency → agentlets have **no JS dependencies**;
+- Supply chain attack via dependency → aglets have **no JS dependencies**;
   they're single-file TSX → IR + single-file scripts.js
 
 Out of scope (not Aglet's job to mitigate):
@@ -142,7 +142,7 @@ Out of scope (not Aglet's job to mitigate):
 To verify a sandbox claim yourself:
 
 ```sh
-# Inspect any agentlet's complete source
+# Inspect any aglet's complete source
 gh repo clone agent-rt/aglet-registry
 cd aglet-registry/<app-id>
 tar -xzf <version>.aglet -O ui.json | jq .
@@ -150,5 +150,5 @@ tar -xzf <version>.aglet -O scripts.js   # if exists
 tar -xzf <version>.aglet -O app.json | jq .permissions
 ```
 
-Everything an agentlet can do is in those three files. There is no other 
+Everything an aglet can do is in those three files. There is no other 
 runtime code path.

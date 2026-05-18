@@ -3,7 +3,7 @@ Thanks for publishing to aglet-registry. Most of this PR is auto-generated
 by `aglet publish` — but please fill the human sections below before review.
 -->
 
-## Agentlet
+## Aglet
 
 - **ID**: <!-- e.g. timer -->
 - **Version**: <!-- e.g. 1.2.0 -->
@@ -14,13 +14,13 @@ by `aglet publish` — but please fill the human sections below before review.
 
 <!-- Tick every box before review. -->
 
-- [ ] I authored this agentlet (AI-assisted is fine; AI-only also fine if disclosed)
+- [ ] I authored this aglet (AI-assisted is fine; AI-only also fine if disclosed)
 - [ ] I own (or have license to) all text, icons, screenshots, and code
 - [ ] `manifest.permissions` lists every permission actually used; nothing extra
 - [ ] If `net:fetch` is declared, every endpoint is in `manifest.net_allowlist`
 - [ ] No tracking / analytics beyond local-only counters
 - [ ] No native code, downloadable binaries, or dynamic imports in `scripts.js`
-- [ ] This agentlet does not impersonate another product or service
+- [ ] This aglet does not impersonate another product or service
 
 ## AI authorship disclosure
 
@@ -57,7 +57,7 @@ For each permission in `manifest.permissions`, point to where it's used:
 
 ## Screenshots
 
-<!-- attach 1-3 screenshots if visual UI; not required for headless agentlets -->
+<!-- attach 1-3 screenshots if visual UI; not required for headless aglets -->
 
 ---
 

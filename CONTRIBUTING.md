@@ -5,7 +5,7 @@
 - `aglet` CLI installed (`zig build` in the aglet repo, or `brew install
   aglet` when that ships).
 - `git` and (for the automated flow) `gh` CLI authenticated against GitHub.
-- An agentlet source (`<id>.json` + `<id>.ui.tsx` + optional `.background.js` /
+- An aglet source (`<id>.json` + `<id>.ui.tsx` + optional `.background.js` /
   `.scripts.js`) that passes `aglet validate <id>.json --json`.
 
 ## The automated flow
