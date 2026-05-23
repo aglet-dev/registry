@@ -36,6 +36,11 @@ reasons. Public-facing material — App Store, website, docs — uses `aglet`.)
   <version>/
     icon.<ext>               bundled icon, if manifest used a relative path
     screenshots/<N>.<ext>    bundled screenshots
+plugins/                     infrastructure namespace; not in Store catalog
+  index.json                 plugin catalog (CLI / dev tools)
+  <plugin-id>/
+    meta.json                plugin-specific schema (see PLUGINS.md)
+    <version>.aplugin        gzipped tar; resolved by `aglet install <aglet>` via manifest.requires
 index.json                   catalog of all apps (Store one-shot listing)
 ```
 
@@ -52,7 +57,14 @@ Clients read:
 
 - `https://registry.aglet.dev/<id>/meta.json` — single app's versions + metadata
 - `https://registry.aglet.dev/<id>/<version>.aglet` — the actual package
-- `https://registry.aglet.dev/index.json` — full catalog (Store UI)
+- `https://registry.aglet.dev/index.json` — full app catalog (Store UI)
+- `https://registry.aglet.dev/plugins/<id>/meta.json` — plugin metadata + versions
+- `https://registry.aglet.dev/plugins/<id>/<version>.aplugin` — plugin package
+- `https://registry.aglet.dev/plugins/index.json` — plugin catalog (CLI / dev tools)
+
+Plugin format spec: [PLUGINS.md](PLUGINS.md). Users **don't directly install
+plugins** — `aglet install <aglet>` auto-resolves plugin dependencies via
+`manifest.requires`.
 
 ### `meta.json` shape
 

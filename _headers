@@ -1,2 +1,5 @@
 /*.aglet
   Content-Type: application/gzip
+
+/*.aplugin
+  Content-Type: application/gzip

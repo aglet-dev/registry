@@ -1,12 +1,19 @@
 # Publishing to aglet-registry
 
+Two things publish here: **aglets** (apps users install) and **plugins**
+(shared wasm services aglets depend on). Same CLI, different pack format,
+different review path.
+
 ## Prerequisites
 
 - `aglet` CLI installed (`zig build` in the aglet repo, or `brew install
   aglet` when that ships).
 - `git` and (for the automated flow) `gh` CLI authenticated against GitHub.
-- An aglet source (`<id>.json` + `<id>.ui.tsx` + optional `.background.js` /
-  `.scripts.js`) that passes `aglet validate <id>.json --json`.
+- For **aglet**: source (`<id>.json` + `<id>.ui.tsx` + optional `.background.js`
+  / `.scripts.js`) that passes `aglet validate <id>.json --json`.
+- For **plugin**: `plugin.json` with `manifest.plugin: true` + `manifest.namespace`
+  + `manifest.actions[]` + built `dist/<id>.wasm`. See `PLUGINS.md` for the
+  format spec.
 
 ## The automated flow
 
@@ -26,6 +33,19 @@ What happens, in order:
 4. **Commit + push**: branch `publish/<id>-<version>`.
 5. **Open PR**: `gh pr create` against `agent-rt/aglet-registry` with a
    templated body (manifest summary, sha256, install command).
+
+### Plugin variant
+
+```sh
+aglet publish ./aglet-plugins/image/plugin.json
+```
+
+CLI detects `manifest.plugin === true` and switches to plugin pack path:
+- Tarball is `.aplugin` (gzipped tar with `plugin.json` + `dist/<id>.wasm`)
+- Registry destination is `plugins/<id>/<ver>.aplugin`
+- `meta.json` shape per PLUGINS.md (includes `namespace`, `actions[]`,
+  `wasm_features[]`, `wasm_sha256`, `wasm_size`)
+- PR body adds wasm ABI summary + imports list
 
 When CI passes and a maintainer merges, Cloudflare Pages auto-deploys; users
 running `aglet install <id>@<version>` immediately get the new version.
