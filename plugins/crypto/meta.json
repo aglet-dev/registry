@@ -1,0 +1,71 @@
+{
+  "id": "crypto",
+  "name": "Crypto",
+  "description": {
+    "default": "Modern cryptography via libsodium: hash, hmac, KDF, symmetric encrypt, Ed25519 sign, secure random.",
+    "zh": "libsodium 现代密码学：hash / hmac / KDF / 对称加密 / Ed25519 签名 / 强随机。",
+    "ja": "libsodium のモダン暗号：ハッシュ / HMAC / KDF / 共通鍵暗号 / Ed25519 署名 / 強乱数。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "crypto",
+    "libsodium",
+    "hash",
+    "encrypt",
+    "sign",
+    "kdf",
+    "totp"
+  ],
+  "homepage": "https://github.com/agent-rt/aglet-plugins",
+  "namespace": "crypto",
+  "actions": [
+    {
+      "name": "hash",
+      "permission": "crypto:hash"
+    },
+    {
+      "name": "hmac",
+      "permission": "crypto:hash"
+    },
+    {
+      "name": "kdf",
+      "permission": "crypto:kdf"
+    },
+    {
+      "name": "encrypt",
+      "permission": "crypto:encrypt"
+    },
+    {
+      "name": "decrypt",
+      "permission": "crypto:encrypt"
+    },
+    {
+      "name": "keypair",
+      "permission": "crypto:sign"
+    },
+    {
+      "name": "sign",
+      "permission": "crypto:sign"
+    },
+    {
+      "name": "verify",
+      "permission": "crypto:sign"
+    },
+    {
+      "name": "random",
+      "permission": "crypto:random"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "6c505a8c7b1b675a6708a6fb573f50c445aab818016905d76d337c441a34f1eb",
+      "wasm_sha256": "e5702bf333599cf541052eb3fb05510c2ddf6b7f00ff9f541b0f5e3b02c54431",
+      "wasm_size": 144590,
+      "published_at": "2026-05-24T14:59:48Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
