@@ -30,29 +30,46 @@ reasons. Public-facing material — App Store, website, docs — uses `aglet`.)
 ## What lives here
 
 ```
-<app-id>/
-  meta.json                  npm-style index + store metadata (see below)
-  <version>.aglet          gzipped tarball; `aglet install <id>[@<version>]`
-  <version>/
-    icon.<ext>               bundled icon, if manifest used a relative path
-    screenshots/<N>.<ext>    bundled screenshots
-index.json                   catalog of all apps (Store one-shot listing)
+aglets/                         user-facing Store namespace
+  index.json                    catalog of all aglets (Store one-shot listing)
+  <id>/
+    meta.json                   npm-style index + store metadata (see below)
+    <version>.aglet             gzipped tarball; `aglet install <id>[@<version>]`
+    <version>/
+      icon.<ext>                bundled icon, if manifest used a relative path
+      screenshots/<N>.<ext>     bundled screenshots
+plugins/                        infrastructure namespace; not in Store catalog
+  index.json                    plugin catalog (CLI / dev tools)
+  <plugin-id>/
+    meta.json                   plugin-specific schema (see PLUGINS.md)
+    <version>.aplugin           gzipped tar; resolved by `aglet install <aglet>` via manifest.requires
+archive/                        yanked / removed packages (audit trail, not served)
+  aglets/<id>/<version>.aglet
+  plugins/<id>/<version>.aplugin
 ```
 
 `aglet publish` dual-writes bundled assets: they're inside the `.aglet`
 tarball (sha256 covers them) **and** mirrored as plain files under
-`<id>/<version>/` so Cloudflare Pages serves them directly without unpacking.
-External http(s):// URLs in manifests are passed through unchanged.
+`aglets/<id>/<version>/` so Cloudflare Pages serves them directly without
+unpacking. External http(s):// URLs in manifests are passed through unchanged.
 
 Every aglet gets a directory keyed by its `manifest.id`. Each tagged version
-is a separate `.aglet` file next to a single `meta.json` index. The top-level
-`index.json` aggregates all `<id>/meta.json` entries for fast catalog browsing.
+is a separate `.aglet` file next to a single `meta.json` index.
+`aglets/index.json` aggregates all `aglets/<id>/meta.json` entries for fast
+catalog browsing.
 
 Clients read:
 
-- `https://registry.aglet.dev/<id>/meta.json` — single app's versions + metadata
-- `https://registry.aglet.dev/<id>/<version>.aglet` — the actual package
-- `https://registry.aglet.dev/index.json` — full catalog (Store UI)
+- `https://registry.aglet.dev/aglets/index.json` — full aglet catalog (Store UI)
+- `https://registry.aglet.dev/aglets/<id>/meta.json` — single aglet's versions + metadata
+- `https://registry.aglet.dev/aglets/<id>/<version>.aglet` — the actual package
+- `https://registry.aglet.dev/plugins/index.json` — plugin catalog (CLI / dev tools)
+- `https://registry.aglet.dev/plugins/<id>/meta.json` — plugin metadata + versions
+- `https://registry.aglet.dev/plugins/<id>/<version>.aplugin` — plugin package
+
+Plugin format spec: [PLUGINS.md](PLUGINS.md). Users **don't directly install
+plugins** — `aglet install <aglet>` auto-resolves plugin dependencies via
+`manifest.requires`.
 
 ### `meta.json` shape
 
@@ -84,12 +101,12 @@ the **latest** publish — they overwrite on every new version. `versions[]` is
 append-only per artifact. `aglet publish` extracts store fields from the
 publisher's `manifest.{...}` and writes them into `meta.json` automatically.
 
-### `index.json` shape
+### `aglets/index.json` shape
 
 ```json
 {
-  "generated_at": "2026-05-15T03:31:34Z",
-  "apps": [
+  "generated_at": "2026-05-24T10:31:34Z",
+  "aglets": [
     { "id": "hello", "name": "Hello", "description": "...", "author": ...,
       "homepage": ..., "icon": ..., "category": "productivity",
       "keywords": [...], "latest": "1.0.1", "updated_at": "..." }
@@ -110,7 +127,7 @@ aglet publish my-app.json        # forks this repo, opens PR via gh CLI
 ```
 
 Needs `gh` CLI authenticated. The command builds `.aglet`, computes sha256,
-writes `<id>/<version>.aglet` + updates `<id>/meta.json`, commits, pushes a
+writes `aglets/<id>/<version>.aglet` + updates `aglets/<id>/meta.json`, commits, pushes a
 branch on your fork, and opens a PR. CI validates; a maintainer merges; the
 package is live within ~30 seconds of merge (Cloudflare Pages auto-deploys).
 
@@ -133,13 +150,14 @@ aglet publish my-app.json --dry-run    # prints the meta.json diff + sha256
 
 ## CI validation
 
-Every PR touching `<id>/<version>.aglet` or `<id>/meta.json` is gated by
+Every PR touching `aglets/<id>/<version>.aglet` or `aglets/<id>/meta.json` (or
+the same under `plugins/`) is gated by
 `.github/workflows/validate-pr.yml`:
 
 1. The `.aglet` extracts cleanly (tar.gz with `app.json` + `ui.json`).
 2. sha256 of the file matches the value in `meta.json.versions[].sha256`.
-3. `manifest.id == <id>` (the directory) and `manifest.version == <version>`
-   (the filename without `.aglet`).
+3. `manifest.id == <id>` (the directory under `aglets/` or `plugins/`) and
+   `manifest.version == <version>` (the filename without the package extension).
 4. The version is new — not already in `versions[]`.
 5. `meta.json.latest` exists in `versions[]`.
 

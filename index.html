@@ -192,7 +192,7 @@
     <div class="install-hint">$ aglet install &lt;id&gt;</div>
   </header>
 
-  <div id="apps" class="grid">
+  <div id="aglets" class="grid">
     <div class="empty">loading…</div>
   </div>
 
@@ -200,7 +200,7 @@
     <a href="https://github.com/agent-rt/aglet">aglet</a>
     <a href="https://github.com/agent-rt/aglet-registry">registry</a>
     <a href="https://github.com/agent-rt/aglet-registry/blob/main/CONTRIBUTING.md">publish a miniapp</a>
-    <a href="/index.json">raw catalog (JSON)</a>
+    <a href="/aglets/index.json">raw catalog (JSON)</a>
   </footer>
 </main>
 
@@ -263,20 +263,20 @@ function renderCard(app) {
   return card;
 }
 
-fetch("/index.json")
+fetch("/aglets/index.json")
   .then(r => r.json())
   .then(data => {
-    const root = document.getElementById("apps");
+    const root = document.getElementById("aglets");
     root.innerHTML = "";
-    const apps = (data.apps || []).slice().sort((a, b) => a.id.localeCompare(b.id));
-    if (apps.length === 0) {
-      root.innerHTML = `<div class="empty">no miniapps yet</div>`;
+    const aglets = (data.aglets || []).slice().sort((a, b) => a.id.localeCompare(b.id));
+    if (aglets.length === 0) {
+      root.innerHTML = `<div class="empty">no aglets yet</div>`;
       return;
     }
-    for (const app of apps) root.appendChild(renderCard(app));
+    for (const aglet of aglets) root.appendChild(renderCard(aglet));
   })
   .catch(err => {
-    document.getElementById("apps").innerHTML =
+    document.getElementById("aglets").innerHTML =
       `<div class="empty">failed to load catalog: ${err.message}</div>`;
   });
 </script>

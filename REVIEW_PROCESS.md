@@ -78,7 +78,52 @@ the PR (so we can re-derive and compare).
 - Run the bundled scenarios (if any) via 
   `aglet test aglets/<id>/scenarios/*.scenario.json`
 
-### Step 6 — Approve / Request Changes / Reject
+### Step 6 — Plugin-specific checks (15 min, plugin PRs only)
+
+If the PR is for `plugins/<id>/<ver>.aplugin` (not an aglet), additionally
+verify:
+
+- **Source code in PR** — `wrapper.cpp` (or equivalent) + `CMakeLists.txt`
+  / `build.sh` / language toolchain config. Binary-only PRs **rejected**;
+  reviewer must be able to read the source that compiled to the wasm.
+
+- **Reproducible build** — CI rebuilds wasm from source in the PR; resulting
+  byte sha256 **must match** `meta.json.versions[N].wasm_sha256`. If
+  mismatch, fail (someone tampered the wasm or the build is non-reproducible).
+
+- **Wasm ABI** — `dist/<id>.wasm` exports exactly `alloc`, `free`, `dispatch`,
+  `memory`. No extra unexplained exports. Each export type matches the spec
+  (alloc: i32→i32; free: i32,i32→ε; dispatch: i32,i32,i32,i32→i64).
+
+- **Wasm imports whitelist** — Allowed imports:
+  - `env.emscripten_notify_memory_growth` (emscripten leftover; host stubs)
+  - `wasi_snapshot_preview1.fd_close` / `.fd_write` / `.fd_seek` (printf
+    leftovers; host stubs to no-op)
+
+  **Any other import**: PR comment requests author justify; reviewer
+  discusses with maintainers; either added to whitelist + host stub
+  added, or PR rejected. **Sneaking new imports through review is the
+  #1 security risk.**
+
+- **Wasm features matches `meta.json.wasm_features[]`** — Run `wasm-tools
+  print` (or eyeball binary); features declared must match what wasm
+  actually uses. Author can't claim `wasm_features: []` and ship a wasm
+  using `try_table` (would crash on older clients).
+
+- **Wasm size sanity** — `wasm_size` reported in meta.json must match
+  actual file size of inner `dist/<id>.wasm`. Sudden jumps from previous
+  version (e.g. +5MB) flagged for explanation.
+
+- **Capability inventory** — Each `actions[].permission` in `meta.json`
+  must correspond to a real capability in the source. e.g. an action
+  declared `permission: "image:convert"` whose source-code path doesn't
+  do any image conversion (suspicious side-effect-only) → rejected.
+
+- **No `aglet plugin install` user-facing copy** — Plugin PR descriptions
+  must not instruct users to run `aglet plugin install <id>` (no such user
+  command). Plugins resolve via aglet `manifest.requires`.
+
+### Step 7 — Approve / Request Changes / Reject
 
 - **Approve** → label `ready-to-merge` → merge → Cloudflare Pages auto-deploys
 - **Request Changes** → comment with specific fixes; author iterates
@@ -90,7 +135,7 @@ Auto-rejected (closed with one of these labels):
 
 | Label | Reason |
 |---|---|
-| `native-code` | `.dylib`/`.so`/`.wasm` executable code in tarball |
+| `native-code` | `.dylib`/`.so` in any tarball; `.wasm` in `.aglet` tarball (plugins `.aplugin` allowed) |
 | `code-injection` | `eval()`, `new Function()`, `import()` of non-registered modules in `scripts.js` |
 | `phishing` | Impersonates another product / service / brand |
 | `nsfw` | Adult content without explicit content controls |
