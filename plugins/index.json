@@ -1,4 +1,15 @@
 {
-  "generated_at": "2026-05-23T13:00:00Z",
-  "plugins": []
+  "generated_at": "2026-05-24T13:21:33Z",
+  "plugins": [
+    {
+      "id": "barcode",
+      "name": "Barcode",
+      "namespace": "barcode",
+      "backend_kind": "wasm",
+      "actions_count": 2,
+      "latest": "0.1.0",
+      "wasm_size": 1073075,
+      "updated_at": "2026-05-24T13:21:33Z"
+    }
+  ]
 }
