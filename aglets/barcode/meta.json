@@ -1,0 +1,13 @@
+{
+  "id": "barcode",
+  "name": "Barcode",
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "3cc49ebd7c64732ae5d4b6aa5a7e4f13fa70d72d9f839213b99e4676810bd0da",
+      "published_at": "2026-05-24T12:50:15Z"
+    }
+  ]
+}

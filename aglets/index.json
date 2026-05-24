@@ -1,4 +1,11 @@
 {
-  "generated_at": "2026-05-18T14:15:00Z",
-  "aglets": []
+  "generated_at": "2026-05-24T12:50:15Z",
+  "aglets": [
+    {
+      "id": "barcode",
+      "name": "Barcode",
+      "latest": "0.1.0",
+      "updated_at": "2026-05-24T12:50:15Z"
+    }
+  ]
 }
