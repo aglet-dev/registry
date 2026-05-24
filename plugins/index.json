@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T14:33:08Z",
+  "generated_at": "2026-05-24T14:59:48Z",
   "plugins": [
     {
       "id": "barcode",
@@ -42,6 +42,30 @@
       "latest": "0.1.0",
       "wasm_size": 547288,
       "updated_at": "2026-05-24T14:33:08Z"
+    },
+    {
+      "id": "crypto",
+      "name": "Crypto",
+      "description": {
+        "default": "Modern cryptography via libsodium: hash, hmac, KDF, symmetric encrypt, Ed25519 sign, secure random.",
+        "zh": "libsodium 现代密码学：hash / hmac / KDF / 对称加密 / Ed25519 签名 / 强随机。",
+        "ja": "libsodium のモダン暗号：ハッシュ / HMAC / KDF / 共通鍵暗号 / Ed25519 署名 / 強乱数。"
+      },
+      "keywords": [
+        "crypto",
+        "libsodium",
+        "hash",
+        "encrypt",
+        "sign",
+        "kdf",
+        "totp"
+      ],
+      "namespace": "crypto",
+      "backend_kind": "wasm",
+      "actions_count": 9,
+      "latest": "0.1.0",
+      "wasm_size": 144590,
+      "updated_at": "2026-05-24T14:59:48Z"
     }
   ]
 }
