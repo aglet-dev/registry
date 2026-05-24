@@ -28,8 +28,9 @@ What happens, in order:
    tarball in a tmpdir. Computes its sha256.
 2. **Clone registry**: clones `https://github.com/agent-rt/aglet-registry`
    into a tmpdir (or your fork if `gh repo fork` returns one).
-3. **Write files**: places `<id>/<version>.aglet` and rewrites
-   `<id>/meta.json` (appends the new version; updates `latest` if newer).
+3. **Write files**: places `aglets/<id>/<version>.aglet` and rewrites
+   `aglets/<id>/meta.json` (appends the new version; updates `latest` if newer).
+   `aglets/index.json` is upserted in the same commit.
 4. **Commit + push**: branch `publish/<id>-<version>`.
 5. **Open PR**: `gh pr create` against `agent-rt/aglet-registry` with a
    templated body (manifest summary, sha256, install command).
@@ -115,10 +116,11 @@ comparison; if either side isn't semver, the new one wins).
 
 There's no CLI flag for this — it's intentionally a manual maintainer task:
 
-1. Edit `<id>/meta.json`, set `yanked: true` on the offending version entry.
+1. Edit `aglets/<id>/meta.json` (or `plugins/<id>/meta.json` for plugin
+   yanks), set `yanked: true` on the offending version entry.
 2. Update `latest` to the most recent non-yanked version.
-3. Optionally delete the `.aglet` file itself (clients will get 404; the
-   metadata entry stays for audit).
+3. Move the package file to `archive/{aglets,plugins}/<id>/<ver>.<ext>` so
+   the audit trail survives but clients get 404 for the original path.
 4. PR with reasoning in the body.
 
 Clients respect `yanked: true` by refusing to resolve `latest` to it and

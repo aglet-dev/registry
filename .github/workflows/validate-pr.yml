@@ -1,12 +1,15 @@
 name: Validate PR
 
+# 2026-05-24 canonical 双 namespace：
+#   aglets/<id>/{meta.json,<ver>.aglet,<ver>/...}     user-facing
+#   plugins/<id>/{meta.json,<ver>.aplugin}            infrastructure
+# archive/ 不验（yanked 包，只留 audit）。
+
 on:
   pull_request:
     paths:
-      - "*/meta.json"
-      - "*/*.aglet"
-      - "*/*/**"   # bundled <id>/<version>/icon.<ext> 等镜像资源
-      - "index.json"
+      - "aglets/**"
+      - "plugins/**"
 
 permissions:
   contents: read
@@ -19,42 +22,50 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect changed app dirs
+      - name: Detect changed namespace dirs
         id: changes
         run: |
           set -e
           base="${{ github.event.pull_request.base.sha }}"
           head="${{ github.event.pull_request.head.sha }}"
-          # collect top-level dirs touched by the PR (one entry per app)
+          # collect "<ns>/<id>" pairs touched by the PR (one per package)
+          # ns ∈ {aglets, plugins}；忽略 archive/，忽略顶层目录变化
           dirs=$(git diff --name-only "$base" "$head" \
-            | awk -F/ 'NF>=2 && $1!=".github" { print $1 }' \
+            | awk -F/ '
+                ($1=="aglets" || $1=="plugins") && NF>=3 { print $1"/"$2 }
+              ' \
             | sort -u)
           if [ -z "$dirs" ]; then
-            echo "No app dirs touched; nothing to validate."
+            echo "No package dirs touched; nothing to validate."
             echo "dirs=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo "Changed app dirs:"
+          echo "Changed package dirs:"
           printf '  %s\n' $dirs
           echo "dirs<<EOF" >> "$GITHUB_OUTPUT"
           printf '%s\n' $dirs >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
 
-      - name: Validate each touched app
+      - name: Validate each touched package
         if: steps.changes.outputs.dirs != ''
         env:
           DIRS: ${{ steps.changes.outputs.dirs }}
         run: |
           set -euo pipefail
           fail=0
-          for id in $DIRS; do
-            echo "::group::validate $id"
-            # 目录被整个删掉（如下架 fixture）→ 没什么可验，跳过
-            if [ ! -d "$id" ]; then
-              echo "(removed) $id directory deleted — skipping"
+          for nspath in $DIRS; do
+            ns="${nspath%%/*}"            # aglets | plugins
+            id="${nspath##*/}"            # <id>
+            ext="aglet"
+            inner="app.json"
+            [ "$ns" = "plugins" ] && ext="aplugin" && inner="plugin.json"
+            echo "::group::validate $nspath ($ext)"
+            # 目录被整个删掉（如下架）→ 跳过
+            if [ ! -d "$nspath" ]; then
+              echo "(removed) $nspath directory deleted — skipping"
               echo "::endgroup::"; continue
             fi
-            meta="$id/meta.json"
+            meta="$nspath/meta.json"
             if [ ! -f "$meta" ]; then
               echo "✗ $meta missing"; fail=1; echo "::endgroup::"; continue
             fi
@@ -81,7 +92,7 @@ jobs:
               ver=$(jq -r ".versions[$i].version" "$meta")
               file=$(jq -r ".versions[$i].file" "$meta")
               sha=$(jq -r ".versions[$i].sha256" "$meta")
-              path="$id/$file"
+              path="$nspath/$file"
               if [ ! -f "$path" ]; then
                 echo "✗ versions[$i] file $path missing"; fail=1; continue
               fi
@@ -90,43 +101,42 @@ jobs:
                 echo "✗ versions[$i] sha256 mismatch for $ver: meta=$sha actual=$actual"
                 fail=1
               fi
-              # Check file is a valid gzip + has app.json with matching id/version
+              # Check file is a valid gzip + has inner manifest with matching id/version
               if ! tar -tzf "$path" >/dev/null 2>&1; then
                 echo "✗ $path is not a valid tar.gz"; fail=1; continue
               fi
-              if ! tar -xOzf "$path" app.json >/tmp/app.json 2>/dev/null; then
-                echo "✗ $path missing app.json"; fail=1; continue
+              if ! tar -xOzf "$path" "$inner" >/tmp/inner.json 2>/dev/null; then
+                echo "✗ $path missing $inner"; fail=1; continue
               fi
-              app_id=$(jq -r .id /tmp/app.json 2>/dev/null || echo "")
-              app_ver=$(jq -r .version /tmp/app.json 2>/dev/null || echo "")
-              if [ "$app_id" != "$id" ]; then
-                echo "✗ $path: app.json id ($app_id) != $id"; fail=1
+              inner_id=$(jq -r .id /tmp/inner.json 2>/dev/null || echo "")
+              inner_ver=$(jq -r .version /tmp/inner.json 2>/dev/null || echo "")
+              if [ "$inner_id" != "$id" ]; then
+                echo "✗ $path: $inner id ($inner_id) != $id"; fail=1
               fi
-              if [ "$app_ver" != "$ver" ]; then
-                echo "✗ $path: app.json version ($app_ver) != $ver"; fail=1
+              if [ "$inner_ver" != "$ver" ]; then
+                echo "✗ $path: $inner version ($inner_ver) != $ver"; fail=1
               fi
 
-              # Bundled-asset mirror sha256 cross-check：tar 内 icon.<ext> /
-              # screenshots/<N>.<ext> 与 registry 内 <id>/<ver>/<path> 字节一致。
-              # 防 PR 替换镜像但保 tar 不变（meta.json 指向已经被改写的 URL）。
-              mirror_dir="$id/$ver"
-              if [ -d "$mirror_dir" ]; then
-                tmp_extract="$(mktemp -d)"
-                tar -xzf "$path" -C "$tmp_extract"
-                # 遍历 mirror_dir 内每个文件，确认 tar 内对应位置存在并字节一致
-                while IFS= read -r mirror_file; do
-                  rel="${mirror_file#$mirror_dir/}"
-                  tar_member="$tmp_extract/$rel"
-                  if [ ! -f "$tar_member" ]; then
-                    echo "✗ mirror $mirror_file has no tar counterpart at $rel"; fail=1; continue
-                  fi
-                  m_sha=$(shasum -a 256 "$mirror_file" | awk '{print $1}')
-                  t_sha=$(shasum -a 256 "$tar_member" | awk '{print $1}')
-                  if [ "$m_sha" != "$t_sha" ]; then
-                    echo "✗ mirror $mirror_file (sha $m_sha) != tar $rel (sha $t_sha)"; fail=1
-                  fi
-                done < <(find "$mirror_dir" -type f)
-                rm -rf "$tmp_extract"
+              # aglets only: bundled-asset mirror sha256 cross-check
+              if [ "$ns" = "aglets" ]; then
+                mirror_dir="$nspath/$ver"
+                if [ -d "$mirror_dir" ]; then
+                  tmp_extract="$(mktemp -d)"
+                  tar -xzf "$path" -C "$tmp_extract"
+                  while IFS= read -r mirror_file; do
+                    rel="${mirror_file#$mirror_dir/}"
+                    tar_member="$tmp_extract/$rel"
+                    if [ ! -f "$tar_member" ]; then
+                      echo "✗ mirror $mirror_file has no tar counterpart at $rel"; fail=1; continue
+                    fi
+                    m_sha=$(shasum -a 256 "$mirror_file" | awk '{print $1}')
+                    t_sha=$(shasum -a 256 "$tar_member" | awk '{print $1}')
+                    if [ "$m_sha" != "$t_sha" ]; then
+                      echo "✗ mirror $mirror_file (sha $m_sha) != tar $rel (sha $t_sha)"; fail=1
+                    fi
+                  done < <(find "$mirror_dir" -type f)
+                  rm -rf "$tmp_extract"
+                fi
               fi
             done
 

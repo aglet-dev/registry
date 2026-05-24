@@ -11,13 +11,15 @@ WASI sandbox surface, fuel/memory limits) see the aglet repo's
 
 ## Directory layout
 
-Plugins live under `plugins/` sibling to aglet directories:
+Plugins live under `plugins/`, sibling to the `aglets/` namespace:
 
 ```
 aglet-registry/
-  <aglet-id>/                  # User-facing aglet (existing)
-    meta.json
-    <ver>.aglet
+  aglets/                      # User-facing namespace
+    index.json                 # Aglet catalog (plugins NOT here)
+    <aglet-id>/
+      meta.json
+      <ver>.aglet
   plugins/                     # Infrastructure namespace
     index.json                 # Plugin catalog (for CLI / dev tools)
     <plugin-id>/
@@ -26,12 +28,11 @@ aglet-registry/
       <ver>/                   # Optional: assets mirrored for CF Pages
         README.md
         icon.<ext>
-  index.json                   # Aglet catalog (existing, plugins NOT here)
 ```
 
 **`plugins/` is its own namespace** to avoid collision with aglet ids (user
 searching "barcode" should see "Barcode Reader" the aglet, not the underlying
-`barcode` plugin). Top-level `index.json` stays aglet-only and user-facing;
+`barcode` plugin). `aglets/index.json` stays aglet-only and user-facing;
 `plugins/index.json` is a parallel catalog for plugin metadata.
 
 ## File extension: `.aplugin`
@@ -144,7 +145,7 @@ but **never to drive user install flow** — install resolves via aglet
 
 `aglet install <aglet-id>` flow:
 
-1. Fetch `<aglet-id>/meta.json` → resolve aglet version → fetch `.aglet`
+1. Fetch `aglets/<aglet-id>/meta.json` → resolve aglet version → fetch `.aglet`
 2. Unpack, read `manifest.requires`
 3. For each `{plugin, version}` requirement:
    - If `~/.aglet/plugins/<plugin>/<satisfying-ver>/` exists locally, use it
