@@ -1,0 +1,27 @@
+{
+  "id": "barcode",
+  "name": "Barcode",
+  "namespace": "barcode",
+  "actions": [
+    {
+      "name": "encode",
+      "permission": "barcode:encode"
+    },
+    {
+      "name": "decode",
+      "permission": "barcode:decode"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "814ffd26cf9b457dde84e0b0e558a10f6b8780c476b3255e75daedb20a9cd4a4",
+      "wasm_sha256": "0fb1daa33423229d2c1226d01abdef075f103f4304950d089c84669815956f5e",
+      "wasm_size": 1073075,
+      "published_at": "2026-05-24T13:21:33Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
