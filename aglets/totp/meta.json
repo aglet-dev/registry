@@ -1,0 +1,34 @@
+{
+  "id": "totp",
+  "name": {
+    "default": "2FA",
+    "zh": "两步验证",
+    "ja": "二要素認証"
+  },
+  "description": {
+    "default": "Time-based one-time passwords (TOTP) compatible with Google Authenticator. Paste otpauth:// URIs to add accounts.",
+    "zh": "TOTP 一次性密码，兼容 Google Authenticator。粘贴 otpauth:// 链接添加账号。",
+    "ja": "TOTP ワンタイムパスワード。Google Authenticator 互換。otpauth:// URI を貼って追加。"
+  },
+  "author": "agent-rt",
+  "homepage": "https://github.com/agent-rt/aglet-apps",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/shield-check-fill.svg?color=%233a6ea5&width=256",
+  "category": "utilities",
+  "keywords": [
+    "2fa",
+    "totp",
+    "otp",
+    "authenticator",
+    "mfa"
+  ],
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "c43b5cc6364ffab49928a5063313e02bdb2dad35e47d805dbd4f15d1a29a20d7",
+      "published_at": "2026-05-24T15:10:45Z"
+    }
+  ]
+}
