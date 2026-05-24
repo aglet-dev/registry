@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T13:21:33Z",
+  "generated_at": "2026-05-24T13:27:43Z",
   "plugins": [
     {
       "id": "barcode",
@@ -10,6 +10,16 @@
       "latest": "0.1.0",
       "wasm_size": 1073075,
       "updated_at": "2026-05-24T13:21:33Z"
+    },
+    {
+      "id": "image",
+      "name": "Image",
+      "namespace": "image",
+      "backend_kind": "wasm",
+      "actions_count": 4,
+      "latest": "0.1.0",
+      "wasm_size": 570540,
+      "updated_at": "2026-05-24T13:27:43Z"
     }
   ]
 }

@@ -1,0 +1,35 @@
+{
+  "id": "image",
+  "name": "Image",
+  "namespace": "image",
+  "actions": [
+    {
+      "name": "metadata",
+      "permission": "image:read"
+    },
+    {
+      "name": "decode",
+      "permission": "image:read"
+    },
+    {
+      "name": "encode",
+      "permission": "image:convert"
+    },
+    {
+      "name": "process",
+      "permission": "image:convert"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "8e9e718baebe76055ce3e47488664bc1aee4e51d082677b60690c8b79b309918",
+      "wasm_sha256": "7c9f3f837efee61ba4fa9ec63214993597f8120bfefab90f7b84038bc7d57bca",
+      "wasm_size": 570540,
+      "published_at": "2026-05-24T13:27:43Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
