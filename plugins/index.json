@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T13:27:43Z",
+  "generated_at": "2026-05-24T14:33:08Z",
   "plugins": [
     {
       "id": "barcode",
@@ -20,6 +20,28 @@
       "latest": "0.1.0",
       "wasm_size": 570540,
       "updated_at": "2026-05-24T13:27:43Z"
+    },
+    {
+      "id": "archive",
+      "name": "Archive",
+      "description": {
+        "default": "Read zip / tar / tar.gz / tar.bz2 / rar (4 & 5). Write zip / tar / tar.gz.",
+        "zh": "读取 zip / tar / tar.gz / tar.bz2 / rar；写 zip / tar / tar.gz。",
+        "ja": "zip / tar / tar.gz / tar.bz2 / rar の読み込み。zip / tar / tar.gz の書き込み。"
+      },
+      "keywords": [
+        "archive",
+        "zip",
+        "tar",
+        "rar",
+        "compression"
+      ],
+      "namespace": "archive",
+      "backend_kind": "wasm",
+      "actions_count": 3,
+      "latest": "0.1.0",
+      "wasm_size": 547288,
+      "updated_at": "2026-05-24T14:33:08Z"
     }
   ]
 }

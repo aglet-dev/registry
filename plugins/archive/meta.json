@@ -1,0 +1,45 @@
+{
+  "id": "archive",
+  "name": "Archive",
+  "description": {
+    "default": "Read zip / tar / tar.gz / tar.bz2 / rar (4 & 5). Write zip / tar / tar.gz.",
+    "zh": "读取 zip / tar / tar.gz / tar.bz2 / rar；写 zip / tar / tar.gz。",
+    "ja": "zip / tar / tar.gz / tar.bz2 / rar の読み込み。zip / tar / tar.gz の書き込み。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "archive",
+    "zip",
+    "tar",
+    "rar",
+    "compression"
+  ],
+  "homepage": "https://github.com/agent-rt/aglet-plugins",
+  "namespace": "archive",
+  "actions": [
+    {
+      "name": "list",
+      "permission": "archive:read"
+    },
+    {
+      "name": "extract",
+      "permission": "archive:read"
+    },
+    {
+      "name": "create",
+      "permission": "archive:write"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "cb07e698db26b3bf606ad0408b0ffd4ad94bde7fec512006ba67659859034d7f",
+      "wasm_sha256": "b73d117f9cf92ab11a658bcb4af8c17801558f80c0253670b4ad3ac5101b0707",
+      "wasm_size": 547288,
+      "published_at": "2026-05-24T14:33:08Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
