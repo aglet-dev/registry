@@ -65,7 +65,15 @@
       "wasm_sha256": "e5702bf333599cf541052eb3fb05510c2ddf6b7f00ff9f541b0f5e3b02c54431",
       "wasm_size": 144590,
       "published_at": "2026-05-24T14:59:48Z"
+    },
+    {
+      "version": "0.1.1",
+      "file": "0.1.1.aplugin",
+      "sha256": "5b98104ede998a3a17d7f4a4343e2fb952a03f4023f52ffe40787ca470d5b9a3",
+      "wasm_sha256": "7559f9a1460e00c6c1dfe0fca098c88747393b1fcbfbbe885357a52c7fb04544",
+      "wasm_size": 150337,
+      "published_at": "2026-05-24T15:06:11Z"
     }
   ],
-  "latest": "0.1.0"
+  "latest": "0.1.1"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T14:59:48Z",
+  "generated_at": "2026-05-24T15:06:11Z",
   "plugins": [
     {
       "id": "barcode",
@@ -63,9 +63,9 @@
       "namespace": "crypto",
       "backend_kind": "wasm",
       "actions_count": 9,
-      "latest": "0.1.0",
-      "wasm_size": 144590,
-      "updated_at": "2026-05-24T14:59:48Z"
+      "latest": "0.1.1",
+      "wasm_size": 150337,
+      "updated_at": "2026-05-24T15:06:11Z"
     }
   ]
 }
