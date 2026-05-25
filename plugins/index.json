@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-25T06:56:44Z",
+  "generated_at": "2026-05-25T06:56:56Z",
   "plugins": [
     {
-      "id": "barcode",
-      "name": "Barcode",
-      "namespace": "barcode",
+      "id": "image",
+      "name": "Image",
+      "namespace": "image",
       "backend_kind": "wasm",
-      "actions_count": 2,
+      "actions_count": 4,
       "latest": "0.1.0",
-      "wasm_size": 1073075,
-      "updated_at": "2026-05-24T13:21:33Z"
+      "wasm_size": 570540,
+      "updated_at": "2026-05-24T13:27:43Z"
     },
     {
       "id": "archive",
@@ -58,14 +58,14 @@
       "updated_at": "2026-05-24T15:06:11Z"
     },
     {
-      "id": "image",
-      "name": "Image",
-      "namespace": "image",
+      "id": "barcode",
+      "name": "Barcode",
+      "namespace": "barcode",
       "backend_kind": "wasm",
-      "actions_count": 4,
+      "actions_count": 2,
       "latest": "0.1.1",
-      "wasm_size": 581704,
-      "updated_at": "2026-05-25T06:56:44Z"
+      "wasm_size": 1075283,
+      "updated_at": "2026-05-25T06:56:56Z"
     }
   ]
 }
