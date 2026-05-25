@@ -108,8 +108,13 @@ jobs:
               if ! tar -xOzf "$path" "$inner" >/tmp/inner.json 2>/dev/null; then
                 echo "✗ $path missing $inner"; fail=1; continue
               fi
-              inner_id=$(jq -r .id /tmp/inner.json 2>/dev/null || echo "")
-              inner_ver=$(jq -r .version /tmp/inner.json 2>/dev/null || echo "")
+              # aglets pack flattens manifest into app.json (root has {id,
+              # version, ...}). Plugins keep the canonical envelope so
+              # plugin.json is {manifest: {id, version, ...}, ui: ...}.
+              # Read .manifest.<field> first, fall back to flat .<field> so a
+              # future plugin.json that happens to be flat still passes.
+              inner_id=$(jq -r '.manifest.id // .id // empty' /tmp/inner.json 2>/dev/null || echo "")
+              inner_ver=$(jq -r '.manifest.version // .version // empty' /tmp/inner.json 2>/dev/null || echo "")
               if [ "$inner_id" != "$id" ]; then
                 echo "✗ $path: $inner id ($inner_id) != $id"; fail=1
               fi
