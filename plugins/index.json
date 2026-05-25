@@ -1,6 +1,16 @@
 {
-  "generated_at": "2026-05-25T06:56:56Z",
+  "generated_at": "2026-05-25T07:00:33Z",
   "plugins": [
+    {
+      "id": "barcode",
+      "name": "Barcode",
+      "namespace": "barcode",
+      "backend_kind": "wasm",
+      "actions_count": 2,
+      "latest": "0.1.0",
+      "wasm_size": 1073075,
+      "updated_at": "2026-05-24T13:21:33Z"
+    },
     {
       "id": "image",
       "name": "Image",
@@ -10,28 +20,6 @@
       "latest": "0.1.0",
       "wasm_size": 570540,
       "updated_at": "2026-05-24T13:27:43Z"
-    },
-    {
-      "id": "archive",
-      "name": "Archive",
-      "description": {
-        "default": "Read zip / tar / tar.gz / tar.bz2 / rar (4 & 5). Write zip / tar / tar.gz.",
-        "zh": "\u8bfb\u53d6 zip / tar / tar.gz / tar.bz2 / rar\uff1b\u5199 zip / tar / tar.gz\u3002",
-        "ja": "zip / tar / tar.gz / tar.bz2 / rar \u306e\u8aad\u307f\u8fbc\u307f\u3002zip / tar / tar.gz \u306e\u66f8\u304d\u8fbc\u307f\u3002"
-      },
-      "keywords": [
-        "archive",
-        "zip",
-        "tar",
-        "rar",
-        "compression"
-      ],
-      "namespace": "archive",
-      "backend_kind": "wasm",
-      "actions_count": 3,
-      "latest": "0.1.0",
-      "wasm_size": 547288,
-      "updated_at": "2026-05-24T14:33:08Z"
     },
     {
       "id": "crypto",
@@ -58,14 +46,26 @@
       "updated_at": "2026-05-24T15:06:11Z"
     },
     {
-      "id": "barcode",
-      "name": "Barcode",
-      "namespace": "barcode",
+      "id": "archive",
+      "name": "Archive",
+      "description": {
+        "default": "Read zip / tar / tar.gz / tar.bz2 / rar (4 & 5). Write zip / tar / tar.gz.",
+        "zh": "\u8bfb\u53d6 zip / tar / tar.gz / tar.bz2 / rar\uff1b\u5199 zip / tar / tar.gz\u3002",
+        "ja": "zip / tar / tar.gz / tar.bz2 / rar \u306e\u8aad\u307f\u8fbc\u307f\u3002zip / tar / tar.gz \u306e\u66f8\u304d\u8fbc\u307f\u3002"
+      },
+      "keywords": [
+        "archive",
+        "zip",
+        "tar",
+        "rar",
+        "compression"
+      ],
+      "namespace": "archive",
       "backend_kind": "wasm",
-      "actions_count": 2,
+      "actions_count": 3,
       "latest": "0.1.1",
-      "wasm_size": 1075283,
-      "updated_at": "2026-05-25T06:56:56Z"
+      "wasm_size": 548389,
+      "updated_at": "2026-05-25T07:00:33Z"
     }
   ]
 }
