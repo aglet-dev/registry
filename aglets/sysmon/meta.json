@@ -1,0 +1,14 @@
+{
+  "id": "sysmon",
+  "name": "System Monitor",
+  "description": "OS CPU / memory / disk dogfood. Subscribes to the `sysmon` stdio plugin's `cpu` resource — plugin pushes a sample every 1s, the host fans it out to `onCpuSample` via the plugin event bus. No polling.",
+  "latest": "0.3.0",
+  "versions": [
+    {
+      "version": "0.3.0",
+      "file": "0.3.0.aglet",
+      "sha256": "36f3d37c0080c14348e0458ace0e3cc6d5f34e2063d0d39dd47b6ef52299a557",
+      "published_at": "2026-05-25T14:57:30Z"
+    }
+  ]
+}
