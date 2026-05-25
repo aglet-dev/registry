@@ -1,0 +1,55 @@
+# Rebuild aglets/index.json + plugins/index.json from per-package meta.json
+# files whenever main moves a meta.json. Single source of truth = each
+# package's own meta.json; the index files are pure derivatives.
+#
+# Why this exists: when N publish PRs land back-to-back (each carrying a
+# stale snapshot of index.json from creation time), they conflict on
+# index.json even though their actual content changes are orthogonal. We
+# moved the index out of the PR diff entirely — the workflow rebuilds
+# them post-merge, scanning the now-canonical meta.json files on main.
+
+name: Regenerate indexes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "aglets/*/meta.json"
+      - "plugins/*/meta.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regenerate-indexes
+  cancel-in-progress: false
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Need full history so the auto-commit doesn't make a shallow
+          # push that GitHub refuses.
+          fetch-depth: 0
+
+      - name: Rebuild indexes
+        run: |
+          python3 .github/scripts/build-indexes.py
+
+      - name: Commit + push if changed
+        run: |
+          set -e
+          git config user.name "aglet-registry-bot"
+          git config user.email "bot@aglet.dev"
+          if git diff --quiet aglets/index.json plugins/index.json 2>/dev/null; then
+            echo "Indexes unchanged — nothing to commit."
+            exit 0
+          fi
+          git add aglets/index.json plugins/index.json
+          git commit -m "chore(index): regenerate from meta.json" \
+            -m "Triggered by main push touching aglets/*/meta.json or plugins/*/meta.json."
+          git push
