@@ -1,0 +1,14 @@
+{
+  "id": "sysmon",
+  "name": "System Monitor",
+  "description": "OS CPU / memory / disk dogfood. Pulls host metrics from the `sysmon` stdio plugin (long-lived zig subprocess; macOS Mach API) at 1Hz and shows them in the menubar + a compact popover.",
+  "latest": "0.2.0",
+  "versions": [
+    {
+      "version": "0.2.0",
+      "file": "0.2.0.aglet",
+      "sha256": "39ad1fa1bcab68b5a6c114674627bb45e0c2325648d612af115b2395c2189215",
+      "published_at": "2026-05-25T14:14:22Z"
+    }
+  ]
+}
