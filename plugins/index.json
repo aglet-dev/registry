@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-25T06:55:18Z",
+  "generated_at": "2026-05-25T06:56:44Z",
   "plugins": [
     {
       "id": "barcode",
@@ -12,22 +12,12 @@
       "updated_at": "2026-05-24T13:21:33Z"
     },
     {
-      "id": "image",
-      "name": "Image",
-      "namespace": "image",
-      "backend_kind": "wasm",
-      "actions_count": 4,
-      "latest": "0.1.0",
-      "wasm_size": 570540,
-      "updated_at": "2026-05-24T13:27:43Z"
-    },
-    {
       "id": "archive",
       "name": "Archive",
       "description": {
         "default": "Read zip / tar / tar.gz / tar.bz2 / rar (4 & 5). Write zip / tar / tar.gz.",
-        "zh": "读取 zip / tar / tar.gz / tar.bz2 / rar；写 zip / tar / tar.gz。",
-        "ja": "zip / tar / tar.gz / tar.bz2 / rar の読み込み。zip / tar / tar.gz の書き込み。"
+        "zh": "\u8bfb\u53d6 zip / tar / tar.gz / tar.bz2 / rar\uff1b\u5199 zip / tar / tar.gz\u3002",
+        "ja": "zip / tar / tar.gz / tar.bz2 / rar \u306e\u8aad\u307f\u8fbc\u307f\u3002zip / tar / tar.gz \u306e\u66f8\u304d\u8fbc\u307f\u3002"
       },
       "keywords": [
         "archive",
@@ -48,8 +38,8 @@
       "name": "Crypto",
       "description": {
         "default": "Modern cryptography via libsodium: hash, hmac, KDF, symmetric encrypt, Ed25519 sign, secure random.",
-        "zh": "libsodium 现代密码学：hash / hmac / KDF / 对称加密 / Ed25519 签名 / 强随机。",
-        "ja": "libsodium のモダン暗号：ハッシュ / HMAC / KDF / 共通鍵暗号 / Ed25519 署名 / 強乱数。"
+        "zh": "libsodium \u73b0\u4ee3\u5bc6\u7801\u5b66\uff1ahash / hmac / KDF / \u5bf9\u79f0\u52a0\u5bc6 / Ed25519 \u7b7e\u540d / \u5f3a\u968f\u673a\u3002",
+        "ja": "libsodium \u306e\u30e2\u30c0\u30f3\u6697\u53f7\uff1a\u30cf\u30c3\u30b7\u30e5 / HMAC / KDF / \u5171\u901a\u9375\u6697\u53f7 / Ed25519 \u7f72\u540d / \u5f37\u4e71\u6570\u3002"
       },
       "keywords": [
         "crypto",
@@ -63,9 +53,19 @@
       "namespace": "crypto",
       "backend_kind": "wasm",
       "actions_count": 9,
-      "latest": "0.1.2",
-      "wasm_size": 150406,
-      "updated_at": "2026-05-25T06:55:18Z"
+      "latest": "0.1.1",
+      "wasm_size": 150337,
+      "updated_at": "2026-05-24T15:06:11Z"
+    },
+    {
+      "id": "image",
+      "name": "Image",
+      "namespace": "image",
+      "backend_kind": "wasm",
+      "actions_count": 4,
+      "latest": "0.1.1",
+      "wasm_size": 581704,
+      "updated_at": "2026-05-25T06:56:44Z"
     }
   ]
 }
