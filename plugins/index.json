@@ -1,30 +1,6 @@
 {
-  "generated_at": "2026-05-25T08:58:07Z",
+  "generated_at": "2026-05-25T10:07:35Z",
   "plugins": [
-    {
-      "id": "archive",
-      "name": "Archive",
-      "description": {
-        "default": "Read zip / tar / tar.gz / tar.bz2 / rar (4 & 5). Write zip / tar / tar.gz.",
-        "zh": "读取 zip / tar / tar.gz / tar.bz2 / rar；写 zip / tar / tar.gz。",
-        "ja": "zip / tar / tar.gz / tar.bz2 / rar の読み込み。zip / tar / tar.gz の書き込み。"
-      },
-      "keywords": [
-        "archive",
-        "zip",
-        "tar",
-        "rar",
-        "compression"
-      ],
-      "homepage": "https://github.com/agent-rt/aglet-plugins",
-      "license": "MIT",
-      "namespace": "archive",
-      "backend_kind": "wasm",
-      "actions_count": 3,
-      "latest": "0.1.1",
-      "wasm_size": 548389,
-      "updated_at": "2026-05-25T07:00:33Z"
-    },
     {
       "id": "barcode",
       "name": "Barcode",
@@ -70,6 +46,30 @@
       "latest": "0.1.2",
       "wasm_size": 150406,
       "updated_at": "2026-05-25T06:55:18Z"
+    },
+    {
+      "id": "archive",
+      "name": "Archive",
+      "description": {
+        "default": "Read zip / tar / tar.{gz,bz2,xz,zst} / rar (4 & 5). Write zip / tar / tar.{gz,xz,zst}.",
+        "zh": "读取 zip / tar / tar.{gz,bz2,xz,zst} / rar；写 zip / tar / tar.{gz,xz,zst}。",
+        "ja": "zip / tar / tar.{gz,bz2,xz,zst} / rar の読み込み。zip / tar / tar.{gz,xz,zst} の書き込み。"
+      },
+      "keywords": [
+        "archive",
+        "zip",
+        "tar",
+        "rar",
+        "xz",
+        "zstd",
+        "compression"
+      ],
+      "namespace": "archive",
+      "backend_kind": "wasm",
+      "actions_count": 3,
+      "latest": "0.1.2",
+      "wasm_size": 1100413,
+      "updated_at": "2026-05-25T10:07:35Z"
     }
   ]
 }
