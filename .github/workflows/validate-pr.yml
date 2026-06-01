@@ -122,6 +122,45 @@ jobs:
                 echo "✗ $path: $inner version ($inner_ver) != $ver"; fail=1
               fi
 
+              # plugins only: inner wasm integrity. The outer .aplugin sha256 is
+              # checked above, but meta.wasm_sha256 / wasm_size were never
+              # verified against the shipped wasm — so those fields could be
+              # stale/wrong/decorative, yet REVIEW_PROCESS leans on wasm_sha256
+              # as the anchor a source-rebuild compares to. Pin them to the real
+              # dist/<id>.wasm here so the commitment is trustworthy (and so the
+              # future source-rebuild check has a meaningful target).
+              # (Full source-rebuild reproducibility is a separate, larger item:
+              # needs a pinned source ref + per-plugin toolchain. See
+              # REVIEW_PROCESS Step 6.)
+              if [ "$ns" = "plugins" ]; then
+                wasm_member="dist/$id.wasm"
+                if ! tar -xOzf "$path" "$wasm_member" >/tmp/inner.wasm 2>/dev/null; then
+                  echo "✗ $path: missing $wasm_member"; fail=1
+                else
+                  # magic: must be a real wasm module (\0asm)
+                  magic=$(head -c4 /tmp/inner.wasm | od -An -tx1 | tr -d ' \n')
+                  if [ "$magic" != "0061736d" ]; then
+                    echo "✗ $path: $wasm_member is not a wasm module (magic=$magic)"; fail=1
+                  fi
+                  wasm_sha=$(jq -r ".versions[$i].wasm_sha256 // empty" "$meta")
+                  if [ -n "$wasm_sha" ]; then
+                    a_sha=$(shasum -a 256 /tmp/inner.wasm | awk '{print $1}')
+                    if [ "$a_sha" != "$wasm_sha" ]; then
+                      echo "✗ $path: inner wasm sha256 ($a_sha) != meta.wasm_sha256 ($wasm_sha)"; fail=1
+                    fi
+                  else
+                    echo "✗ $meta: versions[$i] ($ver) missing wasm_sha256"; fail=1
+                  fi
+                  wasm_size=$(jq -r ".versions[$i].wasm_size // empty" "$meta")
+                  if [ -n "$wasm_size" ]; then
+                    a_size=$(wc -c < /tmp/inner.wasm | tr -d ' ')
+                    if [ "$a_size" != "$wasm_size" ]; then
+                      echo "✗ $path: inner wasm size ($a_size) != meta.wasm_size ($wasm_size)"; fail=1
+                    fi
+                  fi
+                fi
+              fi
+
               # aglets only: bundled-asset mirror sha256 cross-check
               if [ "$ns" = "aglets" ]; then
                 mirror_dir="$nspath/$ver"
