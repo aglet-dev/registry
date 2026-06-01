@@ -5,9 +5,11 @@ Plugins are **wasm-only** shared services that aglets depend on via
 <aglet>` auto-resolves and pulls plugin dependencies.
 
 This document is the canonical reference for the plugin file layout and
-metadata schema in this registry. For host runtime details (wasmtime config,
-WASI sandbox surface, fuel/memory limits) see the aglet repo's
-`docs/PLUGIN_REGISTRY_ROADMAP.md`.
+metadata schema in this registry. For host runtime details: the exact WASI
+sandbox surface (allowed imports) is `STUB_TABLE` / `isKnownStub()` in the
+aglet repo `src/host/wasm_runtime.zig` (source of truth); design rationale
+(wasmtime config, fuel/memory limits) is in `docs/PLUGIN_REGISTRY_ROADMAP.md`
+#4.
 
 ## Directory layout
 
