@@ -58,7 +58,10 @@ jobs:
             id="${nspath##*/}"            # <id>
             ext="aglet"
             inner="app.json"
-            [ "$ns" = "plugins" ] && ext="aplugin" && inner="plugin.json"
+            # canonical inner manifest: aglets=app.json (flattened), plugins=
+            # aplugin.json (renamed from plugin.json in aglet #60). Legacy plugin
+            # packages may still carry plugin.json — handled as a fallback below.
+            [ "$ns" = "plugins" ] && ext="aplugin" && inner="aplugin.json"
             echo "::group::validate $nspath ($ext)"
             # 目录被整个删掉（如下架）→ 跳过
             if [ ! -d "$nspath" ]; then
@@ -106,7 +109,12 @@ jobs:
                 echo "✗ $path is not a valid tar.gz"; fail=1; continue
               fi
               if ! tar -xOzf "$path" "$inner" >/tmp/inner.json 2>/dev/null; then
-                echo "✗ $path missing $inner"; fail=1; continue
+                # legacy plugin packages (pre-aglet#60) carry plugin.json
+                if [ "$ns" = "plugins" ] && tar -xOzf "$path" plugin.json >/tmp/inner.json 2>/dev/null; then
+                  :
+                else
+                  echo "✗ $path missing $inner"; fail=1; continue
+                fi
               fi
               # aglets pack flattens manifest into app.json (root has {id,
               # version, ...}). Plugins keep the canonical envelope so
