@@ -95,15 +95,44 @@ verify:
   `memory`. No extra unexplained exports. Each export type matches the spec
   (alloc: i32→i32; free: i32,i32→ε; dispatch: i32,i32,i32,i32→i64).
 
-- **Wasm imports whitelist** — Allowed imports:
-  - `env.emscripten_notify_memory_growth` (emscripten leftover; host stubs)
-  - `wasi_snapshot_preview1.fd_close` / `.fd_write` / `.fd_seek` (printf
-    leftovers; host stubs to no-op)
+- **Wasm imports whitelist** — The host links **only** a small vetted stub
+  table; anything the wasm imports outside it fails loud at instantiate.
+  The authoritative list is `STUB_TABLE` / `isKnownStub()` in the aglet repo
+  `src/host/wasm_runtime.zig` — **that table is the source of truth; if this
+  list disagrees, the code wins** (and fix this doc). As of writing, the
+  allowed keys are:
+
+  | import key | what it discloses |
+  |---|---|
+  | `env.emscripten_notify_memory_growth` | nothing (no-op; emscripten leftover) |
+  | `env.__syscall_pipe2` | nothing (returns -1; no kernel pipe) |
+  | `env.__syscall_poll` | nothing (0 ready; no real fds) |
+  | `wasi_snapshot_preview1.fd_close` | nothing (errno 0; no real fd) |
+  | `wasi_snapshot_preview1.fd_write` | nothing — **bytes dropped**, only byte-count returned (stdout probe is blocked) |
+  | `wasi_snapshot_preview1.fd_read` | nothing (EOF; reads the in-memory buffer it was handed) |
+  | `wasi_snapshot_preview1.fd_seek` | nothing (newoffset 0; in-memory seek) |
+  | `wasi_snapshot_preview1.random_get` | host CSPRNG bytes (crypto nonces/keygen) |
+  | `wasi_snapshot_preview1.clock_time_get` | host wall-clock / monotonic time |
+  | `wasi_snapshot_preview1.proc_exit` | nothing — **traps**, never exits the host |
+
+  Notably **absent** (and therefore unlinkable, so an import of them fails at
+  instantiate): `path_open` and every other filesystem op, `sock_*`,
+  `fd_*data*`, environment/args. No row = no capability.
 
   **Any other import**: PR comment requests author justify; reviewer
-  discusses with maintainers; either added to whitelist + host stub
-  added, or PR rejected. **Sneaking new imports through review is the
-  #1 security risk.**
+  discusses with maintainers; either added to `STUB_TABLE` + this list, or
+  PR rejected. **Sneaking new imports through review is the #1 security
+  risk.**
+
+- **`backend.wasi_imports` declared ⊇ wasm's actual imports** — Each key in
+  the wasm's import section must be listed in `aplugin.json`
+  `backend.wasi_imports`, and every listed key must be in the table above.
+  The host links **only the declared subset** (per-plugin allowlist) and an
+  undeclared import fails at instantiate — so a lib smuggling in `fd_write`
+  can't dissolve into a silent no-op. Verify with `wasm-tools print` that the
+  wasm imports nothing beyond what `wasi_imports` declares. (e.g. crypto
+  declares exactly `random_get` + `clock_time_get`; archive declares the
+  libarchive fd_* + syscall set.)
 
 - **Wasm features matches `meta.json.wasm_features[]`** — Run `wasm-tools
   print` (or eyeball binary); features declared must match what wasm
