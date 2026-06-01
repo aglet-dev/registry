@@ -113,8 +113,7 @@ Plugin-specific fields:
   `name` + `permission`, mirroring for fast catalog scan without unpacking
   the tarball. CI verifies it matches the embedded `plugin.json`.
 - **`backend_kind`** (required) — `"wasm"` or `"stdio"`. Determines the inner
-  artifact (`dist/<id>.wasm` vs the native binary at `manifest.backend.path`)
-  and which per-version hash fields apply.
+  artifact(s) and which per-version hash fields apply.
 - **`wasm_features[]`** (wasm only) — Wasm proposals the .wasm needs at
   runtime (`exceptions`, `bulk-memory`, `simd`, `gc`, etc). Host checks its
   wasmtime supports them; mismatch = install rejected. **Don't list features
@@ -123,9 +122,14 @@ Plugin-specific fields:
   sha256 + uncompressed size of inner `dist/<id>.wasm`. Reviewers compare
   against a locally rebuilt wasm; clients tamper-detect even if the `.aplugin`
   is re-tarred; catalog filter / growth audit.
-- **`binary_sha256` / `binary_size`** (required per-version, **stdio** plugins) —
-  same role for the native backend binary at `manifest.backend.path`. (No
-  `wasm_features` for stdio.)
+- **`binaries[]`** (required per-version, **stdio** plugins) — one entry per
+  shipped platform: `{ "target": "<os>-<arch>", "sha256": "...", "size": N }`.
+  The native binary for target `T` lives in the tarball at `<backend.path>-<T>`
+  (e.g. `dist/tokstat-darwin-arm64`); the host picks the entry matching where it
+  runs (a target absent here = the plugin, and any app needing it, isn't
+  available on that platform). `manifest.backend.targets[]` declares the same
+  target list; CI cross-checks both against the binaries actually in the tarball.
+  (No `wasm_features` for stdio.)
 - **`yanked`** (optional, per-version) — Same semantics as aglet.
 
 ## `plugins/index.json` shape

@@ -123,64 +123,66 @@ jobs:
               fi
 
               # plugins only: inner backend-artifact integrity. The outer .aplugin
-              # sha256 is checked above, but the meta artifact-hash fields were
-              # never verified against the shipped artifact — so they could be
-              # stale/decorative, yet REVIEW_PROCESS leans on them as the anchor a
-              # source-rebuild compares to. Pin them to the real artifact here.
-              # Branch on backend.kind (from the inner aplugin.json):
+              # sha256 is checked above; pin the meta artifact-hash fields to the
+              # real shipped artifact(s) so they're trustworthy (the anchor a
+              # source-rebuild compares to). Branch on backend.kind (inner aplugin.json):
               #   wasm  → dist/<id>.wasm , must be a wasm module , meta.wasm_sha256/wasm_size
-              #   stdio → manifest.backend.path (native binary, no magic) , meta.binary_sha256/binary_size
+              #   stdio → per-target native binary `<backend.path>-<target>` (no magic),
+              #           one per meta.versions[].binaries[] = [{target,sha256,size}].
               # (Full source-rebuild reproducibility is a separate, larger item:
-              # needs a pinned source ref + per-plugin toolchain. See
-              # REVIEW_PROCESS Step 6.)
+              # needs a pinned source ref + per-plugin toolchain. See REVIEW_PROCESS Step 6.)
               if [ "$ns" = "plugins" ]; then
-                rm -f /tmp/inner.art
-                meta_sha=""; meta_size=""; sha_field=""
                 bkind=$(jq -r '.manifest.backend.kind // "wasm"' /tmp/inner.json 2>/dev/null || echo wasm)
                 if [ "$bkind" = "wasm" ]; then
+                  rm -f /tmp/inner.art
                   member="dist/$id.wasm"
                   if ! tar -xOzf "$path" "$member" >/tmp/inner.art 2>/dev/null; then
-                    echo "✗ $path: missing $member"; fail=1; rm -f /tmp/inner.art
+                    echo "✗ $path: missing $member"; fail=1
                   else
                     magic=$(head -c4 /tmp/inner.art | od -An -tx1 | tr -d ' \n')
-                    if [ "$magic" != "0061736d" ]; then
-                      echo "✗ $path: $member is not a wasm module (magic=$magic)"; fail=1
-                    fi
+                    [ "$magic" = "0061736d" ] || { echo "✗ $path: $member is not a wasm module (magic=$magic)"; fail=1; }
                     meta_sha=$(jq -r ".versions[$i].wasm_sha256 // empty" "$meta")
+                    if [ -n "$meta_sha" ]; then
+                      a_sha=$(shasum -a 256 /tmp/inner.art | awk '{print $1}')
+                      [ "$a_sha" = "$meta_sha" ] || { echo "✗ $path: wasm sha256 ($a_sha) != meta.wasm_sha256 ($meta_sha)"; fail=1; }
+                    else echo "✗ $meta: versions[$i] ($ver) missing wasm_sha256"; fail=1; fi
                     meta_size=$(jq -r ".versions[$i].wasm_size // empty" "$meta")
-                    sha_field="wasm_sha256"
-                  fi
-                elif [ "$bkind" = "stdio" ]; then
-                  member=$(jq -r '.manifest.backend.path // empty' /tmp/inner.json)
-                  if [ -z "$member" ]; then
-                    echo "✗ $path: stdio plugin missing manifest.backend.path"; fail=1
-                  elif ! tar -xOzf "$path" "$member" >/tmp/inner.art 2>/dev/null; then
-                    echo "✗ $path: missing backend artifact $member"; fail=1; rm -f /tmp/inner.art
-                  else
-                    meta_sha=$(jq -r ".versions[$i].binary_sha256 // empty" "$meta")
-                    meta_size=$(jq -r ".versions[$i].binary_size // empty" "$meta")
-                    sha_field="binary_sha256"
-                  fi
-                else
-                  echo "✗ $path: unknown backend.kind '$bkind' (wasm|stdio)"; fail=1
-                fi
-                # shared sha256/size pin against whatever artifact got extracted
-                if [ -f /tmp/inner.art ]; then
-                  if [ -n "$meta_sha" ]; then
-                    a_sha=$(shasum -a 256 /tmp/inner.art | awk '{print $1}')
-                    if [ "$a_sha" != "$meta_sha" ]; then
-                      echo "✗ $path: artifact sha256 ($a_sha) != meta.$sha_field ($meta_sha)"; fail=1
-                    fi
-                  else
-                    echo "✗ $meta: versions[$i] ($ver) missing $sha_field"; fail=1
-                  fi
-                  if [ -n "$meta_size" ]; then
-                    a_size=$(wc -c < /tmp/inner.art | tr -d ' ')
-                    if [ "$a_size" != "$meta_size" ]; then
-                      echo "✗ $path: artifact size ($a_size) != meta size ($meta_size)"; fail=1
+                    if [ -n "$meta_size" ]; then
+                      a_size=$(wc -c < /tmp/inner.art | tr -d ' ')
+                      [ "$a_size" = "$meta_size" ] || { echo "✗ $path: wasm size ($a_size) != meta.wasm_size ($meta_size)"; fail=1; }
                     fi
                   fi
                   rm -f /tmp/inner.art
+                elif [ "$bkind" = "stdio" ]; then
+                  bpath=$(jq -r '.manifest.backend.path // empty' /tmp/inner.json)
+                  nb=$(jq -r "(.versions[$i].binaries // []) | length" "$meta")
+                  if [ -z "$bpath" ]; then
+                    echo "✗ $path: stdio plugin missing manifest.backend.path"; fail=1
+                  elif [ "$nb" -eq 0 ]; then
+                    echo "✗ $meta: versions[$i] ($ver) stdio plugin missing binaries[]"; fail=1
+                  else
+                    for j in $(seq 0 $((nb - 1))); do
+                      t=$(jq -r ".versions[$i].binaries[$j].target" "$meta")
+                      member="$bpath-$t"
+                      rm -f /tmp/inner.art
+                      if ! tar -xOzf "$path" "$member" >/tmp/inner.art 2>/dev/null; then
+                        echo "✗ $path: missing target binary $member (declared in binaries[$j])"; fail=1; continue
+                      fi
+                      t_sha=$(jq -r ".versions[$i].binaries[$j].sha256 // empty" "$meta")
+                      if [ -n "$t_sha" ]; then
+                        a_sha=$(shasum -a 256 /tmp/inner.art | awk '{print $1}')
+                        [ "$a_sha" = "$t_sha" ] || { echo "✗ $path: $member sha256 ($a_sha) != meta ($t_sha)"; fail=1; }
+                      else echo "✗ $meta: binaries[$j] ($t) missing sha256"; fail=1; fi
+                      t_size=$(jq -r ".versions[$i].binaries[$j].size // empty" "$meta")
+                      if [ -n "$t_size" ]; then
+                        a_size=$(wc -c < /tmp/inner.art | tr -d ' ')
+                        [ "$a_size" = "$t_size" ] || { echo "✗ $path: $member size ($a_size) != meta ($t_size)"; fail=1; }
+                      fi
+                      rm -f /tmp/inner.art
+                    done
+                  fi
+                else
+                  echo "✗ $path: unknown backend.kind '$bkind' (wasm|stdio)"; fail=1
                 fi
               fi
 
