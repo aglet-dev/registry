@@ -54,8 +54,9 @@ searching "barcode" should see "Barcode Reader" the aglet, not the underlying
 Gzipped tar with this layout:
 
 ```
-plugin.json                    # required; at tar root
-dist/<plugin-id>.wasm          # required; standalone wasm
+aplugin.json                   # required; at tar root (renamed from plugin.json, aglet #60)
+dist/<plugin-id>.wasm          # wasm backend: standalone wasm module
+dist/<plugin-id>-<os>-<arch>   # stdio backend: one native binary per target
 README.md                      # optional
 LICENSE                        # optional but strongly encouraged
 ```
