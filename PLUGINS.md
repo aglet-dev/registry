@@ -1,8 +1,20 @@
 # Plugin Format Spec
 
-Plugins are **wasm-only** shared services that aglets depend on via
-`manifest.requires`. Users never install plugins directly; `aglet install
-<aglet>` auto-resolves and pulls plugin dependencies.
+Plugins are shared services that aglets depend on via `manifest.requires`.
+Users never install plugins directly; `aglet install <aglet>` auto-resolves
+and pulls plugin dependencies. Two distributable backends:
+
+- **`wasm`** — sandboxed wasmtime module (`dist/<id>.wasm`); runtime-enforced
+  WASI allowlist + fuel/memory caps.
+- **`stdio`** — native subprocess speaking MCP JSON-RPC (the binary at
+  `manifest.backend.path`, e.g. `dist/<id>`); an aglet stdio plugin is a vanilla
+  MCP server. No runtime sandbox — trust is install-time review + the
+  `backend.capabilities[]` consent the install dialog renders. See the aglet
+  repo `docs/STDIO_PLUGIN_SPEC.md`.
+
+Both ride the **same** distribution pipeline: `aglet plugin publish` packs the
+backend artifact into `.aplugin` → registry PR → `aglet install` fetches +
+unpacks to `~/.aglet/plugins/<id>/<ver>/` → loader runs it.
 
 This document is the canonical reference for the plugin file layout and
 metadata schema in this registry. For host runtime details: the exact WASI
@@ -100,17 +112,24 @@ Plugin-specific fields:
 - **`actions[]`** (required) — Subset of `plugin.json` actions with just
   `name` + `permission`, mirroring for fast catalog scan without unpacking
   the tarball. CI verifies it matches the embedded `plugin.json`.
-- **`backend_kind`** (required) — Currently always `"wasm"`. Reserved field
-  for future (e.g. WIT-component plugins).
-- **`wasm_features[]`** (required) — Wasm proposals the .wasm needs at
+- **`backend_kind`** (required) — `"wasm"` or `"stdio"`. Determines the inner
+  artifact(s) and which per-version hash fields apply.
+- **`wasm_features[]`** (wasm only) — Wasm proposals the .wasm needs at
   runtime (`exceptions`, `bulk-memory`, `simd`, `gc`, etc). Host checks its
   wasmtime supports them; mismatch = install rejected. **Don't list features
   the wasm doesn't actually use** — reviewer verifies.
-- **`wasm_sha256`** (required per-version) — sha256 of inner `dist/<id>.wasm`
-  byte-by-byte. Lets reviewers compare against locally rebuilt wasm; lets
-  clients tamper-detect even if `.aplugin` tarball is re-tarred.
-- **`wasm_size`** (required per-version) — Uncompressed wasm bytes. For
-  catalog filtering ("plugins under 1MB") + audit ("did this grow 10×?").
+- **`wasm_sha256` / `wasm_size`** (required per-version, **wasm** plugins) —
+  sha256 + uncompressed size of inner `dist/<id>.wasm`. Reviewers compare
+  against a locally rebuilt wasm; clients tamper-detect even if the `.aplugin`
+  is re-tarred; catalog filter / growth audit.
+- **`binaries[]`** (required per-version, **stdio** plugins) — one entry per
+  shipped platform: `{ "target": "<os>-<arch>", "sha256": "...", "size": N }`.
+  The native binary for target `T` lives in the tarball at `<backend.path>-<T>`
+  (e.g. `dist/tokstat-darwin-arm64`); the host picks the entry matching where it
+  runs (a target absent here = the plugin, and any app needing it, isn't
+  available on that platform). `manifest.backend.targets[]` declares the same
+  target list; CI cross-checks both against the binaries actually in the tarball.
+  (No `wasm_features` for stdio.)
 - **`yanked`** (optional, per-version) — Same semantics as aglet.
 
 ## `plugins/index.json` shape
