@@ -1,0 +1,38 @@
+{
+  "id": "gh-actions",
+  "name": {
+    "default": "GitHub Actions",
+    "zh": "GitHub Actions",
+    "ja": "GitHub Actions"
+  },
+  "description": {
+    "default": "Watch and run GitHub Actions across your active repos. Auto-detects the `gh` CLI; otherwise connect with a token.",
+    "zh": "查看并执行你活跃仓库的 GitHub Actions。自动探测 `gh` CLI;没有则用 token 连接。",
+    "ja": "アクティブなリポジトリの GitHub Actions を確認・実行。`gh` CLI を自動検出;なければトークンで接続。"
+  },
+  "author": "agent-rt",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/play-circle-fill.svg?color=%232088ff&width=256",
+  "category": "developer-tools",
+  "keywords": [
+    "github",
+    "actions",
+    "ci",
+    "workflow",
+    "devops"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "735e3b1083e4ec5f829ccf05ae539643f0222da76344b81176e085f8dd3e4d0d",
+      "published_at": "2026-06-26T15:22:19Z"
+    }
+  ]
+}
