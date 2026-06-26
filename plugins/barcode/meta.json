@@ -1,0 +1,41 @@
+{
+  "id": "barcode",
+  "name": "Barcode",
+  "description": {
+    "default": "Barcode & QR encode / decode (zxing-cpp).",
+    "zh": "条码 / 二维码编解码(zxing-cpp)。",
+    "ja": "バーコード / QR のエンコード・デコード(zxing-cpp)。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "barcode",
+    "qr",
+    "encode",
+    "decode",
+    "zxing"
+  ],
+  "homepage": "https://github.com/agent-rt/aglet-plugins",
+  "namespace": "barcode",
+  "actions": [
+    {
+      "name": "encode",
+      "permission": "barcode:encode"
+    },
+    {
+      "name": "decode",
+      "permission": "barcode:decode"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "9f78981ca0b0c7ab4c895b8d35d3fd51dbd597ae329609486e8ccc170f4b91eb",
+      "wasm_sha256": "834d8e03cfde4e5dd671d8abb191d1640851c3dbb0c7dd49f793720e4d26e10a",
+      "wasm_size": 1059903,
+      "published_at": "2026-06-26T15:05:41Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
