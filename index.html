@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aglet registry</title>
+<meta name="description" content="Agent-first miniapp registry. aglet install <id>.">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --fg: #18181b;
+    --muted: #71717a;
+    --line: #e4e4e7;
+    --card: #ffffff;
+    --accent: #ef6f5f;
+    --code-bg: #f4f4f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0b0c;
+      --fg: #f4f4f5;
+      --muted: #a1a1aa;
+      --line: #27272a;
+      --card: #18181b;
+      --code-bg: #1f1f23;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  header {
+    margin-bottom: 48px;
+  }
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+  }
+  header .install-hint {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: var(--code-bg);
+    border-radius: 8px;
+    font-family: ui-monospace, "SF Mono", monospace;
+    font-size: 13px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color .15s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-head img.icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--code-bg);
+    padding: 6px;
+    flex-shrink: 0;
+  }
+  .card-head .title {
+    flex: 1;
+    min-width: 0;
+  }
+  .card-head .name {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-head .id {
+    color: var(--muted);
+    font-size: 12px;
+    font-family: ui-monospace, monospace;
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+    flex: 1;
+    min-height: 2.6em;
+  }
+  .card-shot {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--code-bg);
+  }
+  .card-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+  }
+  .card-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .card-meta .badge {
+    padding: 2px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+  }
+  .install {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: var(--code-bg);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .install code {
+    flex: 1;
+    padding: 8px 12px;
+    font: 12px/1.4 ui-monospace, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .install button {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    padding: 0 12px;
+    cursor: pointer;
+    font-size: 12px;
+    border-left: 1px solid var(--line);
+  }
+  .install button:hover { color: var(--fg); }
+  .install button.copied { color: var(--accent); }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--fg); }
+  .empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 48px 0;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>aglet registry</h1>
+    <p>Agent-first miniapps. Browse, install with one command.</p>
+    <div class="install-hint">$ aglet install &lt;id&gt;</div>
+  </header>
+
+  <div id="aglets" class="grid">
+    <div class="empty">loading…</div>
+  </div>
+
+  <footer>
+    <a href="https://github.com/agent-rt/aglet">aglet</a>
+    <a href="https://github.com/agent-rt/aglet-registry">registry</a>
+    <a href="https://github.com/agent-rt/aglet-registry/blob/main/CONTRIBUTING.md">publish a miniapp</a>
+    <a href="/aglets/index.json">raw catalog (JSON)</a>
+  </footer>
+</main>
+
+<script>
+// i18n resolver: name/description 可能是字符串或 {default, en, zh, ja, ...}
+function pickLocale(v) {
+  if (typeof v === "string") return v;
+  if (!v || typeof v !== "object") return "";
+  const lang = (navigator.language || "en").toLowerCase();
+  for (const k of [lang, lang.split("-")[0], "en"]) {
+    if (v[k]) return v[k];
+  }
+  return v.default || "";
+}
+
+function categoryBadge(cat) {
+  return cat ? `<span class="badge">${cat}</span>` : "";
+}
+
+async function copy(text, btn) {
+  try {
+    await navigator.clipboard.writeText(text);
+    btn.classList.add("copied");
+    btn.textContent = "copied";
+    setTimeout(() => {
+      btn.classList.remove("copied");
+      btn.textContent = "copy";
+    }, 1200);
+  } catch {
+    btn.textContent = "failed";
+  }
+}
+
+function renderCard(app) {
+  const name = pickLocale(app.name);
+  const desc = pickLocale(app.description);
+  const ver = app.latest || "";
+  const cat = app.category || "";
+  const icon = app.icon || "";
+  const shot = (app.screenshots && app.screenshots[0]) || null;
+  const install = `aglet install ${app.id}`;
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="card-head">
+      ${icon ? `<img class="icon" src="${icon}" alt="">` : ""}
+      <div class="title">
+        <h2 class="name">${name || app.id}</h2>
+        <div class="id">${app.id}@${ver}</div>
+      </div>
+    </div>
+    <p class="card-desc">${desc || ""}</p>
+    ${shot ? `<div class="card-shot"><img src="${shot.url}" alt="${shot.caption || ''}" loading="lazy"></div>` : ""}
+    <div class="card-meta">${categoryBadge(cat)}</div>
+    <div class="install">
+      <code>${install}</code>
+      <button onclick="copy('${install}', this)">copy</button>
+    </div>
+  `;
+  return card;
+}
+
+fetch("/aglets/index.json")
+  .then(r => r.json())
+  .then(data => {
+    const root = document.getElementById("aglets");
+    root.innerHTML = "";
+    const aglets = (data.aglets || []).slice().sort((a, b) => a.id.localeCompare(b.id));
+    if (aglets.length === 0) {
+      root.innerHTML = `<div class="empty">no aglets yet</div>`;
+      return;
+    }
+    for (const aglet of aglets) root.appendChild(renderCard(aglet));
+  })
+  .catch(err => {
+    document.getElementById("aglets").innerHTML =
+      `<div class="empty">failed to load catalog: ${err.message}</div>`;
+  });
+</script>
+</body>
+</html>
