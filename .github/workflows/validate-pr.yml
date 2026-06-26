@@ -1,0 +1,232 @@
+name: Validate PR
+
+# 2026-05-24 canonical 双 namespace：
+#   aglets/<id>/{meta.json,<ver>.aglet,<ver>/...}     user-facing
+#   plugins/<id>/{meta.json,<ver>.aplugin}            infrastructure
+# archive/ 不验（yanked 包，只留 audit）。
+
+on:
+  pull_request:
+    paths:
+      - "aglets/**"
+      - "plugins/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed namespace dirs
+        id: changes
+        run: |
+          set -e
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          # collect "<ns>/<id>" pairs touched by the PR (one per package)
+          # ns ∈ {aglets, plugins}；忽略 archive/，忽略顶层目录变化
+          dirs=$(git diff --name-only "$base" "$head" \
+            | awk -F/ '
+                ($1=="aglets" || $1=="plugins") && NF>=3 { print $1"/"$2 }
+              ' \
+            | sort -u)
+          if [ -z "$dirs" ]; then
+            echo "No package dirs touched; nothing to validate."
+            echo "dirs=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Changed package dirs:"
+          printf '  %s\n' $dirs
+          echo "dirs<<EOF" >> "$GITHUB_OUTPUT"
+          printf '%s\n' $dirs >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Validate each touched package
+        if: steps.changes.outputs.dirs != ''
+        env:
+          DIRS: ${{ steps.changes.outputs.dirs }}
+        run: |
+          set -euo pipefail
+          fail=0
+          for nspath in $DIRS; do
+            ns="${nspath%%/*}"            # aglets | plugins
+            id="${nspath##*/}"            # <id>
+            ext="aglet"
+            inner="app.json"
+            # canonical inner manifest: aglets=app.json (flattened), plugins=
+            # aplugin.json (renamed from plugin.json in aglet #60). Legacy plugin
+            # packages may still carry plugin.json — handled as a fallback below.
+            [ "$ns" = "plugins" ] && ext="aplugin" && inner="aplugin.json"
+            echo "::group::validate $nspath ($ext)"
+            # 目录被整个删掉（如下架）→ 跳过
+            if [ ! -d "$nspath" ]; then
+              echo "(removed) $nspath directory deleted — skipping"
+              echo "::endgroup::"; continue
+            fi
+            meta="$nspath/meta.json"
+            if [ ! -f "$meta" ]; then
+              echo "✗ $meta missing"; fail=1; echo "::endgroup::"; continue
+            fi
+
+            # meta.json must be valid JSON with required shape
+            if ! jq -e '.id and .latest and (.versions | type == "array")' "$meta" >/dev/null; then
+              echo "✗ $meta missing required fields {id, latest, versions[]}"
+              fail=1; echo "::endgroup::"; continue
+            fi
+            meta_id=$(jq -r .id "$meta")
+            if [ "$meta_id" != "$id" ]; then
+              echo "✗ $meta_id (meta.json) != $id (directory)"; fail=1
+            fi
+
+            # latest must exist in versions[]
+            latest=$(jq -r .latest "$meta")
+            if ! jq -e --arg v "$latest" '.versions | map(.version) | index($v)' "$meta" >/dev/null; then
+              echo "✗ latest=$latest not in versions[]"; fail=1
+            fi
+
+            # Each version: file exists, sha256 matches
+            n=$(jq -r '.versions | length' "$meta")
+            for i in $(seq 0 $((n - 1))); do
+              ver=$(jq -r ".versions[$i].version" "$meta")
+              file=$(jq -r ".versions[$i].file" "$meta")
+              sha=$(jq -r ".versions[$i].sha256" "$meta")
+              path="$nspath/$file"
+              if [ ! -f "$path" ]; then
+                echo "✗ versions[$i] file $path missing"; fail=1; continue
+              fi
+              actual=$(shasum -a 256 "$path" | awk '{print $1}')
+              if [ "$actual" != "$sha" ]; then
+                echo "✗ versions[$i] sha256 mismatch for $ver: meta=$sha actual=$actual"
+                fail=1
+              fi
+              # Check file is a valid gzip + has inner manifest with matching id/version
+              if ! tar -tzf "$path" >/dev/null 2>&1; then
+                echo "✗ $path is not a valid tar.gz"; fail=1; continue
+              fi
+              if ! tar -xOzf "$path" "$inner" >/tmp/inner.json 2>/dev/null; then
+                # legacy plugin packages (pre-aglet#60) carry plugin.json
+                if [ "$ns" = "plugins" ] && tar -xOzf "$path" plugin.json >/tmp/inner.json 2>/dev/null; then
+                  :
+                else
+                  echo "✗ $path missing $inner"; fail=1; continue
+                fi
+              fi
+              # aglets pack flattens manifest into app.json (root has {id,
+              # version, ...}). Plugins keep the canonical envelope so
+              # plugin.json is {manifest: {id, version, ...}, ui: ...}.
+              # Read .manifest.<field> first, fall back to flat .<field> so a
+              # future plugin.json that happens to be flat still passes.
+              inner_id=$(jq -r '.manifest.id // .id // empty' /tmp/inner.json 2>/dev/null || echo "")
+              inner_ver=$(jq -r '.manifest.version // .version // empty' /tmp/inner.json 2>/dev/null || echo "")
+              if [ "$inner_id" != "$id" ]; then
+                echo "✗ $path: $inner id ($inner_id) != $id"; fail=1
+              fi
+              if [ "$inner_ver" != "$ver" ]; then
+                echo "✗ $path: $inner version ($inner_ver) != $ver"; fail=1
+              fi
+
+              # plugins only: inner backend-artifact integrity. The outer .aplugin
+              # sha256 is checked above; pin the meta artifact-hash fields to the
+              # real shipped artifact(s) so they're trustworthy (the anchor a
+              # source-rebuild compares to). Branch on backend.kind (inner aplugin.json):
+              #   wasm  → dist/<id>.wasm , must be a wasm module , meta.wasm_sha256/wasm_size
+              #   stdio → per-target native binary `<backend.path>-<target>` (no magic),
+              #           one per meta.versions[].binaries[] = [{target,sha256,size}].
+              # (Full source-rebuild reproducibility is a separate, larger item:
+              # needs a pinned source ref + per-plugin toolchain. See REVIEW_PROCESS Step 6.)
+              if [ "$ns" = "plugins" ]; then
+                bkind=$(jq -r '.manifest.backend.kind // "wasm"' /tmp/inner.json 2>/dev/null || echo wasm)
+                if [ "$bkind" = "wasm" ]; then
+                  rm -f /tmp/inner.art
+                  member="dist/$id.wasm"
+                  if ! tar -xOzf "$path" "$member" >/tmp/inner.art 2>/dev/null; then
+                    echo "✗ $path: missing $member"; fail=1
+                  else
+                    magic=$(head -c4 /tmp/inner.art | od -An -tx1 | tr -d ' \n')
+                    [ "$magic" = "0061736d" ] || { echo "✗ $path: $member is not a wasm module (magic=$magic)"; fail=1; }
+                    meta_sha=$(jq -r ".versions[$i].wasm_sha256 // empty" "$meta")
+                    if [ -n "$meta_sha" ]; then
+                      a_sha=$(shasum -a 256 /tmp/inner.art | awk '{print $1}')
+                      [ "$a_sha" = "$meta_sha" ] || { echo "✗ $path: wasm sha256 ($a_sha) != meta.wasm_sha256 ($meta_sha)"; fail=1; }
+                    else echo "✗ $meta: versions[$i] ($ver) missing wasm_sha256"; fail=1; fi
+                    meta_size=$(jq -r ".versions[$i].wasm_size // empty" "$meta")
+                    if [ -n "$meta_size" ]; then
+                      a_size=$(wc -c < /tmp/inner.art | tr -d ' ')
+                      [ "$a_size" = "$meta_size" ] || { echo "✗ $path: wasm size ($a_size) != meta.wasm_size ($meta_size)"; fail=1; }
+                    fi
+                  fi
+                  rm -f /tmp/inner.art
+                elif [ "$bkind" = "stdio" ]; then
+                  bpath=$(jq -r '.manifest.backend.path // empty' /tmp/inner.json)
+                  nb=$(jq -r "(.versions[$i].binaries // []) | length" "$meta")
+                  if [ -z "$bpath" ]; then
+                    echo "✗ $path: stdio plugin missing manifest.backend.path"; fail=1
+                  elif [ "$nb" -eq 0 ]; then
+                    echo "✗ $meta: versions[$i] ($ver) stdio plugin missing binaries[]"; fail=1
+                  else
+                    for j in $(seq 0 $((nb - 1))); do
+                      t=$(jq -r ".versions[$i].binaries[$j].target" "$meta")
+                      member="$bpath-$t"
+                      rm -f /tmp/inner.art
+                      if ! tar -xOzf "$path" "$member" >/tmp/inner.art 2>/dev/null; then
+                        echo "✗ $path: missing target binary $member (declared in binaries[$j])"; fail=1; continue
+                      fi
+                      t_sha=$(jq -r ".versions[$i].binaries[$j].sha256 // empty" "$meta")
+                      if [ -n "$t_sha" ]; then
+                        a_sha=$(shasum -a 256 /tmp/inner.art | awk '{print $1}')
+                        [ "$a_sha" = "$t_sha" ] || { echo "✗ $path: $member sha256 ($a_sha) != meta ($t_sha)"; fail=1; }
+                      else echo "✗ $meta: binaries[$j] ($t) missing sha256"; fail=1; fi
+                      t_size=$(jq -r ".versions[$i].binaries[$j].size // empty" "$meta")
+                      if [ -n "$t_size" ]; then
+                        a_size=$(wc -c < /tmp/inner.art | tr -d ' ')
+                        [ "$a_size" = "$t_size" ] || { echo "✗ $path: $member size ($a_size) != meta ($t_size)"; fail=1; }
+                      fi
+                      rm -f /tmp/inner.art
+                    done
+                  fi
+                else
+                  echo "✗ $path: unknown backend.kind '$bkind' (wasm|stdio)"; fail=1
+                fi
+              fi
+
+              # aglets only: bundled-asset mirror sha256 cross-check
+              if [ "$ns" = "aglets" ]; then
+                mirror_dir="$nspath/$ver"
+                if [ -d "$mirror_dir" ]; then
+                  tmp_extract="$(mktemp -d)"
+                  tar -xzf "$path" -C "$tmp_extract"
+                  while IFS= read -r mirror_file; do
+                    rel="${mirror_file#$mirror_dir/}"
+                    tar_member="$tmp_extract/$rel"
+                    if [ ! -f "$tar_member" ]; then
+                      echo "✗ mirror $mirror_file has no tar counterpart at $rel"; fail=1; continue
+                    fi
+                    m_sha=$(shasum -a 256 "$mirror_file" | awk '{print $1}')
+                    t_sha=$(shasum -a 256 "$tar_member" | awk '{print $1}')
+                    if [ "$m_sha" != "$t_sha" ]; then
+                      echo "✗ mirror $mirror_file (sha $m_sha) != tar $rel (sha $t_sha)"; fail=1
+                    fi
+                  done < <(find "$mirror_dir" -type f)
+                  rm -rf "$tmp_extract"
+                fi
+              fi
+            done
+
+            # Check for duplicate versions
+            if [ "$(jq -r '.versions | map(.version) | length' "$meta")" \
+                != "$(jq -r '.versions | map(.version) | unique | length' "$meta")" ]; then
+              echo "✗ duplicate versions"; fail=1
+            fi
+
+            echo "::endgroup::"
+          done
+          if [ $fail -ne 0 ]; then
+            echo "Validation FAILED"
+            exit 1
+          fi
+          echo "All checks passed."
