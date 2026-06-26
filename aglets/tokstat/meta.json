@@ -1,0 +1,27 @@
+{
+  "id": "tokstat",
+  "name": {
+    "default": "AI Token Usage",
+    "zh": "AI 用量",
+    "ja": "AI トークン使用量"
+  },
+  "description": {
+    "default": "Claude + Codex usage (session & weekly) in your menu bar, with progress bars and reset countdowns.",
+    "zh": "在菜单栏查看 Claude + Codex 的用量（会话与每周），含进度条与重置倒计时。",
+    "ja": "メニューバーで Claude + Codex の使用量（セッション・週）を進捗バーとリセットまでのカウントダウン付きで表示。"
+  },
+  "license": "MIT",
+  "platforms": [
+    "apple",
+    "windows"
+  ],
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "83e52af86c82cae46958c18f8ea948e562159c4ed24c0051c9bdd464d336e297",
+      "published_at": "2026-06-26T15:22:22Z"
+    }
+  ]
+}
