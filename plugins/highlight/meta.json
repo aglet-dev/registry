@@ -1,0 +1,36 @@
+{
+  "id": "highlight",
+  "name": "Syntax Highlight",
+  "description": {
+    "default": "Syntax highlighting via tree-sitter — code → IR rich-text runs (renderer-agnostic).",
+    "zh": "tree-sitter 语法高亮：代码 → IR rich-text runs（跨端渲染器无关）。",
+    "ja": "tree-sitter による構文ハイライト：コード → IR rich-text runs（レンダラー非依存）。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "highlight",
+    "syntax",
+    "code",
+    "tree-sitter"
+  ],
+  "homepage": "https://github.com/agent-rt/aglet-plugins",
+  "namespace": "highlight",
+  "actions": [
+    {
+      "name": "render",
+      "permission": "highlight:render"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "c280d103cd7821d9c9f9f513ece742b172e3709e590b9e3bbb651bebd992985c",
+      "wasm_sha256": "e4edc0aa9e40a84ec2bbc3ad3477155b438a6b3c8ce20ff20cd1cafab8a0654a",
+      "wasm_size": 5457281,
+      "published_at": "2026-06-26T15:04:20Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
