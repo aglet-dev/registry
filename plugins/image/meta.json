@@ -1,0 +1,50 @@
+{
+  "id": "image",
+  "name": "Image",
+  "description": {
+    "default": "Image encode / decode / metadata (libwebp, stb).",
+    "zh": "图片编解码 / 元数据(libwebp、stb)。",
+    "ja": "画像のエンコード・デコード・メタデータ(libwebp、stb)。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "image",
+    "webp",
+    "png",
+    "jpeg",
+    "encode",
+    "decode"
+  ],
+  "homepage": "https://github.com/agent-rt/aglet-plugins",
+  "namespace": "image",
+  "actions": [
+    {
+      "name": "metadata",
+      "permission": "image:read"
+    },
+    {
+      "name": "decode",
+      "permission": "image:read"
+    },
+    {
+      "name": "encode",
+      "permission": "image:convert"
+    },
+    {
+      "name": "process",
+      "permission": "image:convert"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "93adf56ab80cff9575da17b2cb2f3ac558dc9498cd55ccf0c55c107873290697",
+      "wasm_sha256": "f1e035c2dfff850dfe05609d5dd1b1a4c67300048832d969b0e6e95f3c993fa6",
+      "wasm_size": 582387,
+      "published_at": "2026-06-26T15:08:05Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
