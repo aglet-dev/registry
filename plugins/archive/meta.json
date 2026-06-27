@@ -1,0 +1,47 @@
+{
+  "id": "archive",
+  "name": "Archive",
+  "description": {
+    "default": "Read zip / tar / tar.{gz,bz2,xz,zst} / rar (4 & 5). Write zip / tar / tar.{gz,xz,zst}.",
+    "zh": "读取 zip / tar / tar.{gz,bz2,xz,zst} / rar；写 zip / tar / tar.{gz,xz,zst}。",
+    "ja": "zip / tar / tar.{gz,bz2,xz,zst} / rar の読み込み。zip / tar / tar.{gz,xz,zst} の書き込み。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "archive",
+    "zip",
+    "tar",
+    "rar",
+    "xz",
+    "zstd",
+    "compression"
+  ],
+  "homepage": "https://github.com/aglet-dev/plugins",
+  "namespace": "archive",
+  "actions": [
+    {
+      "name": "list",
+      "permission": "archive:read"
+    },
+    {
+      "name": "extract",
+      "permission": "archive:read"
+    },
+    {
+      "name": "create",
+      "permission": "archive:write"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "0e937b51f126358c0fde46e2c5c782f634bfe76a2fe4f4795b623afc63633b58",
+      "wasm_sha256": "63c15bc2ff429a7dc4a7d09af58fcb9039d4245e4a034c2ac4e7632e8c676725",
+      "wasm_size": 1101291,
+      "published_at": "2026-06-27T03:36:57Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
