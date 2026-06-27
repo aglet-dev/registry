@@ -1,0 +1,40 @@
+{
+  "id": "hn",
+  "name": {
+    "default": "HN Reader",
+    "en": "HN Reader",
+    "zh": "HN 中文",
+    "ja": "HN 日本語"
+  },
+  "description": {
+    "default": "Agent-translated HackerNews reader with like / block lists.",
+    "en": "Agent-translated HackerNews reader with like / block lists.",
+    "zh": "HackerNews 中文化阅读器：Agent 翻译 + 总结，用户点赞/屏蔽。",
+    "ja": "Agent が翻訳・要約した HackerNews。お気に入りとブロックに対応。"
+  },
+  "author": "aglet-dev",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/fire-fill.svg?color=%23ff6600&width=256",
+  "category": "media",
+  "keywords": [
+    "hackernews",
+    "hn",
+    "reader",
+    "translated",
+    "chinese"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "c29c434a99e5e7a1f6941dd8b1f961dff63ee2fe5357956824825d291cc58e17",
+      "published_at": "2026-06-27T03:39:12Z"
+    }
+  ]
+}
