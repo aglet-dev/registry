@@ -1,4 +1,125 @@
 {
-  "generated_at": "2026-06-27T03:38:43Z",
-  "aglets": []
+  "generated_at": "2026-06-27T03:40:57Z",
+  "aglets": [
+    {
+      "id": "tokstat",
+      "name": {
+        "default": "AI Token Usage",
+        "zh": "AI 用量",
+        "ja": "AI トークン使用量"
+      },
+      "description": {
+        "default": "Claude + Codex usage (session & weekly) in your menu bar, with progress bars and reset countdowns.",
+        "zh": "在菜单栏查看 Claude + Codex 的用量（会话与每周），含进度条与重置倒计时。",
+        "ja": "メニューバーで Claude + Codex の使用量（セッション・週）を進捗バーとリセットまでのカウントダウン付きで表示。"
+      },
+      "license": "MIT",
+      "platforms": [
+        "apple",
+        "windows"
+      ],
+      "latest": "0.1.0",
+      "updated_at": "2026-06-27T03:39:21Z"
+    },
+    {
+      "id": "gh-actions",
+      "name": {
+        "default": "GitHub Actions",
+        "zh": "GitHub Actions",
+        "ja": "GitHub Actions"
+      },
+      "description": {
+        "default": "Watch and run GitHub Actions across your active repos. Auto-detects the `gh` CLI; otherwise connect with a token.",
+        "zh": "查看并执行你活跃仓库的 GitHub Actions。自动探测 `gh` CLI;没有则用 token 连接。",
+        "ja": "アクティブなリポジトリの GitHub Actions を確認・実行。`gh` CLI を自動検出;なければトークンで接続。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": "https://api.iconify.design/ph/play-circle-fill.svg?color=%232088ff&width=256",
+      "category": "developer-tools",
+      "keywords": [
+        "github",
+        "actions",
+        "ci",
+        "workflow",
+        "devops"
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.0",
+      "updated_at": "2026-06-27T03:39:19Z"
+    },
+    {
+      "id": "gh-prs",
+      "name": {
+        "default": "GitHub PRs",
+        "zh": "GitHub PR 看板",
+        "ja": "GitHub PR ボード"
+      },
+      "description": {
+        "default": "Review queue + my open PRs. Auto-detects the `gh` CLI; otherwise connect with a GitHub token.",
+        "zh": "Review 队列 + 我的 open PR。自动探测 `gh` CLI;没有则用 GitHub token 连接。",
+        "ja": "レビュー待ち + 自分の open PR。`gh` CLI を自動検出;なければ GitHub トークンで接続。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": "https://api.iconify.design/ph/git-pull-request-fill.svg?color=%231f883d&width=256",
+      "category": "developer-tools",
+      "keywords": [
+        "github",
+        "pr",
+        "review",
+        "code"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.0/screenshots/0.png",
+          "caption": "Review queue + your open PRs"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.0",
+      "updated_at": "2026-06-27T03:39:16Z"
+    },
+    {
+      "id": "hn",
+      "name": {
+        "default": "HN Reader",
+        "en": "HN Reader",
+        "zh": "HN 中文",
+        "ja": "HN 日本語"
+      },
+      "description": {
+        "default": "Agent-translated HackerNews reader with like / block lists.",
+        "en": "Agent-translated HackerNews reader with like / block lists.",
+        "zh": "HackerNews 中文化阅读器：Agent 翻译 + 总结，用户点赞/屏蔽。",
+        "ja": "Agent が翻訳・要約した HackerNews。お気に入りとブロックに対応。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": "https://api.iconify.design/ph/fire-fill.svg?color=%23ff6600&width=256",
+      "category": "media",
+      "keywords": [
+        "hackernews",
+        "hn",
+        "reader",
+        "translated",
+        "chinese"
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.0",
+      "updated_at": "2026-06-27T03:39:12Z"
+    }
+  ]
 }
