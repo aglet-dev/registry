@@ -61,6 +61,6 @@ jobs:
       - name: Deploy to Cloudflare Pages
         if: always()
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: npx --yes wrangler@4 pages deploy . --project-name aglet-registry --branch main
