@@ -1,0 +1,36 @@
+{
+  "id": "markdown",
+  "name": "Markdown",
+  "description": {
+    "default": "Render Markdown to Aglet's canonical UI IR.",
+    "zh": "把 Markdown 渲染成 Aglet 的标准 UI IR。",
+    "ja": "Markdown を Aglet の標準 UI IR にレンダリング。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "render",
+    "ir",
+    "gfm"
+  ],
+  "homepage": "https://github.com/aglet-dev/plugins",
+  "namespace": "markdown",
+  "actions": [
+    {
+      "name": "render",
+      "permission": "markdown:render"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "169cd06833600f1556ab959e87e7ad4a18bdc6d9eb9042365cce952e05806f01",
+      "wasm_sha256": "8c1aae6bec71175bb2d498eb52d9ea385c67c75729e5ed7e68f9ec7e2b572400",
+      "wasm_size": 427587,
+      "published_at": "2026-06-27T03:32:55Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
