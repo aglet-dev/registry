@@ -64,6 +64,16 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
   }
+  .section-title {
+    font-size: 1.15rem; font-weight: 600; margin: 36px 0 4px;
+  }
+  .section-note {
+    color: var(--muted); font-size: 0.9rem; margin: 0 0 16px;
+  }
+  .plugin-note {
+    color: var(--muted); font-size: 0.82rem; font-style: italic;
+    padding: 8px 0 2px; border-top: 1px solid var(--line); margin-top: 10px;
+  }
   .card {
     background: var(--card);
     border: 1px solid var(--line);
@@ -192,7 +202,14 @@
     <div class="install-hint">$ aglet install &lt;id&gt;</div>
   </header>
 
+  <h2 class="section-title">Aglets</h2>
   <div id="aglets" class="grid">
+    <div class="empty">loading…</div>
+  </div>
+
+  <h2 class="section-title">Plugins</h2>
+  <p class="section-note">Infrastructure that powers aglets — auto-installed when an aglet declares one as a dependency. Not installed directly.</p>
+  <div id="plugins" class="grid">
     <div class="empty">loading…</div>
   </div>
 
@@ -201,6 +218,7 @@
     <a href="https://github.com/aglet-dev/registry">registry</a>
     <a href="https://github.com/aglet-dev/registry/blob/main/CONTRIBUTING.md">publish a miniapp</a>
     <a href="/aglets/index.json">raw catalog (JSON)</a>
+    <a href="/plugins/index.json">raw plugins (JSON)</a>
   </footer>
 </main>
 
@@ -234,7 +252,9 @@ async function copy(text, btn) {
   }
 }
 
-function renderCard(app) {
+// isPlugin=true → 插件卡：plugins 是基础设施(用户不直接装,随依赖它的 aglet 自动
+// 安装,见 PLUGINS.md / D1),故不显示 `aglet install`,代以一行说明。
+function renderCard(app, isPlugin) {
   const name = pickLocale(app.name);
   const desc = pickLocale(app.description);
   const ver = app.latest || "";
@@ -242,6 +262,9 @@ function renderCard(app) {
   const icon = app.icon || "";
   const shot = (app.screenshots && app.screenshots[0]) || null;
   const install = `aglet install ${app.id}`;
+  const footer = isPlugin
+    ? `<div class="plugin-note">Auto-installed with aglets that depend on it.</div>`
+    : `<div class="install"><code>${install}</code><button onclick="copy('${install}', this)">copy</button></div>`;
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
@@ -255,30 +278,33 @@ function renderCard(app) {
     <p class="card-desc">${desc || ""}</p>
     ${shot ? `<div class="card-shot"><img src="${shot.url}" alt="${shot.caption || ''}" loading="lazy"></div>` : ""}
     <div class="card-meta">${categoryBadge(cat)}</div>
-    <div class="install">
-      <code>${install}</code>
-      <button onclick="copy('${install}', this)">copy</button>
-    </div>
+    ${footer}
   `;
   return card;
 }
 
-fetch("/aglets/index.json")
-  .then(r => r.json())
-  .then(data => {
-    const root = document.getElementById("aglets");
-    root.innerHTML = "";
-    const aglets = (data.aglets || []).slice().sort((a, b) => a.id.localeCompare(b.id));
-    if (aglets.length === 0) {
-      root.innerHTML = `<div class="empty">no aglets yet</div>`;
-      return;
-    }
-    for (const aglet of aglets) root.appendChild(renderCard(aglet));
-  })
-  .catch(err => {
-    document.getElementById("aglets").innerHTML =
-      `<div class="empty">failed to load catalog: ${err.message}</div>`;
-  });
+// catalog 渲染：同一套卡片给 aglets(可装)与 plugins(基础设施)。
+function loadCatalog(url, gridId, listKey, emptyMsg, isPlugin) {
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      const root = document.getElementById(gridId);
+      root.innerHTML = "";
+      const items = (data[listKey] || []).slice().sort((a, b) => a.id.localeCompare(b.id));
+      if (items.length === 0) {
+        root.innerHTML = `<div class="empty">${emptyMsg}</div>`;
+        return;
+      }
+      for (const it of items) root.appendChild(renderCard(it, isPlugin));
+    })
+    .catch(err => {
+      document.getElementById(gridId).innerHTML =
+        `<div class="empty">failed to load: ${err.message}</div>`;
+    });
+}
+
+loadCatalog("/aglets/index.json", "aglets", "aglets", "no aglets yet", false);
+loadCatalog("/plugins/index.json", "plugins", "plugins", "no plugins yet", true);
 </script>
 </body>
 </html>
