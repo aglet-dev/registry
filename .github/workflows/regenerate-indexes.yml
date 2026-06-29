@@ -16,6 +16,7 @@ on:
     paths:
       - "aglets/*/meta.json"
       - "plugins/*/meta.json"
+      - "index.html"          # catalog 页本身改动也要重新部署(deploy 步骤 if:always)
   workflow_dispatch:
 
 permissions:
