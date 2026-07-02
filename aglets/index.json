@@ -1,6 +1,26 @@
 {
-  "generated_at": "2026-06-30T02:28:32Z",
+  "generated_at": "2026-07-02T01:05:17Z",
   "aglets": [
+    {
+      "id": "tokstat",
+      "name": {
+        "default": "AI Token Usage",
+        "zh": "AI 用量",
+        "ja": "AI トークン使用量"
+      },
+      "description": {
+        "default": "Claude + Codex usage (session & weekly) in your menu bar, with progress bars and reset countdowns.",
+        "zh": "在菜单栏查看 Claude + Codex 的用量（会话与每周），含进度条与重置倒计时。",
+        "ja": "メニューバーで Claude + Codex の使用量（セッション・週）を進捗バーとリセットまでのカウントダウン付きで表示。"
+      },
+      "license": "MIT",
+      "platforms": [
+        "apple",
+        "windows"
+      ],
+      "latest": "0.1.1",
+      "updated_at": "2026-07-02T01:04:36Z"
+    },
     {
       "id": "hn",
       "name": {
@@ -33,26 +53,6 @@
       ],
       "latest": "0.1.1",
       "updated_at": "2026-06-30T02:25:02Z"
-    },
-    {
-      "id": "tokstat",
-      "name": {
-        "default": "AI Token Usage",
-        "zh": "AI 用量",
-        "ja": "AI トークン使用量"
-      },
-      "description": {
-        "default": "Claude + Codex usage (session & weekly) in your menu bar, with progress bars and reset countdowns.",
-        "zh": "在菜单栏查看 Claude + Codex 的用量（会话与每周），含进度条与重置倒计时。",
-        "ja": "メニューバーで Claude + Codex の使用量（セッション・週）を進捗バーとリセットまでのカウントダウン付きで表示。"
-      },
-      "license": "MIT",
-      "platforms": [
-        "apple",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-06-27T03:39:21Z"
     },
     {
       "id": "gh-actions",
