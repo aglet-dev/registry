@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T02:10:45Z",
+  "generated_at": "2026-07-02T02:12:01Z",
   "aglets": [
     {
       "id": "tokstat",
@@ -18,8 +18,8 @@
         "apple",
         "windows"
       ],
-      "latest": "0.1.1",
-      "updated_at": "2026-07-02T01:04:36Z"
+      "latest": "0.2.0",
+      "updated_at": "2026-07-02T02:11:22Z"
     },
     {
       "id": "hn",
