@@ -15,7 +15,7 @@
     "apple",
     "windows"
   ],
-  "latest": "0.1.1",
+  "latest": "0.2.0",
   "versions": [
     {
       "version": "0.1.0",
@@ -28,6 +28,12 @@
       "file": "0.1.1.aglet",
       "sha256": "3b8e57bf780815ab23f1df717c0b4047d71082353ed49d119f5d743f146069d0",
       "published_at": "2026-07-02T01:04:36Z"
+    },
+    {
+      "version": "0.2.0",
+      "file": "0.2.0.aglet",
+      "sha256": "8911ae67e83b8399d452776a51c717567d76cc6237abc002179dfafcb2d492a5",
+      "published_at": "2026-07-02T02:11:22Z"
     }
   ]
 }
