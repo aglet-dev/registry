@@ -1,6 +1,42 @@
 {
-  "generated_at": "2026-07-03T10:49:03Z",
+  "generated_at": "2026-07-03T10:49:49Z",
   "aglets": [
+    {
+      "id": "gh-prs",
+      "name": {
+        "default": "GitHub PRs",
+        "zh": "GitHub PR 看板",
+        "ja": "GitHub PR ボード"
+      },
+      "description": {
+        "default": "Review queue + my open PRs. Auto-detects the `gh` CLI; otherwise connect with a GitHub token.",
+        "zh": "Review 队列 + 我的 open PR。自动探测 `gh` CLI;没有则用 GitHub token 连接。",
+        "ja": "レビュー待ち + 自分の open PR。`gh` CLI を自動検出;なければ GitHub トークンで接続。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": "https://api.iconify.design/ph/git-pull-request-fill.svg?color=%231f883d&width=256",
+      "category": "developer-tools",
+      "keywords": [
+        "github",
+        "pr",
+        "review",
+        "code"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.1/screenshots/0.png",
+          "caption": "Review queue + your open PRs"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.1",
+      "updated_at": "2026-07-03T10:43:42Z"
+    },
     {
       "id": "gh-actions",
       "name": {
@@ -85,42 +121,6 @@
       ],
       "latest": "0.1.1",
       "updated_at": "2026-06-30T02:25:02Z"
-    },
-    {
-      "id": "gh-prs",
-      "name": {
-        "default": "GitHub PRs",
-        "zh": "GitHub PR 看板",
-        "ja": "GitHub PR ボード"
-      },
-      "description": {
-        "default": "Review queue + my open PRs. Auto-detects the `gh` CLI; otherwise connect with a GitHub token.",
-        "zh": "Review 队列 + 我的 open PR。自动探测 `gh` CLI;没有则用 GitHub token 连接。",
-        "ja": "レビュー待ち + 自分の open PR。`gh` CLI を自動検出;なければ GitHub トークンで接続。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/git-pull-request-fill.svg?color=%231f883d&width=256",
-      "category": "developer-tools",
-      "keywords": [
-        "github",
-        "pr",
-        "review",
-        "code"
-      ],
-      "screenshots": [
-        {
-          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.0/screenshots/0.png",
-          "caption": "Review queue + your open PRs"
-        }
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-06-27T03:39:16Z"
     }
   ]
 }
