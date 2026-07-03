@@ -1,6 +1,37 @@
 {
-  "generated_at": "2026-07-03T10:48:22Z",
+  "generated_at": "2026-07-03T10:49:03Z",
   "aglets": [
+    {
+      "id": "gh-actions",
+      "name": {
+        "default": "GitHub Actions",
+        "zh": "GitHub Actions",
+        "ja": "GitHub Actions"
+      },
+      "description": {
+        "default": "Watch and run GitHub Actions across your active repos. Auto-detects the `gh` CLI; otherwise connect with a token.",
+        "zh": "查看并执行你活跃仓库的 GitHub Actions。自动探测 `gh` CLI;没有则用 token 连接。",
+        "ja": "アクティブなリポジトリの GitHub Actions を確認・実行。`gh` CLI を自動検出;なければトークンで接続。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": "https://api.iconify.design/ph/play-circle-fill.svg?color=%232088ff&width=256",
+      "category": "developer-tools",
+      "keywords": [
+        "github",
+        "actions",
+        "ci",
+        "workflow",
+        "devops"
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.1",
+      "updated_at": "2026-07-03T10:40:38Z"
+    },
     {
       "id": "tokstat",
       "name": {
@@ -54,37 +85,6 @@
       ],
       "latest": "0.1.1",
       "updated_at": "2026-06-30T02:25:02Z"
-    },
-    {
-      "id": "gh-actions",
-      "name": {
-        "default": "GitHub Actions",
-        "zh": "GitHub Actions",
-        "ja": "GitHub Actions"
-      },
-      "description": {
-        "default": "Watch and run GitHub Actions across your active repos. Auto-detects the `gh` CLI; otherwise connect with a token.",
-        "zh": "查看并执行你活跃仓库的 GitHub Actions。自动探测 `gh` CLI;没有则用 token 连接。",
-        "ja": "アクティブなリポジトリの GitHub Actions を確認・実行。`gh` CLI を自動検出;なければトークンで接続。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/play-circle-fill.svg?color=%232088ff&width=256",
-      "category": "developer-tools",
-      "keywords": [
-        "github",
-        "actions",
-        "ci",
-        "workflow",
-        "devops"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-06-27T03:39:19Z"
     },
     {
       "id": "gh-prs",
