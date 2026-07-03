@@ -6,16 +6,17 @@
     "ja": "AI トークン使用量"
   },
   "description": {
-    "default": "Claude + Codex usage (session & weekly) in your menu bar, with progress bars and reset countdowns.",
-    "zh": "在菜单栏查看 Claude + Codex 的用量（会话与每周），含进度条与重置倒计时。",
-    "ja": "メニューバーで Claude + Codex の使用量（セッション・週）を進捗バーとリセットまでのカウントダウン付きで表示。"
+    "default": "AI coding token usage (session & weekly) in your menu bar — progress bars, reset countdowns. Enable the providers you use; pick which show in the menu bar.",
+    "zh": "在菜单栏查看 AI 编程用量（会话与每周），含进度条与重置倒计时。按需启用各家、选择在菜单栏显示哪些。",
+    "ja": "メニューバーで AI コーディングの使用量（セッション・週）を表示。使うプロバイダを有効化し、メニューバーに出すものを選べます。"
   },
   "license": "MIT",
   "platforms": [
     "apple",
+    "android",
     "windows"
   ],
-  "latest": "0.2.0",
+  "latest": "0.3.0",
   "versions": [
     {
       "version": "0.1.0",
@@ -34,6 +35,12 @@
       "file": "0.2.0.aglet",
       "sha256": "8911ae67e83b8399d452776a51c717567d76cc6237abc002179dfafcb2d492a5",
       "published_at": "2026-07-02T02:11:22Z"
+    },
+    {
+      "version": "0.3.0",
+      "file": "0.3.0.aglet",
+      "sha256": "2d7a9656e1c7fae9e4effbbb245765328a2f0d757ae050a6708a3dfc3c73b531",
+      "published_at": "2026-07-03T10:40:31Z"
     }
   ]
 }
