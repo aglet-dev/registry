@@ -22,7 +22,7 @@
   ],
   "screenshots": [
     {
-      "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.0/screenshots/0.png",
+      "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.1/screenshots/0.png",
       "caption": "Review queue + your open PRs"
     }
   ],
@@ -31,13 +31,19 @@
     "android",
     "windows"
   ],
-  "latest": "0.1.0",
+  "latest": "0.1.1",
   "versions": [
     {
       "version": "0.1.0",
       "file": "0.1.0.aglet",
       "sha256": "3bad4aeb89dd18038c914388368a4c106763508b2b83d82fbb421e198829b561",
       "published_at": "2026-06-27T03:39:16Z"
+    },
+    {
+      "version": "0.1.1",
+      "file": "0.1.1.aglet",
+      "sha256": "ba62e5c53d6efc34b796a15c4c0c8f9b6bee7ef843615cf3938dc4dc09b9d735",
+      "published_at": "2026-07-03T10:43:42Z"
     }
   ]
 }
