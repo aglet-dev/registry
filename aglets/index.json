@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T02:12:01Z",
+  "generated_at": "2026-07-03T10:48:22Z",
   "aglets": [
     {
       "id": "tokstat",
@@ -9,17 +9,18 @@
         "ja": "AI トークン使用量"
       },
       "description": {
-        "default": "Claude + Codex usage (session & weekly) in your menu bar, with progress bars and reset countdowns.",
-        "zh": "在菜单栏查看 Claude + Codex 的用量（会话与每周），含进度条与重置倒计时。",
-        "ja": "メニューバーで Claude + Codex の使用量（セッション・週）を進捗バーとリセットまでのカウントダウン付きで表示。"
+        "default": "AI coding token usage (session & weekly) in your menu bar — progress bars, reset countdowns. Enable the providers you use; pick which show in the menu bar.",
+        "zh": "在菜单栏查看 AI 编程用量（会话与每周），含进度条与重置倒计时。按需启用各家、选择在菜单栏显示哪些。",
+        "ja": "メニューバーで AI コーディングの使用量（セッション・週）を表示。使うプロバイダを有効化し、メニューバーに出すものを選べます。"
       },
       "license": "MIT",
       "platforms": [
         "apple",
+        "android",
         "windows"
       ],
-      "latest": "0.2.0",
-      "updated_at": "2026-07-02T02:11:22Z"
+      "latest": "0.3.0",
+      "updated_at": "2026-07-03T10:40:31Z"
     },
     {
       "id": "hn",
