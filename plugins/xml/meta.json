@@ -1,0 +1,41 @@
+{
+  "id": "xml",
+  "name": "XML",
+  "description": {
+    "default": "Parse XML and normalize RSS/Atom feeds for Aglet apps.",
+    "zh": "解析 XML，并把 RSS/Atom feed 归一化供 Aglet 应用使用。",
+    "ja": "XML を解析し、RSS/Atom フィードを Aglet アプリ向けに正規化します。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "xml",
+    "rss",
+    "atom",
+    "feed",
+    "parser"
+  ],
+  "homepage": "https://github.com/aglet-dev/plugins",
+  "namespace": "xml",
+  "actions": [
+    {
+      "name": "parse",
+      "permission": "xml:parse"
+    },
+    {
+      "name": "rss",
+      "permission": "xml:parse"
+    }
+  ],
+  "backend_kind": "wasm",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "2620ea6af92201ae26c106bd84a05a5a526aa0c501295746ab6881e1f8dcef09",
+      "wasm_sha256": "4acc35b55d1ac952043e6a9d08440a3c80a07b87cd83059180bcdd3bbf696d58",
+      "wasm_size": 143736,
+      "published_at": "2026-07-06T13:26:13Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
