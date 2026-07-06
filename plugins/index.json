@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-07-03T10:49:49Z",
+  "generated_at": "2026-07-06T13:27:07Z",
   "plugins": [
+    {
+      "id": "xml",
+      "name": "XML",
+      "description": {
+        "default": "Parse XML and normalize RSS/Atom feeds for Aglet apps.",
+        "zh": "解析 XML，并把 RSS/Atom feed 归一化供 Aglet 应用使用。",
+        "ja": "XML を解析し、RSS/Atom フィードを Aglet アプリ向けに正規化します。"
+      },
+      "keywords": [
+        "xml",
+        "rss",
+        "atom",
+        "feed",
+        "parser"
+      ],
+      "homepage": "https://github.com/aglet-dev/plugins",
+      "license": "MIT",
+      "namespace": "xml",
+      "backend_kind": "wasm",
+      "actions_count": 2,
+      "latest": "0.1.0",
+      "wasm_size": 143736,
+      "updated_at": "2026-07-06T13:26:13Z"
+    },
     {
       "id": "aicreds",
       "name": "AI Credentials",
