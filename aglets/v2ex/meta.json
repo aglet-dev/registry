@@ -1,0 +1,40 @@
+{
+  "id": "v2ex",
+  "name": {
+    "default": "V2EX",
+    "en": "V2EX",
+    "zh": "V2EX",
+    "ja": "V2EX"
+  },
+  "description": {
+    "default": "V2EX latest and hot topics from RSSHub.",
+    "en": "V2EX latest and hot topics from RSSHub.",
+    "zh": "基于 RSSHub 的 V2EX 最新与最热主题。",
+    "ja": "RSSHub から V2EX の最新・ホットトピックを表示します。"
+  },
+  "author": "aglet-dev",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/chats-circle-fill.svg?color=%232f6fed&width=256",
+  "category": "media",
+  "keywords": [
+    "v2ex",
+    "rss",
+    "forum",
+    "developer",
+    "topics"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "eea7fbf96795f96b5d6f4f51fa6c41cb1c1aec75924c21fb6274b3d7c70960a9",
+      "published_at": "2026-07-07T06:44:12Z"
+    }
+  ]
+}
