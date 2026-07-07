@@ -1,0 +1,40 @@
+{
+  "id": "sspai",
+  "name": {
+    "default": "少数派",
+    "en": "SSPAI",
+    "zh": "少数派",
+    "ja": "少数派"
+  },
+  "description": {
+    "default": "SSPAI homepage and Matrix articles from RSSHub.",
+    "en": "SSPAI homepage and Matrix articles from RSSHub.",
+    "zh": "基于 RSSHub 的少数派首页与 Matrix 文章。",
+    "ja": "RSSHub から少数派のホームと Matrix 記事を表示します。"
+  },
+  "author": "aglet-dev",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/article-medium-fill.svg?color=%23d71920&width=256",
+  "category": "media",
+  "keywords": [
+    "sspai",
+    "rss",
+    "articles",
+    "matrix",
+    "chinese"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aglet",
+      "sha256": "a4edbbbe92035f14fcf208f98c64f5546a682e6466bd7a6fb2ed2872fddcafe7",
+      "published_at": "2026-07-07T06:43:30Z"
+    }
+  ]
+}
