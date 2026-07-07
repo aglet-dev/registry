@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-07-07T06:46:15Z",
+  "generated_at": "2026-07-07T07:40:26Z",
   "plugins": [
+    {
+      "id": "aicreds",
+      "name": "AI Credentials",
+      "description": {
+        "default": "Reads the live OAuth access token for local AI coding tools so aglets can call provider usage APIs themselves. Claude: `claudeAiOauth.accessToken` from the `Claude Code-credentials` Keychain item. Codex: `tokens.access_token` (+ account_id) from `~/.codex/auth.json`. Read-only stdio plugin — returns the token, makes no network calls of its own.",
+        "zh": "读取本地 AI 编程工具的实时 OAuth access token，供小工具自己调用各家用量 API。Claude：Keychain `Claude Code-credentials` 项里的 `claudeAiOauth.accessToken`；Codex：`~/.codex/auth.json` 的 `tokens.access_token`（+account_id）。只读 stdio 插件——只返回 token，自身不发任何网络请求。",
+        "ja": "ローカルの AI コーディングツールの有効な OAuth access token を読み取り、aglet 自身が各社の使用量 API を呼べるようにする。Claude は Keychain `Claude Code-credentials` の `claudeAiOauth.accessToken`、Codex は `~/.codex/auth.json` の `tokens.access_token`（+account_id）。読み取り専用 stdio プラグイン——token を返すだけで、自身はネットワーク通信しない。"
+      },
+      "keywords": [
+        "claude",
+        "codex",
+        "oauth",
+        "token",
+        "credentials",
+        "usage"
+      ],
+      "homepage": "https://github.com/aglet-dev/plugins",
+      "license": "MIT",
+      "namespace": "aicreds",
+      "backend_kind": "stdio",
+      "actions_count": 1,
+      "latest": "0.1.1",
+      "updated_at": "2026-07-07T07:36:18Z"
+    },
     {
       "id": "xml",
       "name": "XML",
@@ -24,30 +48,6 @@
       "latest": "0.1.0",
       "wasm_size": 143736,
       "updated_at": "2026-07-06T13:26:13Z"
-    },
-    {
-      "id": "aicreds",
-      "name": "AI Credentials",
-      "description": {
-        "default": "Reads the live OAuth access token for local AI coding tools so aglets can call provider usage APIs themselves. Claude: `claudeAiOauth.accessToken` from the `Claude Code-credentials` Keychain item. Codex: `tokens.access_token` (+ account_id) from `~/.codex/auth.json`. Read-only stdio plugin — returns the token, makes no network calls of its own.",
-        "zh": "读取本地 AI 编程工具的实时 OAuth access token，供小工具自己调用各家用量 API。Claude：Keychain `Claude Code-credentials` 项里的 `claudeAiOauth.accessToken`；Codex：`~/.codex/auth.json` 的 `tokens.access_token`（+account_id）。只读 stdio 插件——只返回 token，自身不发任何网络请求。",
-        "ja": "ローカルの AI コーディングツールの有効な OAuth access token を読み取り、aglet 自身が各社の使用量 API を呼べるようにする。Claude は Keychain `Claude Code-credentials` の `claudeAiOauth.accessToken`、Codex は `~/.codex/auth.json` の `tokens.access_token`（+account_id）。読み取り専用 stdio プラグイン——token を返すだけで、自身はネットワーク通信しない。"
-      },
-      "keywords": [
-        "claude",
-        "codex",
-        "oauth",
-        "token",
-        "credentials",
-        "usage"
-      ],
-      "homepage": "https://github.com/aglet-dev/plugins",
-      "license": "MIT",
-      "namespace": "aicreds",
-      "backend_kind": "stdio",
-      "actions_count": 1,
-      "latest": "0.1.0",
-      "updated_at": "2026-07-02T02:09:53Z"
     },
     {
       "id": "tokstat",
