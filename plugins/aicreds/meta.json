@@ -56,7 +56,33 @@
         }
       ],
       "published_at": "2026-07-07T07:36:18Z"
+    },
+    {
+      "version": "0.1.2",
+      "file": "0.1.2.aplugin",
+      "sha256": "6f905c101aa7a6d64dbc7c93e270ad16007b4f3efc509f1a0e518eff2b3aa862",
+      "binaries": [
+        {
+          "target": "darwin-arm64",
+          "sha256": "3a4364150298fecab1dfad09fc7dcd9f5e019e3e38203808bf6694396b15c2d6",
+          "size": 217848,
+          "file": "dist/aicreds-darwin-arm64"
+        },
+        {
+          "target": "darwin-x86_64",
+          "sha256": "c50471b6089e51a0144caef3f5c34c7803e32b03bce3a2d301e46076e2a38a07",
+          "size": 173733,
+          "file": "dist/aicreds-darwin-x86_64"
+        },
+        {
+          "target": "windows-x86_64",
+          "sha256": "5d187323b51f2922c5388e82b334841fd89b4fd27d08b364bdf5a70419d653f5",
+          "size": 512312,
+          "file": "dist/aicreds-windows-x86_64.exe"
+        }
+      ],
+      "published_at": "2026-07-07T08:11:31Z"
     }
   ],
-  "latest": "0.1.1"
+  "latest": "0.1.2"
 }
