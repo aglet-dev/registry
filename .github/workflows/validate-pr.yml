@@ -175,8 +175,12 @@ jobs:
                     for j in $(seq 0 $((nb - 1))); do
                       t=$(jq -r ".versions[$i].binaries[$j].target" "$meta")
                       bfile=$(jq -r ".versions[$i].binaries[$j].file // empty" "$meta")
+                      # legacy 条目(pre-0.1.5 CLI 无 file 字段)→ 跳过。旧版本已发布不可变、
+                      # 当时已按彼时规则验过;新 CLI(≥0.1.5)恒写 file,故缺 file 必是历史条目,
+                      # 不应用新严格规则重验(否则每次发新版都被同 meta 里的旧版卡住)。
                       if [ -z "$bfile" ]; then
-                        echo "✗ $meta: versions[$i].binaries[$j] (target=$t) missing file"; fail=1; continue
+                        echo "  (skip) $meta versions[$i].binaries[$j] (target=$t): legacy entry without file field"
+                        continue
                       fi
                       binpath="$nspath/$ver/$bfile"
                       if [ ! -f "$binpath" ]; then
