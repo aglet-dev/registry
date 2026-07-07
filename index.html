@@ -234,6 +234,33 @@ function pickLocale(v) {
   return v.default || "";
 }
 
+// §9:按访客 surface(UA 推断)+ 浏览器 locale 从 screenshots[] 挑一张卡片缩略图。
+// shots 派生的截图带 surface/locale;手填外链无这些字段(nil)→ 视为通用,始终可选。
+// 回退:同 surface 任意 locale → en → 通用/第一张。web catalog 是简单网格,卡片一张图即可。
+function inferSurface() {
+  const ua = (navigator.userAgent || "").toLowerCase();
+  if (ua.includes("windows")) return "windows";
+  if (ua.includes("mac os") || ua.includes("macintosh")) return "macos";
+  if (ua.includes("android")) return "android";
+  if (ua.includes("iphone")) return "ios";
+  if (ua.includes("ipad")) return "ipados";
+  return null;
+}
+function pickShot(app) {
+  const all = (app.screenshots || []);
+  if (!all.length) return null;
+  const surface = inferSurface();
+  // surface 匹配(或无 surface = 通用/手填)
+  let pool = all.filter((s) => !s.surface || s.surface === surface);
+  if (!pool.length) pool = all;
+  const langs = pool.filter((s) => s.locale).map((s) => s.locale);
+  if (!langs.length) return pool[0];
+  const want = (navigator.language || "en").toLowerCase().split("-")[0];
+  const chosen = langs.includes(want) ? want : (langs.includes("en") ? "en" : langs[0]);
+  const byLoc = pool.filter((s) => !s.locale || s.locale === chosen);
+  return byLoc[0] || pool[0];
+}
+
 function categoryBadge(cat) {
   return cat ? `<span class="badge">${cat}</span>` : "";
 }
@@ -260,7 +287,7 @@ function renderCard(app, isPlugin) {
   const ver = app.latest || "";
   const cat = app.category || "";
   const icon = app.icon || "";
-  const shot = (app.screenshots && app.screenshots[0]) || null;
+  const shot = pickShot(app); // §9:按访客 surface + locale 挑图(非盲取 [0])
   const install = `aglet install ${app.id}`;
   const footer = isPlugin
     ? `<div class="plugin-note">Auto-installed with aglets that depend on it.</div>`
