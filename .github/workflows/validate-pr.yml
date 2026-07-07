@@ -134,9 +134,11 @@ jobs:
               # sha256 is checked above; pin the meta artifact-hash fields to the
               # real shipped artifact(s) so they're trustworthy (the anchor a
               # source-rebuild compares to). Branch on backend.kind (inner aplugin.json):
-              #   wasm  → dist/<id>.wasm , must be a wasm module , meta.wasm_sha256/wasm_size
-              #   stdio → per-target native binary `<backend.path>-<target>` (no magic),
-              #           one per meta.versions[].binaries[] = [{target,sha256,size}].
+              #   wasm  → dist/<id>.wasm (in tar), must be a wasm module , meta.wasm_sha256/wasm_size
+              #   stdio → per-target native binary as **sibling file** plugins/<id>/<ver>/<file>
+              #           (thin .aplugin; NOT in tar), one per meta.versions[].binaries[] =
+              #           [{target,sha256,size,file}]. file (incl. windows .exe) resolves
+              #           relative to the version dir <nspath>/<ver>/.
               # (Full source-rebuild reproducibility is a separate, larger item:
               # needs a pinned source ref + per-plugin toolchain. See REVIEW_PROCESS Step 6.)
               if [ "$ns" = "plugins" ]; then
@@ -162,31 +164,34 @@ jobs:
                   fi
                   rm -f /tmp/inner.art
                 elif [ "$bkind" = "stdio" ]; then
-                  bpath=$(jq -r '.manifest.backend.path // empty' /tmp/inner.json)
+                  # 瘦包:per-target 原生二进制**不在 .aplugin tar 内**,而是 registry 兄弟文件
+                  # plugins/<id>/<ver>/<file>。file 来自 meta.versions[].binaries[].file(含
+                  # windows 的 .exe 后缀),**相对版本目录 <nspath>/<ver>/ 解析**(= install
+                  # 侧 registry_fetch 的下载锚点,三方一致)。install 按 host 候选只下匹配的一个。
                   nb=$(jq -r "(.versions[$i].binaries // []) | length" "$meta")
-                  if [ -z "$bpath" ]; then
-                    echo "✗ $path: stdio plugin missing manifest.backend.path"; fail=1
-                  elif [ "$nb" -eq 0 ]; then
+                  if [ "$nb" -eq 0 ]; then
                     echo "✗ $meta: versions[$i] ($ver) stdio plugin missing binaries[]"; fail=1
                   else
                     for j in $(seq 0 $((nb - 1))); do
                       t=$(jq -r ".versions[$i].binaries[$j].target" "$meta")
-                      member="$bpath-$t"
-                      rm -f /tmp/inner.art
-                      if ! tar -xOzf "$path" "$member" >/tmp/inner.art 2>/dev/null; then
-                        echo "✗ $path: missing target binary $member (declared in binaries[$j])"; fail=1; continue
+                      bfile=$(jq -r ".versions[$i].binaries[$j].file // empty" "$meta")
+                      if [ -z "$bfile" ]; then
+                        echo "✗ $meta: versions[$i].binaries[$j] (target=$t) missing file"; fail=1; continue
+                      fi
+                      binpath="$nspath/$ver/$bfile"
+                      if [ ! -f "$binpath" ]; then
+                        echo "✗ $binpath: missing target binary (declared in versions[$i].binaries[$j], target=$t)"; fail=1; continue
                       fi
                       t_sha=$(jq -r ".versions[$i].binaries[$j].sha256 // empty" "$meta")
                       if [ -n "$t_sha" ]; then
-                        a_sha=$(shasum -a 256 /tmp/inner.art | awk '{print $1}')
-                        [ "$a_sha" = "$t_sha" ] || { echo "✗ $path: $member sha256 ($a_sha) != meta ($t_sha)"; fail=1; }
+                        a_sha=$(shasum -a 256 "$binpath" | awk '{print $1}')
+                        [ "$a_sha" = "$t_sha" ] || { echo "✗ $binpath: sha256 ($a_sha) != meta ($t_sha)"; fail=1; }
                       else echo "✗ $meta: binaries[$j] ($t) missing sha256"; fail=1; fi
                       t_size=$(jq -r ".versions[$i].binaries[$j].size // empty" "$meta")
                       if [ -n "$t_size" ]; then
-                        a_size=$(wc -c < /tmp/inner.art | tr -d ' ')
-                        [ "$a_size" = "$t_size" ] || { echo "✗ $path: $member size ($a_size) != meta ($t_size)"; fail=1; }
+                        a_size=$(wc -c < "$binpath" | tr -d ' ')
+                        [ "$a_size" = "$t_size" ] || { echo "✗ $binpath: size ($a_size) != meta ($t_size)"; fail=1; }
                       fi
-                      rm -f /tmp/inner.art
                     done
                   fi
                 else
