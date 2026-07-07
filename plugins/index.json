@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T07:40:26Z",
+  "generated_at": "2026-07-07T08:12:30Z",
   "plugins": [
     {
       "id": "aicreds",
@@ -22,8 +22,8 @@
       "namespace": "aicreds",
       "backend_kind": "stdio",
       "actions_count": 1,
-      "latest": "0.1.1",
-      "updated_at": "2026-07-07T07:36:18Z"
+      "latest": "0.1.2",
+      "updated_at": "2026-07-07T08:11:31Z"
     },
     {
       "id": "xml",
