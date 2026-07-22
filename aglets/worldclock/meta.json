@@ -1,0 +1,37 @@
+{
+  "id": "worldclock",
+  "name": {
+    "default": "World Clock",
+    "zh": "世界时钟",
+    "ja": "世界時計"
+  },
+  "description": {
+    "default": "World clock in your menu bar. Add cities, delete them, and pin the ones you want shown in the menu bar.",
+    "zh": "菜单栏世界时钟。可新建/删除城市，并勾选要在菜单栏显示的城市。",
+    "ja": "メニューバーの世界時計。都市の追加・削除、メニューバーに表示する都市の選択ができます。"
+  },
+  "author": "agent-rt",
+  "license": "MIT",
+  "category": "utilities",
+  "keywords": [
+    "clock",
+    "time",
+    "timezone",
+    "world",
+    "menubar"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.2.0",
+  "versions": [
+    {
+      "version": "0.2.0",
+      "file": "0.2.0.aglet",
+      "sha256": "a42ada6e7d0708a6822ed644aa53bc900952644782c8136b6bbfebd0243fb71f",
+      "published_at": "2026-07-22T06:11:47Z"
+    }
+  ]
+}
