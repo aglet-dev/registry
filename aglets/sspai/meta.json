@@ -28,13 +28,19 @@
     "android",
     "windows"
   ],
-  "latest": "0.1.0",
+  "latest": "0.1.1",
   "versions": [
     {
       "version": "0.1.0",
       "file": "0.1.0.aglet",
       "sha256": "a4edbbbe92035f14fcf208f98c64f5546a682e6466bd7a6fb2ed2872fddcafe7",
       "published_at": "2026-07-07T06:43:30Z"
+    },
+    {
+      "version": "0.1.1",
+      "file": "0.1.1.aglet",
+      "sha256": "18bc79cba1318fbe30db915c7ac0a62b6f0d9c4de94f9bb0ecf9d50047ed4350",
+      "published_at": "2026-07-22T07:01:16Z"
     }
   ]
 }
