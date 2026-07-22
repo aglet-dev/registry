@@ -1,6 +1,67 @@
 {
-  "generated_at": "2026-07-07T09:25:47Z",
+  "generated_at": "2026-07-22T06:48:59Z",
   "aglets": [
+    {
+      "id": "sysmon",
+      "name": {
+        "default": "Sysmon",
+        "zh": "系统监控",
+        "ja": "システムモニター"
+      },
+      "description": {
+        "default": "Live system vitals in your menu bar — network speed, memory and CPU. Toggle each metric on or off.",
+        "zh": "菜单栏实时系统监控——网速、内存、CPU，每项可独立开关。",
+        "ja": "メニューバーにリアルタイムのシステム状態——ネット速度・メモリ・CPU。各項目を個別にオン/オフ。"
+      },
+      "author": "agent-rt",
+      "license": "MIT",
+      "category": "utilities",
+      "keywords": [
+        "system",
+        "monitor",
+        "cpu",
+        "memory",
+        "network",
+        "menubar"
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.2.0",
+      "updated_at": "2026-07-22T06:34:12Z"
+    },
+    {
+      "id": "worldclock",
+      "name": {
+        "default": "World Clock",
+        "zh": "世界时钟",
+        "ja": "世界時計"
+      },
+      "description": {
+        "default": "World clock in your menu bar. Add cities, delete them, and pin the ones you want shown in the menu bar.",
+        "zh": "菜单栏世界时钟。可新建/删除城市，并勾选要在菜单栏显示的城市。",
+        "ja": "メニューバーの世界時計。都市の追加・削除、メニューバーに表示する都市の選択ができます。"
+      },
+      "author": "agent-rt",
+      "license": "MIT",
+      "category": "utilities",
+      "keywords": [
+        "clock",
+        "time",
+        "timezone",
+        "world",
+        "menubar"
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.2.0",
+      "updated_at": "2026-07-22T06:11:47Z"
+    },
     {
       "id": "infoq",
       "name": {
