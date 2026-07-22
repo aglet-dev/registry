@@ -16,7 +16,7 @@
     "android",
     "windows"
   ],
-  "latest": "0.3.0",
+  "latest": "0.3.1",
   "versions": [
     {
       "version": "0.1.0",
@@ -41,6 +41,12 @@
       "file": "0.3.0.aglet",
       "sha256": "2d7a9656e1c7fae9e4effbbb245765328a2f0d757ae050a6708a3dfc3c73b531",
       "published_at": "2026-07-03T10:40:31Z"
+    },
+    {
+      "version": "0.3.1",
+      "file": "0.3.1.aglet",
+      "sha256": "1bc55ae02126180092f9d35cd54389cf380544c1006949d84e4f029e57a13837",
+      "published_at": "2026-07-22T07:02:24Z"
     }
   ]
 }
