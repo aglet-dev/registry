@@ -1,0 +1,38 @@
+{
+  "id": "sysmon",
+  "name": {
+    "default": "Sysmon",
+    "zh": "系统监控",
+    "ja": "システムモニター"
+  },
+  "description": {
+    "default": "Live system vitals in your menu bar — network speed, memory and CPU. Toggle each metric on or off.",
+    "zh": "菜单栏实时系统监控——网速、内存、CPU，每项可独立开关。",
+    "ja": "メニューバーにリアルタイムのシステム状態——ネット速度・メモリ・CPU。各項目を個別にオン/オフ。"
+  },
+  "author": "agent-rt",
+  "license": "MIT",
+  "category": "utilities",
+  "keywords": [
+    "system",
+    "monitor",
+    "cpu",
+    "memory",
+    "network",
+    "menubar"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.2.0",
+  "versions": [
+    {
+      "version": "0.2.0",
+      "file": "0.2.0.aglet",
+      "sha256": "621fa48ba18a5a1e75d8b50a14f4f0f73b2fe8a4e0c04c2861d209063c8a882b",
+      "published_at": "2026-07-22T06:34:12Z"
+    }
+  ]
+}
