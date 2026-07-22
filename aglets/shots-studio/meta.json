@@ -1,0 +1,20 @@
+{
+  "id": "shots-studio",
+  "name": "Shots Studio",
+  "description": "Store 营销截图合成 studio —— 把捕获的 app 窗口截图合成成 App Store 风格营销图。",
+  "icon": "https://api.iconify.design/ph/image-square-fill.svg?color=%232f6fed&width=256",
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.1",
+  "versions": [
+    {
+      "version": "0.1.1",
+      "file": "0.1.1.aglet",
+      "sha256": "da01ee5b98a0c2fab961e285bc575745f9f50fb55637a4611c15fe3a9a00902e",
+      "published_at": "2026-07-22T07:00:42Z"
+    }
+  ]
+}
