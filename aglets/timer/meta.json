@@ -1,0 +1,35 @@
+{
+  "id": "timer",
+  "name": {
+    "default": "Timer",
+    "zh": "计时器",
+    "ja": "タイマー"
+  },
+  "description": {
+    "default": "Simple countdown timer. Pick a preset, hit start, get notified when zero.",
+    "zh": "简洁倒计时。选预设、按开始、归零通知。",
+    "ja": "シンプルなカウントダウン。プリセットを選び、開始、ゼロで通知。"
+  },
+  "author": "agent-rt",
+  "license": "MIT",
+  "category": "utilities",
+  "keywords": [
+    "timer",
+    "countdown",
+    "stopwatch"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "1.0.1",
+  "versions": [
+    {
+      "version": "1.0.1",
+      "file": "1.0.1.aglet",
+      "sha256": "696b27ac6320ffd54196c9599c84f429442e59aa2413419a119434f9ea700a6f",
+      "published_at": "2026-07-22T07:01:47Z"
+    }
+  ]
+}
