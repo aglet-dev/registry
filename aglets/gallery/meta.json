@@ -1,0 +1,38 @@
+{
+  "id": "gallery",
+  "name": {
+    "default": "Components",
+    "zh": "组件库",
+    "ja": "コンポーネント"
+  },
+  "description": {
+    "default": "Live gallery of every official Aglet UI component × states/variants — the thin-renderer acceptance surface.",
+    "zh": "Aglet 全部官方 UI 组件 × 状态/变体的实时展廊 —— 薄渲染器验收台。",
+    "ja": "Aglet の全公式 UI コンポーネント × 状態/バリアントの一覧 —— 薄レンダラー検収台。"
+  },
+  "author": "aglet-dev",
+  "license": "MIT",
+  "icon": "https://api.iconify.design/ph/swatches-fill.svg?color=%233a6ea5&width=256",
+  "category": "developer-tools",
+  "keywords": [
+    "gallery",
+    "components",
+    "design",
+    "showcase",
+    "dogfood"
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.1",
+  "versions": [
+    {
+      "version": "0.1.1",
+      "file": "0.1.1.aglet",
+      "sha256": "a53e081e9a18968b860f41d4835aae61383ea1292bfb5a179c4558312f9ea7f5",
+      "published_at": "2026-07-22T06:57:47Z"
+    }
+  ]
+}
