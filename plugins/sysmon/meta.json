@@ -1,0 +1,77 @@
+{
+  "id": "sysmon",
+  "name": "Sysmon",
+  "description": {
+    "default": "Host system metrics — CPU, memory, disk. Long-lived stdio subprocess (zig native binary; macOS Mach API, Linux /proc) that holds prior-tick state for delta-based CPU sampling. Richer than the bundled `sysinfo` static plugin (one-shot, no state).",
+    "zh": "宿主机系统监控：CPU、内存、磁盘。stdio 子进程（zig native binary；macOS Mach API、Linux /proc）长寿命可持上一刻状态，做 CPU 增量采样。比内置 sysinfo 静态插件（无状态一次性）更适合长期监控。",
+    "ja": "ホストシステムメトリクス：CPU・メモリ・ディスク。長命な stdio サブプロセス（zig ネイティブバイナリ。macOS は Mach API、Linux は /proc）が前回サンプルの状態を保持し、CPU の差分計測を行う。"
+  },
+  "license": "MIT",
+  "keywords": [
+    "system",
+    "monitoring",
+    "cpu",
+    "memory",
+    "disk",
+    "sysmon",
+    "istat"
+  ],
+  "homepage": "https://github.com/agent-rt/aglet-plugins",
+  "namespace": "sysmon",
+  "actions": [
+    {
+      "name": "snapshot",
+      "permission": "system:read"
+    },
+    {
+      "name": "cpu",
+      "permission": "system:read"
+    },
+    {
+      "name": "memory",
+      "permission": "system:read"
+    },
+    {
+      "name": "disk",
+      "permission": "system:read"
+    },
+    {
+      "name": "battery",
+      "permission": "system:read"
+    },
+    {
+      "name": "gpu",
+      "permission": "system:read"
+    },
+    {
+      "name": "temp",
+      "permission": "system:read"
+    },
+    {
+      "name": "fan",
+      "permission": "system:read"
+    },
+    {
+      "name": "network",
+      "permission": "system:read"
+    }
+  ],
+  "backend_kind": "stdio",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "0.1.0.aplugin",
+      "sha256": "2aa9ce7cf8a72c2876b5b002ca2ea4fea776aaf8e1d2c47e321f30a48d3d8bfc",
+      "binaries": [
+        {
+          "target": "darwin-arm64",
+          "sha256": "3b8a80eb1684ca100baa3f53ec67c01d9878a15a23ad0923447b01ee190871f5",
+          "size": 92248,
+          "file": "dist/sysmon-darwin-arm64"
+        }
+      ],
+      "published_at": "2026-07-22T06:16:31Z"
+    }
+  ],
+  "latest": "0.1.0"
+}
