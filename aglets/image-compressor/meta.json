@@ -1,0 +1,27 @@
+{
+  "id": "image-compressor",
+  "name": {
+    "default": "Compact",
+    "zh": "图片压缩",
+    "ja": "画像圧縮"
+  },
+  "description": {
+    "default": "A focused, private image compressor — pick a photo, tune quality, save a smaller WebP. All local.",
+    "zh": "专注本地的图片压缩：选一张图、调质量、存一份更小的 WebP。全程本地处理。",
+    "ja": "ローカル完結の画像圧縮：写真を選び、品質を調整して、より小さな WebP を保存。すべて端末内で処理。"
+  },
+  "category": "productivity",
+  "platforms": [
+    "apple",
+    "windows"
+  ],
+  "latest": "1.0.1",
+  "versions": [
+    {
+      "version": "1.0.1",
+      "file": "1.0.1.aglet",
+      "sha256": "f58e059221b2819bef7e1f583fea36460ad8cfa02467965e303d26c8688886f6",
+      "published_at": "2026-07-22T06:59:36Z"
+    }
+  ]
+}
