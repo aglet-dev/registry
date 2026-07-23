@@ -1,0 +1,65 @@
+{
+  "id": "image-compressor",
+  "name": {
+    "default": "Compact",
+    "zh": "图片压缩",
+    "ja": "画像圧縮"
+  },
+  "description": {
+    "default": "A focused, private image compressor — pick a photo, tune quality, save a smaller WebP. All local.",
+    "zh": "专注本地的图片压缩：选一张图、调质量、存一份更小的 WebP。全程本地处理。",
+    "ja": "ローカル完結の画像圧縮：写真を選び、品質を調整して、より小さな WebP を保存。すべて端末内で処理。"
+  },
+  "icon": {
+    "fg": "image-square-fill",
+    "bg": "#14b8a6"
+  },
+  "category": "productivity",
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Smaller images, right on your Mac"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "本地压缩,更小的图片"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Smaller images, right on your Mac"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "本地压缩,更小的图片"
+    }
+  ],
+  "platforms": [
+    "apple",
+    "windows"
+  ],
+  "latest": "1.0.2",
+  "versions": [
+    {
+      "version": "1.0.2",
+      "file": "1.0.2.aglet",
+      "sha256": "78c7339de1168805366ae96374597b5dcee5e06bba9cf621c456c97a5021f927",
+      "published_at": "2026-07-23T07:30:10Z"
+    }
+  ]
+}
