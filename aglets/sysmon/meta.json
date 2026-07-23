@@ -12,6 +12,10 @@
   },
   "author": "agent-rt",
   "license": "MIT",
+  "icon": {
+    "fg": "gauge-fill",
+    "bg": "#10b981"
+  },
   "category": "utilities",
   "keywords": [
     "system",
@@ -26,13 +30,19 @@
     "android",
     "windows"
   ],
-  "latest": "0.2.0",
+  "latest": "0.2.1",
   "versions": [
     {
       "version": "0.2.0",
       "file": "0.2.0.aglet",
       "sha256": "621fa48ba18a5a1e75d8b50a14f4f0f73b2fe8a4e0c04c2861d209063c8a882b",
       "published_at": "2026-07-22T06:34:12Z"
+    },
+    {
+      "version": "0.2.1",
+      "file": "0.2.1.aglet",
+      "sha256": "336f19f03ec828067c869d532ca63839f94c6a21e09b77a1cd4e857bacb1fb0c",
+      "published_at": "2026-07-23T08:22:16Z"
     }
   ]
 }
