@@ -1,6 +1,1074 @@
 {
-  "generated_at": "2026-07-22T06:48:59Z",
+  "generated_at": "2026-07-23T07:58:25Z",
   "aglets": [
+    {
+      "id": "v2ex",
+      "name": {
+        "default": "V2EX",
+        "en": "V2EX",
+        "zh": "V2EX",
+        "ja": "V2EX"
+      },
+      "description": {
+        "default": "V2EX latest and hot topics from RSSHub.",
+        "en": "V2EX latest and hot topics from RSSHub.",
+        "zh": "基于 RSSHub 的 V2EX 最新与最热主题。",
+        "ja": "RSSHub から V2EX の最新・ホットトピックを表示します。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "chats-circle-fill",
+        "bg": "#2f6fed"
+      },
+      "category": "media",
+      "keywords": [
+        "v2ex",
+        "rss",
+        "forum",
+        "developer",
+        "topics"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "latest",
+          "caption": "Latest topics from V2EX"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "hot",
+          "caption": "What's hot right now"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "latest",
+          "caption": "V2EX 最新主题"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "hot",
+          "caption": "当前最热讨论"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/4.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "latest",
+          "caption": "Latest topics from V2EX"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/5.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "hot",
+          "caption": "What's hot right now"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/6.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "latest",
+          "caption": "V2EX 最新主题"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/7.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "hot",
+          "caption": "当前最热讨论"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.2",
+      "updated_at": "2026-07-23T07:41:08Z"
+    },
+    {
+      "id": "sspai",
+      "name": {
+        "default": "少数派",
+        "en": "SSPAI",
+        "zh": "少数派",
+        "ja": "少数派"
+      },
+      "description": {
+        "default": "SSPAI homepage and Matrix articles from RSSHub.",
+        "en": "SSPAI homepage and Matrix articles from RSSHub.",
+        "zh": "基于 RSSHub 的少数派首页与 Matrix 文章。",
+        "ja": "RSSHub から少数派のホームと Matrix 記事を表示します。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "article-medium-fill",
+        "bg": "#d71920"
+      },
+      "category": "media",
+      "keywords": [
+        "sspai",
+        "rss",
+        "articles",
+        "matrix",
+        "chinese"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "index",
+          "caption": "Read SSPAI, natively"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "matrix",
+          "caption": "Dive into Matrix stories"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "index",
+          "caption": "原生阅读少数派"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "matrix",
+          "caption": "沉浸阅读 Matrix 专栏"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/4.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "index",
+          "caption": "Read SSPAI, natively"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/5.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "matrix",
+          "caption": "Dive into Matrix stories"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/6.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "index",
+          "caption": "原生阅读少数派"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/7.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "matrix",
+          "caption": "沉浸阅读 Matrix 专栏"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.2",
+      "updated_at": "2026-07-23T07:35:33Z"
+    },
+    {
+      "id": "infoq",
+      "name": {
+        "default": "InfoQ 中文",
+        "en": "InfoQ Chinese",
+        "zh": "InfoQ 中文",
+        "ja": "InfoQ 中国語"
+      },
+      "description": {
+        "default": "InfoQ Chinese recommended articles from RSSHub.",
+        "en": "InfoQ Chinese recommended articles from RSSHub.",
+        "zh": "基于 RSSHub 的 InfoQ 中文推荐文章。",
+        "ja": "RSSHub から InfoQ 中国語のおすすめ記事を表示します。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "newspaper-clipping-fill",
+        "bg": "#0f766e"
+      },
+      "category": "media",
+      "keywords": [
+        "infoq",
+        "rss",
+        "articles",
+        "developer",
+        "chinese"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/infoq/0.1.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "InfoQ Chinese, natively yours"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/infoq/0.1.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "InfoQ 中文，原生阅读体验"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/infoq/0.1.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "InfoQ Chinese, natively yours"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/infoq/0.1.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "InfoQ 中文，原生阅读体验"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.2",
+      "updated_at": "2026-07-23T07:34:46Z"
+    },
+    {
+      "id": "gallery",
+      "name": {
+        "default": "Components",
+        "zh": "组件库",
+        "ja": "コンポーネント"
+      },
+      "description": {
+        "default": "Live gallery of every official Aglet UI component × states/variants — the thin-renderer acceptance surface.",
+        "zh": "Aglet 全部官方 UI 组件 × 状态/变体的实时展廊 —— 薄渲染器验收台。",
+        "ja": "Aglet の全公式 UI コンポーネント × 状態/バリアントの一覧 —— 薄レンダラー検収台。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "swatches-fill",
+        "bg": "#3a6ea5"
+      },
+      "category": "developer-tools",
+      "keywords": [
+        "gallery",
+        "components",
+        "design",
+        "showcase",
+        "dogfood"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Every component, natively rendered"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "每个组件,原生渲染"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Every component, natively rendered"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "每个组件,原生渲染"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.2",
+      "updated_at": "2026-07-23T07:33:57Z"
+    },
+    {
+      "id": "anniversary",
+      "name": {
+        "default": "Anniversary",
+        "zh": "纪念日",
+        "ja": "記念日"
+      },
+      "description": {
+        "default": "Track anniversaries (birthdays, milestones) with a live countdown to the next occurrence.",
+        "zh": "记录纪念日（生日、里程碑），实时倒数到下一次。",
+        "ja": "記念日（誕生日・節目）を登録し、次の発生までをカウントダウン。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "gift-fill",
+        "bg": "#ec4899"
+      },
+      "category": "utilities",
+      "keywords": [
+        "anniversary",
+        "birthday",
+        "countdown",
+        "reminder"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Never miss a moment that matters"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "重要的日子,不再错过"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Never miss a moment that matters"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "重要的日子,不再错过"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.2",
+      "updated_at": "2026-07-23T07:32:57Z"
+    },
+    {
+      "id": "36kr",
+      "name": {
+        "default": "36Kr",
+        "en": "36Kr",
+        "zh": "36氪",
+        "ja": "36Kr"
+      },
+      "description": {
+        "default": "36Kr hot list and newsflashes from RSSHub.",
+        "en": "36Kr hot list and newsflashes from RSSHub.",
+        "zh": "基于 RSSHub 的 36氪热榜与快讯。",
+        "ja": "RSSHub から 36Kr のホットリストと速報を表示します。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "newspaper-clipping-fill",
+        "bg": "#111111"
+      },
+      "category": "media",
+      "keywords": [
+        "36kr",
+        "rss",
+        "news",
+        "china",
+        "startup"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "hot",
+          "caption": "China tech, ranked by the crowd"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "flash",
+          "caption": "Real-time startup newsflashes"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "hot",
+          "caption": "24 小时科技热榜"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "flash",
+          "caption": "实时创投快讯"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/4.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "hot",
+          "caption": "China tech, ranked by the crowd"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/5.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "flash",
+          "caption": "Real-time startup newsflashes"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/6.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "hot",
+          "caption": "24 小时科技热榜"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/36kr/0.1.2/screenshots/7.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "flash",
+          "caption": "实时创投快讯"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.2",
+      "updated_at": "2026-07-23T07:32:24Z"
+    },
+    {
+      "id": "worldclock",
+      "name": {
+        "default": "World Clock",
+        "zh": "世界时钟",
+        "ja": "世界時計"
+      },
+      "description": {
+        "default": "World clock in your menu bar. Add cities, delete them, and pin the ones you want shown in the menu bar.",
+        "zh": "菜单栏世界时钟。可新建/删除城市，并勾选要在菜单栏显示的城市。",
+        "ja": "メニューバーの世界時計。都市の追加・削除、メニューバーに表示する都市の選択ができます。"
+      },
+      "author": "agent-rt",
+      "license": "MIT",
+      "icon": {
+        "fg": "globe-fill",
+        "bg": "#0ea5e9"
+      },
+      "category": "utilities",
+      "keywords": [
+        "clock",
+        "time",
+        "timezone",
+        "world",
+        "menubar"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "The world, at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "世界时间,一目了然"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "The world, at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "世界时间,一目了然"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.2.1",
+      "updated_at": "2026-07-23T07:31:51Z"
+    },
+    {
+      "id": "timer",
+      "name": {
+        "default": "Timer",
+        "zh": "计时器",
+        "ja": "タイマー"
+      },
+      "description": {
+        "default": "Simple countdown timer. Pick a preset, hit start, get notified when zero.",
+        "zh": "简洁倒计时。选预设、按开始、归零通知。",
+        "ja": "シンプルなカウントダウン。プリセットを選び、開始、ゼロで通知。"
+      },
+      "author": "agent-rt",
+      "license": "MIT",
+      "icon": {
+        "fg": "timer-fill",
+        "bg": "#f97316"
+      },
+      "category": "utilities",
+      "keywords": [
+        "timer",
+        "countdown",
+        "stopwatch"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Focus, one timer at a time"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "专注,从一个计时开始"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Focus, one timer at a time"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "专注,从一个计时开始"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "1.0.2",
+      "updated_at": "2026-07-23T07:31:01Z"
+    },
+    {
+      "id": "image-compressor",
+      "name": {
+        "default": "Compact",
+        "zh": "图片压缩",
+        "ja": "画像圧縮"
+      },
+      "description": {
+        "default": "A focused, private image compressor — pick a photo, tune quality, save a smaller WebP. All local.",
+        "zh": "专注本地的图片压缩：选一张图、调质量、存一份更小的 WebP。全程本地处理。",
+        "ja": "ローカル完結の画像圧縮：写真を選び、品質を調整して、より小さな WebP を保存。すべて端末内で処理。"
+      },
+      "icon": {
+        "fg": "image-square-fill",
+        "bg": "#14b8a6"
+      },
+      "category": "productivity",
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Smaller images, right on your Mac"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "本地压缩,更小的图片"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Smaller images, right on your Mac"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/image-compressor/1.0.2/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "本地压缩,更小的图片"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "windows"
+      ],
+      "latest": "1.0.2",
+      "updated_at": "2026-07-23T07:30:10Z"
+    },
+    {
+      "id": "gh-prs",
+      "name": {
+        "default": "GitHub PRs",
+        "zh": "GitHub PR 看板",
+        "ja": "GitHub PR ボード"
+      },
+      "description": {
+        "default": "Review queue + my open PRs. Auto-detects the `gh` CLI; otherwise connect with a GitHub token.",
+        "zh": "Review 队列 + 我的 open PR。自动探测 `gh` CLI;没有则用 GitHub token 连接。",
+        "ja": "レビュー待ち + 自分の open PR。`gh` CLI を自動検出;なければ GitHub トークンで接続。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "git-pull-request-fill",
+        "bg": "#1f883d"
+      },
+      "category": "developer-tools",
+      "keywords": [
+        "github",
+        "pr",
+        "review",
+        "code"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "review",
+          "caption": "Your review queue, at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "mine",
+          "caption": "Track your open PRs"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "all",
+          "caption": "Every open PR in one list"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "review",
+          "caption": "一眼看清待审队列"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/4.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "mine",
+          "caption": "跟进自己的 open PR"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/5.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "all",
+          "caption": "所有 open PR 一览"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/6.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "review",
+          "caption": "Your review queue, at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/7.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "mine",
+          "caption": "Track your open PRs"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/8.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "all",
+          "caption": "Every open PR in one list"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/9.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "review",
+          "caption": "一眼看清待审队列"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/10.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "mine",
+          "caption": "跟进自己的 open PR"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.3/screenshots/11.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "all",
+          "caption": "所有 open PR 一览"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.3",
+      "updated_at": "2026-07-23T07:29:02Z"
+    },
+    {
+      "id": "gh-actions",
+      "name": {
+        "default": "GitHub Actions",
+        "zh": "GitHub Actions",
+        "ja": "GitHub Actions"
+      },
+      "description": {
+        "default": "Watch and run GitHub Actions across your active repos. Auto-detects the `gh` CLI; otherwise connect with a token.",
+        "zh": "查看并执行你活跃仓库的 GitHub Actions。自动探测 `gh` CLI;没有则用 token 连接。",
+        "ja": "アクティブなリポジトリの GitHub Actions を確認・実行。`gh` CLI を自動検出;なければトークンで接続。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "play-circle-fill",
+        "bg": "#2088ff"
+      },
+      "category": "developer-tools",
+      "keywords": [
+        "github",
+        "actions",
+        "ci",
+        "workflow",
+        "devops"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "repos",
+          "caption": "Every repo's CI at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "runs",
+          "caption": "Re-run or cancel from anywhere"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "repos",
+          "caption": "一眼看清每个仓库的 CI"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "runs",
+          "caption": "随时重跑或取消运行"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/4.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "repos",
+          "caption": "Every repo's CI at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/5.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "runs",
+          "caption": "Re-run or cancel from anywhere"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/6.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "repos",
+          "caption": "一眼看清每个仓库的 CI"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/7.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "runs",
+          "caption": "随时重跑或取消运行"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.3",
+      "updated_at": "2026-07-23T07:28:02Z"
+    },
+    {
+      "id": "hn",
+      "name": {
+        "default": "HN Reader",
+        "en": "HN Reader",
+        "zh": "HN 中文",
+        "ja": "HN 日本語"
+      },
+      "description": {
+        "default": "Agent-translated HackerNews reader with like / block lists.",
+        "en": "Agent-translated HackerNews reader with like / block lists.",
+        "zh": "HackerNews 中文化阅读器：Agent 翻译 + 总结，用户点赞/屏蔽。",
+        "ja": "Agent が翻訳・要約した HackerNews。お気に入りとブロックに対応。"
+      },
+      "author": "aglet-dev",
+      "license": "MIT",
+      "icon": {
+        "fg": "fire-fill",
+        "bg": "#ff6600"
+      },
+      "category": "media",
+      "keywords": [
+        "hackernews",
+        "hn",
+        "reader",
+        "translated",
+        "chinese"
+      ],
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "feed",
+          "caption": "Your feeds, beautifully native"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "liked",
+          "caption": "Keep what you love"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "blocked",
+          "caption": "Mute the noise"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "feed",
+          "caption": "原生质感的信息流"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/4.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "liked",
+          "caption": "收藏你喜欢的"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/5.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "blocked",
+          "caption": "屏蔽噪音"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/6.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "feed",
+          "caption": "Your feeds, beautifully native"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/7.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "liked",
+          "caption": "Keep what you love"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/8.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "blocked",
+          "caption": "Mute the noise"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/9.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "feed",
+          "caption": "原生质感的信息流"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/10.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "liked",
+          "caption": "收藏你喜欢的"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/11.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "blocked",
+          "caption": "屏蔽噪音"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.1.3",
+      "updated_at": "2026-07-23T07:23:00Z"
+    },
     {
       "id": "sysmon",
       "name": {
@@ -33,235 +1101,6 @@
       "updated_at": "2026-07-22T06:34:12Z"
     },
     {
-      "id": "worldclock",
-      "name": {
-        "default": "World Clock",
-        "zh": "世界时钟",
-        "ja": "世界時計"
-      },
-      "description": {
-        "default": "World clock in your menu bar. Add cities, delete them, and pin the ones you want shown in the menu bar.",
-        "zh": "菜单栏世界时钟。可新建/删除城市，并勾选要在菜单栏显示的城市。",
-        "ja": "メニューバーの世界時計。都市の追加・削除、メニューバーに表示する都市の選択ができます。"
-      },
-      "author": "agent-rt",
-      "license": "MIT",
-      "category": "utilities",
-      "keywords": [
-        "clock",
-        "time",
-        "timezone",
-        "world",
-        "menubar"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.2.0",
-      "updated_at": "2026-07-22T06:11:47Z"
-    },
-    {
-      "id": "infoq",
-      "name": {
-        "default": "InfoQ 中文",
-        "en": "InfoQ Chinese",
-        "zh": "InfoQ 中文",
-        "ja": "InfoQ 中国語"
-      },
-      "description": {
-        "default": "InfoQ Chinese recommended articles from RSSHub.",
-        "en": "InfoQ Chinese recommended articles from RSSHub.",
-        "zh": "基于 RSSHub 的 InfoQ 中文推荐文章。",
-        "ja": "RSSHub から InfoQ 中国語のおすすめ記事を表示します。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/newspaper-clipping-fill.svg?color=%230f766e&width=256",
-      "category": "media",
-      "keywords": [
-        "infoq",
-        "rss",
-        "articles",
-        "developer",
-        "chinese"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-07-07T06:44:59Z"
-    },
-    {
-      "id": "v2ex",
-      "name": {
-        "default": "V2EX",
-        "en": "V2EX",
-        "zh": "V2EX",
-        "ja": "V2EX"
-      },
-      "description": {
-        "default": "V2EX latest and hot topics from RSSHub.",
-        "en": "V2EX latest and hot topics from RSSHub.",
-        "zh": "基于 RSSHub 的 V2EX 最新与最热主题。",
-        "ja": "RSSHub から V2EX の最新・ホットトピックを表示します。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/chats-circle-fill.svg?color=%232f6fed&width=256",
-      "category": "media",
-      "keywords": [
-        "v2ex",
-        "rss",
-        "forum",
-        "developer",
-        "topics"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-07-07T06:44:12Z"
-    },
-    {
-      "id": "sspai",
-      "name": {
-        "default": "少数派",
-        "en": "SSPAI",
-        "zh": "少数派",
-        "ja": "少数派"
-      },
-      "description": {
-        "default": "SSPAI homepage and Matrix articles from RSSHub.",
-        "en": "SSPAI homepage and Matrix articles from RSSHub.",
-        "zh": "基于 RSSHub 的少数派首页与 Matrix 文章。",
-        "ja": "RSSHub から少数派のホームと Matrix 記事を表示します。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/article-medium-fill.svg?color=%23d71920&width=256",
-      "category": "media",
-      "keywords": [
-        "sspai",
-        "rss",
-        "articles",
-        "matrix",
-        "chinese"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-07-07T06:43:30Z"
-    },
-    {
-      "id": "36kr",
-      "name": {
-        "default": "36Kr",
-        "en": "36Kr",
-        "zh": "36氪",
-        "ja": "36Kr"
-      },
-      "description": {
-        "default": "36Kr hot list and newsflashes from RSSHub.",
-        "en": "36Kr hot list and newsflashes from RSSHub.",
-        "zh": "基于 RSSHub 的 36氪热榜与快讯。",
-        "ja": "RSSHub から 36Kr のホットリストと速報を表示します。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/newspaper-clipping-fill.svg?color=%23111111&width=256",
-      "category": "media",
-      "keywords": [
-        "36kr",
-        "rss",
-        "news",
-        "china",
-        "startup"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.0",
-      "updated_at": "2026-07-07T06:43:04Z"
-    },
-    {
-      "id": "gh-prs",
-      "name": {
-        "default": "GitHub PRs",
-        "zh": "GitHub PR 看板",
-        "ja": "GitHub PR ボード"
-      },
-      "description": {
-        "default": "Review queue + my open PRs. Auto-detects the `gh` CLI; otherwise connect with a GitHub token.",
-        "zh": "Review 队列 + 我的 open PR。自动探测 `gh` CLI;没有则用 GitHub token 连接。",
-        "ja": "レビュー待ち + 自分の open PR。`gh` CLI を自動検出;なければ GitHub トークンで接続。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/git-pull-request-fill.svg?color=%231f883d&width=256",
-      "category": "developer-tools",
-      "keywords": [
-        "github",
-        "pr",
-        "review",
-        "code"
-      ],
-      "screenshots": [
-        {
-          "url": "https://registry.aglet.dev/aglets/gh-prs/0.1.1/screenshots/0.png",
-          "caption": "Review queue + your open PRs"
-        }
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.1",
-      "updated_at": "2026-07-03T10:43:42Z"
-    },
-    {
-      "id": "gh-actions",
-      "name": {
-        "default": "GitHub Actions",
-        "zh": "GitHub Actions",
-        "ja": "GitHub Actions"
-      },
-      "description": {
-        "default": "Watch and run GitHub Actions across your active repos. Auto-detects the `gh` CLI; otherwise connect with a token.",
-        "zh": "查看并执行你活跃仓库的 GitHub Actions。自动探测 `gh` CLI;没有则用 token 连接。",
-        "ja": "アクティブなリポジトリの GitHub Actions を確認・実行。`gh` CLI を自動検出;なければトークンで接続。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/play-circle-fill.svg?color=%232088ff&width=256",
-      "category": "developer-tools",
-      "keywords": [
-        "github",
-        "actions",
-        "ci",
-        "workflow",
-        "devops"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.1",
-      "updated_at": "2026-07-03T10:40:38Z"
-    },
-    {
       "id": "tokstat",
       "name": {
         "default": "AI Token Usage",
@@ -281,39 +1120,6 @@
       ],
       "latest": "0.3.0",
       "updated_at": "2026-07-03T10:40:31Z"
-    },
-    {
-      "id": "hn",
-      "name": {
-        "default": "HN Reader",
-        "en": "HN Reader",
-        "zh": "HN 中文",
-        "ja": "HN 日本語"
-      },
-      "description": {
-        "default": "Agent-translated HackerNews reader with like / block lists.",
-        "en": "Agent-translated HackerNews reader with like / block lists.",
-        "zh": "HackerNews 中文化阅读器：Agent 翻译 + 总结，用户点赞/屏蔽。",
-        "ja": "Agent が翻訳・要約した HackerNews。お気に入りとブロックに対応。"
-      },
-      "author": "aglet-dev",
-      "license": "MIT",
-      "icon": "https://api.iconify.design/ph/fire-fill.svg?color=%23ff6600&width=256",
-      "category": "media",
-      "keywords": [
-        "hackernews",
-        "hn",
-        "reader",
-        "translated",
-        "chinese"
-      ],
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.1.1",
-      "updated_at": "2026-06-30T02:25:02Z"
     }
   ]
 }
