@@ -1,0 +1,75 @@
+{
+  "id": "gallery",
+  "name": {
+    "default": "Components",
+    "zh": "组件库",
+    "ja": "コンポーネント"
+  },
+  "description": {
+    "default": "Live gallery of every official Aglet UI component × states/variants — the thin-renderer acceptance surface.",
+    "zh": "Aglet 全部官方 UI 组件 × 状态/变体的实时展廊 —— 薄渲染器验收台。",
+    "ja": "Aglet の全公式 UI コンポーネント × 状態/バリアントの一覧 —— 薄レンダラー検収台。"
+  },
+  "author": "aglet-dev",
+  "license": "MIT",
+  "icon": {
+    "fg": "swatches-fill",
+    "bg": "#3a6ea5"
+  },
+  "category": "developer-tools",
+  "keywords": [
+    "gallery",
+    "components",
+    "design",
+    "showcase",
+    "dogfood"
+  ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Every component, natively rendered"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "每个组件,原生渲染"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Every component, natively rendered"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gallery/0.1.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "每个组件,原生渲染"
+    }
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.2",
+  "versions": [
+    {
+      "version": "0.1.2",
+      "file": "0.1.2.aglet",
+      "sha256": "fa7665e8ac10693a9bddb8e4692993220497c504016f083b7cf240dadaf6ed0a",
+      "published_at": "2026-07-23T07:33:57Z"
+    }
+  ]
+}
