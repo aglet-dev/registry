@@ -12,7 +12,10 @@
   },
   "author": "aglet-dev",
   "license": "MIT",
-  "icon": "https://api.iconify.design/ph/play-circle-fill.svg?color=%232088ff&width=256",
+  "icon": {
+    "fg": "play-circle-fill",
+    "bg": "#2088ff"
+  },
   "category": "developer-tools",
   "keywords": [
     "github",
@@ -21,12 +24,78 @@
     "workflow",
     "devops"
   ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "repos",
+      "caption": "Every repo's CI at a glance"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "runs",
+      "caption": "Re-run or cancel from anywhere"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "repos",
+      "caption": "一眼看清每个仓库的 CI"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "runs",
+      "caption": "随时重跑或取消运行"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/4.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "repos",
+      "caption": "Every repo's CI at a glance"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/5.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "runs",
+      "caption": "Re-run or cancel from anywhere"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/6.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "repos",
+      "caption": "一眼看清每个仓库的 CI"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/gh-actions/0.1.3/screenshots/7.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "runs",
+      "caption": "随时重跑或取消运行"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.1.1",
+  "latest": "0.1.3",
   "versions": [
     {
       "version": "0.1.0",
@@ -39,6 +108,12 @@
       "file": "0.1.1.aglet",
       "sha256": "9186edae136471c7203dd1b4df1d933c00a901a650df30c5e0d40b8158dec526",
       "published_at": "2026-07-03T10:40:38Z"
+    },
+    {
+      "version": "0.1.3",
+      "file": "0.1.3.aglet",
+      "sha256": "0deabbb44b13dffc7c809b341616b6487c24f51508b596f8794b0d299d4b799b",
+      "published_at": "2026-07-23T07:28:02Z"
     }
   ]
 }
