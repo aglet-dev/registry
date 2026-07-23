@@ -1,0 +1,73 @@
+{
+  "id": "timer",
+  "name": {
+    "default": "Timer",
+    "zh": "计时器",
+    "ja": "タイマー"
+  },
+  "description": {
+    "default": "Simple countdown timer. Pick a preset, hit start, get notified when zero.",
+    "zh": "简洁倒计时。选预设、按开始、归零通知。",
+    "ja": "シンプルなカウントダウン。プリセットを選び、開始、ゼロで通知。"
+  },
+  "author": "agent-rt",
+  "license": "MIT",
+  "icon": {
+    "fg": "timer-fill",
+    "bg": "#f97316"
+  },
+  "category": "utilities",
+  "keywords": [
+    "timer",
+    "countdown",
+    "stopwatch"
+  ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Focus, one timer at a time"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "专注,从一个计时开始"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Focus, one timer at a time"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/timer/1.0.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "专注,从一个计时开始"
+    }
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "1.0.2",
+  "versions": [
+    {
+      "version": "1.0.2",
+      "file": "1.0.2.aglet",
+      "sha256": "37635fa5404b9e7f5daa81e7176975faa0a1723d2b3c60e1dd6b2999f0f20d5f",
+      "published_at": "2026-07-23T07:31:01Z"
+    }
+  ]
+}
