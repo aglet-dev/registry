@@ -14,7 +14,10 @@
   },
   "author": "aglet-dev",
   "license": "MIT",
-  "icon": "https://api.iconify.design/ph/fire-fill.svg?color=%23ff6600&width=256",
+  "icon": {
+    "fg": "fire-fill",
+    "bg": "#ff6600"
+  },
   "category": "media",
   "keywords": [
     "hackernews",
@@ -23,12 +26,110 @@
     "translated",
     "chinese"
   ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "feed",
+      "caption": "Your feeds, beautifully native"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "liked",
+      "caption": "Keep what you love"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "blocked",
+      "caption": "Mute the noise"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "feed",
+      "caption": "原生质感的信息流"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/4.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "liked",
+      "caption": "收藏你喜欢的"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/5.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "blocked",
+      "caption": "屏蔽噪音"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/6.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "feed",
+      "caption": "Your feeds, beautifully native"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/7.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "liked",
+      "caption": "Keep what you love"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/8.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "blocked",
+      "caption": "Mute the noise"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/9.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "feed",
+      "caption": "原生质感的信息流"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/10.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "liked",
+      "caption": "收藏你喜欢的"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/hn/0.1.3/screenshots/11.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "blocked",
+      "caption": "屏蔽噪音"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.1.1",
+  "latest": "0.1.3",
   "versions": [
     {
       "version": "0.1.0",
@@ -41,6 +142,12 @@
       "file": "0.1.1.aglet",
       "sha256": "751c5267480b81b13c4b334f236663c5fdd1991b840211615ee52a84a614429b",
       "published_at": "2026-06-30T02:25:02Z"
+    },
+    {
+      "version": "0.1.3",
+      "file": "0.1.3.aglet",
+      "sha256": "b6cd06ccb302aae2678f2af816d86aa16ac66f833a9e4b4a21fc68c55f87d9d3",
+      "published_at": "2026-07-23T07:23:00Z"
     }
   ]
 }
