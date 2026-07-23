@@ -12,6 +12,10 @@
   },
   "author": "agent-rt",
   "license": "MIT",
+  "icon": {
+    "fg": "globe-fill",
+    "bg": "#0ea5e9"
+  },
   "category": "utilities",
   "keywords": [
     "clock",
@@ -20,18 +24,58 @@
     "world",
     "menubar"
   ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "The world, at a glance"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "世界时间,一目了然"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "The world, at a glance"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/worldclock/0.2.1/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "世界时间,一目了然"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.2.0",
+  "latest": "0.2.1",
   "versions": [
     {
       "version": "0.2.0",
       "file": "0.2.0.aglet",
       "sha256": "a42ada6e7d0708a6822ed644aa53bc900952644782c8136b6bbfebd0243fb71f",
       "published_at": "2026-07-22T06:11:47Z"
+    },
+    {
+      "version": "0.2.1",
+      "file": "0.2.1.aglet",
+      "sha256": "3a2774876e93ec532d10523bb837cf8ad823f142c4f87bdb346303109a3e7f25",
+      "published_at": "2026-07-23T07:31:51Z"
     }
   ]
 }
