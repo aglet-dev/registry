@@ -14,7 +14,10 @@
   },
   "author": "aglet-dev",
   "license": "MIT",
-  "icon": "https://api.iconify.design/ph/article-medium-fill.svg?color=%23d71920&width=256",
+  "icon": {
+    "fg": "article-medium-fill",
+    "bg": "#d71920"
+  },
   "category": "media",
   "keywords": [
     "sspai",
@@ -23,18 +26,90 @@
     "matrix",
     "chinese"
   ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "index",
+      "caption": "Read SSPAI, natively"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "matrix",
+      "caption": "Dive into Matrix stories"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "index",
+      "caption": "原生阅读少数派"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "matrix",
+      "caption": "沉浸阅读 Matrix 专栏"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/4.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "index",
+      "caption": "Read SSPAI, natively"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/5.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "matrix",
+      "caption": "Dive into Matrix stories"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/6.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "index",
+      "caption": "原生阅读少数派"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sspai/0.1.2/screenshots/7.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "matrix",
+      "caption": "沉浸阅读 Matrix 专栏"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.1.0",
+  "latest": "0.1.2",
   "versions": [
     {
       "version": "0.1.0",
       "file": "0.1.0.aglet",
       "sha256": "a4edbbbe92035f14fcf208f98c64f5546a682e6466bd7a6fb2ed2872fddcafe7",
       "published_at": "2026-07-07T06:43:30Z"
+    },
+    {
+      "version": "0.1.2",
+      "file": "0.1.2.aglet",
+      "sha256": "f3e2bee92414e948aedf4580811b6ea1808698c1b5de1c88079b3f78b77bf91b",
+      "published_at": "2026-07-23T07:35:33Z"
     }
   ]
 }
