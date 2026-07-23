@@ -14,7 +14,10 @@
   },
   "author": "aglet-dev",
   "license": "MIT",
-  "icon": "https://api.iconify.design/ph/chats-circle-fill.svg?color=%232f6fed&width=256",
+  "icon": {
+    "fg": "chats-circle-fill",
+    "bg": "#2f6fed"
+  },
   "category": "media",
   "keywords": [
     "v2ex",
@@ -23,18 +26,90 @@
     "developer",
     "topics"
   ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "latest",
+      "caption": "Latest topics from V2EX"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "hot",
+      "caption": "What's hot right now"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "latest",
+      "caption": "V2EX 最新主题"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "hot",
+      "caption": "当前最热讨论"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/4.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "latest",
+      "caption": "Latest topics from V2EX"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/5.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "hot",
+      "caption": "What's hot right now"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/6.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "latest",
+      "caption": "V2EX 最新主题"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/v2ex/0.1.2/screenshots/7.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "hot",
+      "caption": "当前最热讨论"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.1.0",
+  "latest": "0.1.2",
   "versions": [
     {
       "version": "0.1.0",
       "file": "0.1.0.aglet",
       "sha256": "eea7fbf96795f96b5d6f4f51fa6c41cb1c1aec75924c21fb6274b3d7c70960a9",
       "published_at": "2026-07-07T06:44:12Z"
+    },
+    {
+      "version": "0.1.2",
+      "file": "0.1.2.aglet",
+      "sha256": "5b310c63e5d8c7b15f4077a183f59d05d7e578474db7644a7828b8237818c971",
+      "published_at": "2026-07-23T07:41:08Z"
     }
   ]
 }
