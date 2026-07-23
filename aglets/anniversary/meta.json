@@ -1,0 +1,74 @@
+{
+  "id": "anniversary",
+  "name": {
+    "default": "Anniversary",
+    "zh": "纪念日",
+    "ja": "記念日"
+  },
+  "description": {
+    "default": "Track anniversaries (birthdays, milestones) with a live countdown to the next occurrence.",
+    "zh": "记录纪念日（生日、里程碑），实时倒数到下一次。",
+    "ja": "記念日（誕生日・節目）を登録し、次の発生までをカウントダウン。"
+  },
+  "author": "aglet-dev",
+  "license": "MIT",
+  "icon": {
+    "fg": "gift-fill",
+    "bg": "#ec4899"
+  },
+  "category": "utilities",
+  "keywords": [
+    "anniversary",
+    "birthday",
+    "countdown",
+    "reminder"
+  ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Never miss a moment that matters"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "重要的日子,不再错过"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Never miss a moment that matters"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/anniversary/0.1.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "重要的日子,不再错过"
+    }
+  ],
+  "platforms": [
+    "apple",
+    "android",
+    "windows"
+  ],
+  "latest": "0.1.2",
+  "versions": [
+    {
+      "version": "0.1.2",
+      "file": "0.1.2.aglet",
+      "sha256": "1588ef99b61d62386559395b03f90a35ee09872ea4125a055a4866d893b12e97",
+      "published_at": "2026-07-23T07:32:57Z"
+    }
+  ]
+}
