@@ -1,6 +1,65 @@
 {
-  "generated_at": "2026-07-24T08:15:44Z",
+  "generated_at": "2026-07-24T08:16:16Z",
   "aglets": [
+    {
+      "id": "tokstat",
+      "name": {
+        "default": "AI Token Usage",
+        "zh": "AI 用量",
+        "ja": "AI トークン使用量"
+      },
+      "description": {
+        "default": "AI coding token usage (session & weekly) in your menu bar — progress bars, reset countdowns. Enable the providers you use; pick which show in the menu bar.",
+        "zh": "在菜单栏查看 AI 编程用量（会话与每周），含进度条与重置倒计时。按需启用各家、选择在菜单栏显示哪些。",
+        "ja": "メニューバーで AI コーディングの使用量（セッション・週）を表示。使うプロバイダを有効化し、メニューバーに出すものを選べます。"
+      },
+      "license": "MIT",
+      "icon": {
+        "fg": "coins-fill",
+        "bg": "#7c3aed"
+      },
+      "screenshots": [
+        {
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/0.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Every AI plan’s usage, at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/1.webp",
+          "surface": "macos",
+          "theme": "dark",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "所有 AI 用量,一眼看尽"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/2.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "en",
+          "frame": "main",
+          "caption": "Every AI plan’s usage, at a glance"
+        },
+        {
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/3.webp",
+          "surface": "macos",
+          "theme": "light",
+          "locale": "zh",
+          "frame": "main",
+          "caption": "所有 AI 用量,一眼看尽"
+        }
+      ],
+      "platforms": [
+        "apple",
+        "android",
+        "windows"
+      ],
+      "latest": "0.3.3",
+      "updated_at": "2026-07-24T07:47:59Z"
+    },
     {
       "id": "sysmon",
       "name": {
@@ -69,31 +128,6 @@
       ],
       "latest": "0.2.2",
       "updated_at": "2026-07-24T07:46:45Z"
-    },
-    {
-      "id": "tokstat",
-      "name": {
-        "default": "AI Token Usage",
-        "zh": "AI 用量",
-        "ja": "AI トークン使用量"
-      },
-      "description": {
-        "default": "AI coding token usage (session & weekly) in your menu bar — progress bars, reset countdowns. Enable the providers you use; pick which show in the menu bar.",
-        "zh": "在菜单栏查看 AI 编程用量（会话与每周），含进度条与重置倒计时。按需启用各家、选择在菜单栏显示哪些。",
-        "ja": "メニューバーで AI コーディングの使用量（セッション・週）を表示。使うプロバイダを有効化し、メニューバーに出すものを選べます。"
-      },
-      "license": "MIT",
-      "icon": {
-        "fg": "coins-fill",
-        "bg": "#7c3aed"
-      },
-      "platforms": [
-        "apple",
-        "android",
-        "windows"
-      ],
-      "latest": "0.3.2",
-      "updated_at": "2026-07-24T00:23:34Z"
     },
     {
       "id": "v2ex",
