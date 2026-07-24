@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T08:31:24Z",
+  "generated_at": "2026-07-24T00:24:38Z",
   "aglets": [
     {
       "id": "tokstat",
@@ -23,8 +23,8 @@
         "android",
         "windows"
       ],
-      "latest": "0.3.1",
-      "updated_at": "2026-07-23T08:25:01Z"
+      "latest": "0.3.2",
+      "updated_at": "2026-07-24T00:23:34Z"
     },
     {
       "id": "sysmon",
