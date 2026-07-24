@@ -17,7 +17,7 @@
   },
   "screenshots": [
     {
-      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/0.webp",
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/0.webp",
       "surface": "macos",
       "theme": "dark",
       "locale": "en",
@@ -25,7 +25,7 @@
       "caption": "Every AI plan’s usage, at a glance"
     },
     {
-      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/1.webp",
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/1.webp",
       "surface": "macos",
       "theme": "dark",
       "locale": "zh",
@@ -33,7 +33,7 @@
       "caption": "所有 AI 用量,一眼看尽"
     },
     {
-      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/2.webp",
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/2.webp",
       "surface": "macos",
       "theme": "light",
       "locale": "en",
@@ -41,7 +41,7 @@
       "caption": "Every AI plan’s usage, at a glance"
     },
     {
-      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/3.webp",
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/3.webp",
       "surface": "macos",
       "theme": "light",
       "locale": "zh",
@@ -61,7 +61,7 @@
     "android",
     "windows"
   ],
-  "latest": "0.3.3",
+  "latest": "0.3.4",
   "versions": [
     {
       "version": "0.1.0",
@@ -104,6 +104,12 @@
       "file": "0.3.3.aglet",
       "sha256": "f18029732018fa6a987771ffc2e2b7621f91a4c63ee3eed066048748a3d05a22",
       "published_at": "2026-07-24T07:47:59Z"
+    },
+    {
+      "version": "0.3.4",
+      "file": "0.3.4.aglet",
+      "sha256": "af8bb9288764c776d66f5e334f8df78054bac9d8f31cbc06597151c34f420ffa",
+      "published_at": "2026-07-24T09:29:05Z"
     }
   ]
 }
