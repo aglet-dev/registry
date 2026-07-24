@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T08:16:16Z",
+  "generated_at": "2026-07-24T09:29:57Z",
   "aglets": [
     {
       "id": "tokstat",
@@ -20,7 +20,7 @@
       },
       "screenshots": [
         {
-          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/0.webp",
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/0.webp",
           "surface": "macos",
           "theme": "dark",
           "locale": "en",
@@ -28,7 +28,7 @@
           "caption": "Every AI plan’s usage, at a glance"
         },
         {
-          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/1.webp",
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/1.webp",
           "surface": "macos",
           "theme": "dark",
           "locale": "zh",
@@ -36,7 +36,7 @@
           "caption": "所有 AI 用量,一眼看尽"
         },
         {
-          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/2.webp",
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/2.webp",
           "surface": "macos",
           "theme": "light",
           "locale": "en",
@@ -44,7 +44,7 @@
           "caption": "Every AI plan’s usage, at a glance"
         },
         {
-          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/3.webp",
+          "url": "https://registry.aglet.dev/aglets/tokstat/0.3.4/screenshots/3.webp",
           "surface": "macos",
           "theme": "light",
           "locale": "zh",
@@ -57,8 +57,8 @@
         "android",
         "windows"
       ],
-      "latest": "0.3.3",
-      "updated_at": "2026-07-24T07:47:59Z"
+      "latest": "0.3.4",
+      "updated_at": "2026-07-24T09:29:05Z"
     },
     {
       "id": "sysmon",
