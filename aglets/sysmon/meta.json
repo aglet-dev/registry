@@ -25,12 +25,53 @@
     "network",
     "menubar"
   ],
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/sysmon/0.2.2/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Your Mac’s vitals, live in the menu bar"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sysmon/0.2.2/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "菜单栏里的实时性能面板"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sysmon/0.2.2/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Your Mac’s vitals, live in the menu bar"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/sysmon/0.2.2/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "菜单栏里的实时性能面板"
+    }
+  ],
+  "min_runtime": "0.1.8",
+  "requires": [
+    {
+      "plugin": "sysmon",
+      "version": ">=0.1.0"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.2.1",
+  "latest": "0.2.2",
   "versions": [
     {
       "version": "0.2.0",
@@ -43,6 +84,12 @@
       "file": "0.2.1.aglet",
       "sha256": "336f19f03ec828067c869d532ca63839f94c6a21e09b77a1cd4e857bacb1fb0c",
       "published_at": "2026-07-23T08:22:16Z"
+    },
+    {
+      "version": "0.2.2",
+      "file": "0.2.2.aglet",
+      "sha256": "b4ffc07d0f97d3c0fef83ab6222b9941cba0b3d8f10a7a564170722bf1faa58d",
+      "published_at": "2026-07-24T07:46:45Z"
     }
   ]
 }
