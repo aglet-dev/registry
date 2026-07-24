@@ -15,12 +15,53 @@
     "fg": "coins-fill",
     "bg": "#7c3aed"
   },
+  "screenshots": [
+    {
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/0.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Every AI plan’s usage, at a glance"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/1.webp",
+      "surface": "macos",
+      "theme": "dark",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "所有 AI 用量,一眼看尽"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/2.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "en",
+      "frame": "main",
+      "caption": "Every AI plan’s usage, at a glance"
+    },
+    {
+      "url": "https://registry.aglet.dev/aglets/tokstat/0.3.3/screenshots/3.webp",
+      "surface": "macos",
+      "theme": "light",
+      "locale": "zh",
+      "frame": "main",
+      "caption": "所有 AI 用量,一眼看尽"
+    }
+  ],
+  "min_runtime": "0.1.8",
+  "requires": [
+    {
+      "plugin": "aicreds",
+      "version": ">=0.1.0"
+    }
+  ],
   "platforms": [
     "apple",
     "android",
     "windows"
   ],
-  "latest": "0.3.2",
+  "latest": "0.3.3",
   "versions": [
     {
       "version": "0.1.0",
@@ -57,6 +98,12 @@
       "file": "0.3.2.aglet",
       "sha256": "48e77f7c8a083043ecd09e70332beff062643dbcb8b562c9bed745a36c5baddc",
       "published_at": "2026-07-24T00:23:34Z"
+    },
+    {
+      "version": "0.3.3",
+      "file": "0.3.3.aglet",
+      "sha256": "f18029732018fa6a987771ffc2e2b7621f91a4c63ee3eed066048748a3d05a22",
+      "published_at": "2026-07-24T07:47:59Z"
     }
   ]
 }
